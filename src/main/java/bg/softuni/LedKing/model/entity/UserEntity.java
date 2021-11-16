@@ -11,9 +11,13 @@ public class UserEntity extends BaseEntity{
   @Column(nullable = false, unique = true)
   private String username;
 
+  @Column(nullable = false)
   private String firstName;
+  @Column(nullable = false)
   private String lastName;
+  @Column(nullable = false)
   private String password;
+
   private boolean isActive;
 
   @ManyToMany(fetch = FetchType.EAGER)

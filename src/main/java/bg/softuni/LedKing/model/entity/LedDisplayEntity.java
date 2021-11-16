@@ -4,7 +4,6 @@ import bg.softuni.LedKing.model.entity.enums.CategoryEnum;
 import bg.softuni.LedKing.model.entity.enums.DisplayTypeEnum;
 
 import javax.persistence.*;
-import java.util.List;
 
 import static javax.persistence.EnumType.STRING;
 
@@ -23,13 +22,16 @@ public class LedDisplayEntity extends BaseEntity{
   @Column(nullable = false)
   private String location;
 
+  @Column(nullable = false, name = "sizeWidth")
+  private Integer displaySizeWidth;
+  @Column(nullable = false, name = "sizeHeight")
+  private Integer displaySizeHeight;
   @Column(nullable = false)
-  private Integer pixelSizeWidth;
-  private Integer pixelSizeHeight;
   private Integer pixelPitch;
+  @Column(nullable = false)
   private Integer maximumAdvertisingTime;
 
-  @Column(nullable = false)
+  @Column(nullable = false, name = "comments")
   private String commentary;
   @ManyToOne
   private CampaignEntity campaign;
@@ -69,20 +71,20 @@ public class LedDisplayEntity extends BaseEntity{
     this.location = location;
   }
 
-  public Integer getPixelSizeWidth() {
-    return pixelSizeWidth;
+  public Integer getDisplaySizeWidth() {
+    return displaySizeWidth;
   }
 
-  public void setPixelSizeWidth(Integer pixelSizeWidth) {
-    this.pixelSizeWidth = pixelSizeWidth;
+  public void setDisplaySizeWidth(Integer pixelSizeWidth) {
+    this.displaySizeWidth = pixelSizeWidth;
   }
 
-  public Integer getPixelSizeHeight() {
-    return pixelSizeHeight;
+  public Integer getDisplaySizeHeight() {
+    return displaySizeHeight;
   }
 
-  public void setPixelSizeHeight(Integer pixelSizeHeight) {
-    this.pixelSizeHeight = pixelSizeHeight;
+  public void setDisplaySizeHeight(Integer pixelSizeHeight) {
+    this.displaySizeHeight = pixelSizeHeight;
   }
 
   public Integer getPixelPitch() {
