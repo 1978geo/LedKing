@@ -10,8 +10,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UniqueUserNameValidator.class)
+@Constraint(validatedBy = bg.softuni.LedKing.model.validator.UniqueUserNameValidator.class)
 public @interface UniqueUserName {
+
     String message() default "Username is not unique";
 
     Class<?>[] groups() default { };

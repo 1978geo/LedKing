@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Service
 public class LedKingUserServiceImpl implements UserDetailsService {
 
@@ -21,11 +22,18 @@ public class LedKingUserServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        // The purpose of this method is to map our user representation (UserEntity)
+        // to the user representation in the spring sercurity world (UserDetails).
+        // The only thing that spring will provide to us is the user name.
+        // The user name will come from the HTML login form.
+
         UserEntity userEntity =
-                userRepository.findByUsername(userName).
-                        orElseThrow(() -> new UsernameNotFoundException("User with name " + userName + " not found!"));
-        return null;
+                userRepository.findByUsername(username).
+                        orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " not found!"));
+
+        return mapToUserDetails(userEntity);
     }
 
     private static UserDetails mapToUserDetails(UserEntity userEntity) {
@@ -49,3 +57,4 @@ public class LedKingUserServiceImpl implements UserDetailsService {
         );
     }
 }
+

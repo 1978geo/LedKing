@@ -4,9 +4,9 @@ import bg.softuni.LedKing.model.service.UserRegistrationServiceModel;
 
 public interface UserService {
 
-    void initializeUsersAndRoles();
+  void initializeUsersAndRoles();
 
-    void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel);
+  void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel);
 
-    boolean isUserNameFree(String username);
+  boolean isUserNameFree(String username);
 }

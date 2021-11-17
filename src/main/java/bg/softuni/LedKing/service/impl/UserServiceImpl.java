@@ -13,21 +13,26 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final LedKingUserServiceImpl ledKingUserService;
+    private final LedKingUserServiceImpl mobileleUserService;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, LedKingUserServiceImpl ledKingUserService) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder,
+                           UserRepository userRepository,
+                           UserRoleRepository userRoleRepository,
+                           LedKingUserServiceImpl mobileleUserService) {
+        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.ledKingUserService = ledKingUserService;
+        this.mobileleUserService = mobileleUserService;
     }
 
     @Override
@@ -35,36 +40,6 @@ public class UserServiceImpl implements UserService {
         initializeRoles();
         initializeUsers();
     }
-
-    @Override
-    public void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel) {
-        UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
-
-        UserEntity newUser = new UserEntity();
-
-        newUser.
-                setUsername(userRegistrationServiceModel.getUsername()).
-                setFirstName(userRegistrationServiceModel.getFirstName()).
-                setLastName(userRegistrationServiceModel.getLastName()).
-                setActive(true).
-                setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword())).
-                setRoles(Set.of(userRole));
-
-        newUser = userRepository.save(newUser);
-
-        // this is the Spring representation of a user
-        UserDetails principal = ledKingUserService.loadUserByUsername(newUser.getUsername());
-        Authentication authentication = new UsernamePasswordAuthenticationToken(
-                principal,
-                newUser.getPassword(),
-                principal.getAuthorities()
-        );
-
-        SecurityContextHolder.
-                getContext().
-                setAuthentication(authentication);
-    }
-
 
     private void initializeUsers() {
         if (userRepository.count() == 0) {
@@ -109,8 +84,36 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
     @Override
+    public void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel) {
+
+        UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
+
+        UserEntity newUser = new UserEntity();
+
+        newUser.
+                setUsername(userRegistrationServiceModel.getUsername()).
+                setFirstName(userRegistrationServiceModel.getFirstName()).
+                setLastName(userRegistrationServiceModel.getLastName()).
+                setActive(true).
+                setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword())).
+                setRoles(Set.of(userRole));
+
+        newUser = userRepository.save(newUser);
+
+        // this is the Spring representation of a user
+        UserDetails principal = mobileleUserService.loadUserByUsername(newUser.getUsername());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                principal,
+                newUser.getPassword(),
+                principal.getAuthorities()
+        );
+
+        SecurityContextHolder.
+                getContext().
+                setAuthentication(authentication);
+    }
+
     public boolean isUserNameFree(String username) {
         return userRepository.findByUsernameIgnoreCase(username).isEmpty();
     }
