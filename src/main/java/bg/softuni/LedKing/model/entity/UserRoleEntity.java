@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "roles")
 public class UserRoleEntity {
-
+//todo delete
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

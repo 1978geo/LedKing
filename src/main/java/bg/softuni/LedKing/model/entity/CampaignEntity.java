@@ -1,15 +1,15 @@
 package bg.softuni.LedKing.model.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name="campaigns")
-public class CampaignEntity extends BaseEntity{
+public class CampaignEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -18,19 +18,28 @@ public class CampaignEntity extends BaseEntity{
     private LocalDateTime endDate;
     @Column(nullable = false)
     private Integer videoLengthInSeconds;
-    @OneToMany(mappedBy = "campaign" , cascade = CascadeType.ALL)
-    private List<LedDisplayEntity> ledDisplayCampaignsList;
+    @ManyToOne
+    private LedDisplayEntity ledDisplayCampaign;
 
     public CampaignEntity() {
     }
 
-    public List<LedDisplayEntity> getLedDisplayCampaignsList() {
-        return ledDisplayCampaignsList;
+    public LedDisplayEntity getLedDisplayCampaign() {
+        return ledDisplayCampaign;
     }
 
-    public void setLedDisplayCampaignsList(List<LedDisplayEntity> ledDisplayCampaignsList) {
-        this.ledDisplayCampaignsList = ledDisplayCampaignsList;
+    public void setLedDisplayCampaign(LedDisplayEntity ledDisplayCampaign) {
+        this.ledDisplayCampaign = ledDisplayCampaign;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;

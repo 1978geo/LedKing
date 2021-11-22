@@ -23,16 +23,16 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
-    private final LedKingUserServiceImpl mobileleUserService;
+    private final LedKingUserServiceImpl ledKingUserService;
 
     public UserServiceImpl(PasswordEncoder passwordEncoder,
                            UserRepository userRepository,
                            UserRoleRepository userRoleRepository,
-                           LedKingUserServiceImpl mobileleUserService) {
+                           LedKingUserServiceImpl ledKingUserService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
-        this.mobileleUserService = mobileleUserService;
+        this.ledKingUserService = ledKingUserService;
     }
 
     @Override
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
         newUser = userRepository.save(newUser);
 
         // this is the Spring representation of a user
-        UserDetails principal = mobileleUserService.loadUserByUsername(newUser.getUsername());
+        UserDetails principal = ledKingUserService.loadUserByUsername(newUser.getUsername());
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 principal,
                 newUser.getPassword(),

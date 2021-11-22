@@ -5,22 +5,32 @@ import bg.softuni.LedKing.model.entity.enums.DisplayTypeEnum;
 
 import javax.persistence.*;
 
+import java.net.URI;
+
 import static javax.persistence.EnumType.STRING;
 
 @Entity
 @Table(name = "LedDisplays")
-public class LedDisplayEntity extends BaseEntity{
+public class LedDisplayEntity {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   @Enumerated(STRING)
   @Column(nullable = false)
   private CategoryEnum category;
   @Enumerated(STRING)
   @Column(nullable = false)
   private DisplayTypeEnum type;
+
   @Column(nullable = false)
-  private String imageUrl;
+  private URI imageUrl;
+
   @Column(nullable = false)
   private String location;
+
+  @ManyToOne
+  private CityEntity city;
 
   @Column(nullable = false, name = "sizeWidth")
   private Integer displaySizeWidth;
@@ -33,10 +43,24 @@ public class LedDisplayEntity extends BaseEntity{
 
   @Column(nullable = false, name = "comments")
   private String commentary;
-  @ManyToOne
-  private CampaignEntity campaign;
 
   public LedDisplayEntity() {
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public CityEntity getCity() {
+    return city;
+  }
+
+  public void setCity(CityEntity city) {
+    this.city = city;
   }
 
   public CategoryEnum getCategory() {
@@ -55,11 +79,11 @@ public class LedDisplayEntity extends BaseEntity{
     this.type = type;
   }
 
-  public String getImageUrl() {
+  public URI getImageUrl() {
     return imageUrl;
   }
 
-  public void setImageUrl(String imageUrl) {
+  public void setImageUrl(URI imageUrl) {
     this.imageUrl = imageUrl;
   }
 

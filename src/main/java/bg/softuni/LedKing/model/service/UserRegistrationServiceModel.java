@@ -9,6 +9,40 @@ public class UserRegistrationServiceModel {
   private String email;
   private Integer phoneNumber;
 
+  public UserRegistrationServiceModel() {
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
   public String getEmail() {
     return email;
@@ -24,45 +58,5 @@ public class UserRegistrationServiceModel {
 
   public void setPhoneNumber(Integer phoneNumber) {
     this.phoneNumber = phoneNumber;
-  }
-
-
-
-  public String getUsername() {
-    return username != null ?
-        username.trim() :
-        null;
-  }
-
-  public UserRegistrationServiceModel setUsername(String username) {
-    this.username = username;
-    return this;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public UserRegistrationServiceModel setFirstName(String firstName) {
-    this.firstName = firstName;
-    return this;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public UserRegistrationServiceModel setLastName(String lastName) {
-    this.lastName = lastName;
-    return this;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public UserRegistrationServiceModel setPassword(String password) {
-    this.password = password;
-    return this;
   }
 }

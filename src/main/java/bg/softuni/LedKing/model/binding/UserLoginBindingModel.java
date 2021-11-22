@@ -5,6 +5,9 @@ public class UserLoginBindingModel {
   private String username;
   private String password;
 
+  public UserLoginBindingModel() {
+  }
+
   public String getUsername() {
     return username;
   }

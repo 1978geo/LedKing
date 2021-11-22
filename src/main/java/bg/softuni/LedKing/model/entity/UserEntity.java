@@ -6,11 +6,13 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class UserEntity extends BaseEntity{
+public class UserEntity {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   @Column(nullable = false, unique = true)
   private String username;
-
   @Column(nullable = false)
   private String firstName;
   @Column(nullable = false)
@@ -23,16 +25,15 @@ public class UserEntity extends BaseEntity{
   @ManyToMany(fetch = FetchType.EAGER)
   private Set<UserRoleEntity> roles = new HashSet<>();
 
-
   public UserEntity() {
   }
 
-  public String getPassword() {
-    return password;
+  public Long getId() {
+    return id;
   }
 
-  public UserEntity setPassword(String password) {
-    this.password = password;
+  public UserEntity setId(Long id) {
+    this.id = id;
     return this;
   }
 
@@ -63,6 +64,15 @@ public class UserEntity extends BaseEntity{
     return this;
   }
 
+  public String getPassword() {
+    return password;
+  }
+
+  public UserEntity setPassword(String password) {
+    this.password = password;
+    return this;
+  }
+
   public boolean isActive() {
     return isActive;
   }
@@ -76,8 +86,7 @@ public class UserEntity extends BaseEntity{
     return roles;
   }
 
-  public UserEntity setRoles(
-      Set<UserRoleEntity> roles) {
+  public UserEntity setRoles(Set<UserRoleEntity> roles) {
     this.roles = roles;
     return this;
   }
