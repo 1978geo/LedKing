@@ -10,7 +10,7 @@ import java.net.URI;
 import static javax.persistence.EnumType.STRING;
 
 @Entity
-@Table(name = "LedDisplays")
+@Table(name = "Displays")
 public class DisplayEntity {
 
   @Id

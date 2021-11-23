@@ -2,7 +2,7 @@ package bg.softuni.LedKing.model.entity;
 
 import javax.persistence.*;
 import java.net.URI;
-import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name="videos")
