@@ -41,16 +41,18 @@ public class UserRegistrationBindingModel {
     return firstName;
   }
 
-  public void setFirstName(String firstName) {
+  public UserRegistrationBindingModel setFirstName(String firstName) {
     this.firstName = firstName;
+    return this;
   }
 
   public String getLastName() {
     return lastName;
   }
 
-  public void setLastName(String lastName) {
+  public UserRegistrationBindingModel setLastName(String lastName) {
     this.lastName = lastName;
+    return this;
   }
 
   public String getPassword() {
@@ -65,31 +67,35 @@ public class UserRegistrationBindingModel {
     return confirmPassword;
   }
 
-  public void setConfirmPassword(String confirmPassword) {
+  public UserRegistrationBindingModel setConfirmPassword(String confirmPassword) {
     this.confirmPassword = confirmPassword;
+    return this;
   }
 
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public UserRegistrationBindingModel setUsername(String username) {
     this.username = username;
+    return this;
   }
 
   public String getEmail() {
     return email;
   }
 
-  public void setEmail(String email) {
+  public UserRegistrationBindingModel setEmail(String email) {
     this.email = email;
+    return this;
   }
 
   public Integer getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(Integer phoneNumber) {
+  public UserRegistrationBindingModel setPhoneNumber(Integer phoneNumber) {
     this.phoneNumber = phoneNumber;
+    return this;
   }
 }

@@ -4,20 +4,21 @@ import bg.softuni.LedKing.model.entity.UserEntity;
 import bg.softuni.LedKing.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
-public class LedKingUserServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public LedKingUserServiceImpl(UserRepository userRepository) {
+    public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -36,21 +37,16 @@ public class LedKingUserServiceImpl implements UserDetailsService {
         return mapToUserDetails(userEntity);
     }
 
-    private static UserDetails mapToUserDetails(UserEntity userEntity) {
+    private UserDetails mapToUserDetails(UserEntity userEntity) {
 
         // GrantedAuthority is the representation of a user role in the
         // spring world. SimpleGrantedAuthority is an implementation of GrantedAuthority
         // which spring provides for our convenience.
         // Our representation of role is UserRoleEntity
-        List<GrantedAuthority> auhtorities =
-                userEntity.
-                        getRoles().
-                        stream().
-                        map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRole().name())).
-                        collect(Collectors.toList());
+        List<GrantedAuthority> auhtorities = List.of(new SimpleGrantedAuthority(userEntity.getRole().name()));
 
         // User is the spring implementation of UserDetails interface.
-        return new LedKingUser(
+        return new User(
                 userEntity.getUsername(),
                 userEntity.getPassword(),
                 auhtorities

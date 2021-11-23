@@ -1,11 +1,9 @@
 package bg.softuni.LedKing.service.impl;
 
 import bg.softuni.LedKing.model.entity.UserEntity;
-import bg.softuni.LedKing.model.entity.UserRoleEntity;
 import bg.softuni.LedKing.model.entity.enums.UserRoleEnum;
 import bg.softuni.LedKing.model.service.UserRegistrationServiceModel;
 import bg.softuni.LedKing.repository.UserRepository;
-import bg.softuni.LedKing.repository.UserRoleRepository;
 import bg.softuni.LedKing.service.UserService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,38 +12,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
-
 @Service
 public class UserServiceImpl implements UserService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-    private final UserRoleRepository userRoleRepository;
-    private final LedKingUserServiceImpl ledKingUserService;
+        private final UserDetailsServiceImpl ledKingUserService;
 
     public UserServiceImpl(PasswordEncoder passwordEncoder,
                            UserRepository userRepository,
-                           UserRoleRepository userRoleRepository,
-                           LedKingUserServiceImpl ledKingUserService) {
+                          UserDetailsServiceImpl ledKingUserService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
-        this.userRoleRepository = userRoleRepository;
-        this.ledKingUserService = ledKingUserService;
+           this.ledKingUserService = ledKingUserService;
     }
 
     @Override
     public void initializeUsersAndRoles() {
-        initializeRoles();
+
         initializeUsers();
     }
 
     private void initializeUsers() {
         if (userRepository.count() == 0) {
 
-            UserRoleEntity adminRole = userRoleRepository.findByRole(UserRoleEnum.ADMIN);
-            UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
 
             UserEntity admin = new UserEntity();
             admin
@@ -55,7 +45,7 @@ public class UserServiceImpl implements UserService {
                     .setLastName("Adminov")
                     .setActive(true);
 
-            admin.setRoles(Set.of(adminRole, userRole));
+            admin.setRole(UserRoleEnum.ADMIN);
             userRepository.save(admin);
 
             UserEntity pesho = new UserEntity();
@@ -66,28 +56,16 @@ public class UserServiceImpl implements UserService {
                     .setLastName("Petrov")
                     .setActive(true);
 
-            pesho.setRoles(Set.of(userRole));
+            pesho.setRole(UserRoleEnum.USER);
             userRepository.save(pesho);
         }
     }
 
-    private void initializeRoles() {
 
-        if (userRoleRepository.count() == 0) {
-            UserRoleEntity adminRole = new UserRoleEntity();
-            adminRole.setRole(UserRoleEnum.ADMIN);
-
-            UserRoleEntity userRole = new UserRoleEntity();
-            userRole.setRole(UserRoleEnum.USER);
-
-            userRoleRepository.saveAll(List.of(adminRole, userRole));
-        }
-    }
 
     @Override
     public void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel) {
 
-        UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
 
         UserEntity newUser = new UserEntity();
 
@@ -97,7 +75,7 @@ public class UserServiceImpl implements UserService {
                 setLastName(userRegistrationServiceModel.getLastName()).
                 setActive(true).
                 setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword())).
-                setRoles(Set.of(userRole));
+                setRole(UserRoleEnum.USER);
 
         newUser = userRepository.save(newUser);
 

@@ -1,8 +1,8 @@
 package bg.softuni.LedKing.model.entity;
 
+import bg.softuni.LedKing.model.entity.enums.UserRoleEnum;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -19,11 +19,11 @@ public class UserEntity {
   private String lastName;
   @Column(nullable = false)
   private String password;
-
+  @Column(nullable = false)
   private boolean isActive;
 
-  @ManyToMany(fetch = FetchType.EAGER)
-  private Set<UserRoleEntity> roles = new HashSet<>();
+  @Column(nullable = false)
+  private UserRoleEnum role = UserRoleEnum.USER;
 
   public UserEntity() {
   }
@@ -82,12 +82,11 @@ public class UserEntity {
     return this;
   }
 
-  public Set<UserRoleEntity> getRoles() {
-    return roles;
+  public UserRoleEnum getRole() {
+    return role;
   }
 
-  public UserEntity setRoles(Set<UserRoleEntity> roles) {
-    this.roles = roles;
-    return this;
+  public void setRole(UserRoleEnum role) {
+    this.role = role;
   }
 }

@@ -2,10 +2,12 @@ package bg.softuni.LedKing.model.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name="campaigns")
-public class CampaignEntity {
+@Table(name="orders")
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,19 +19,24 @@ public class CampaignEntity {
     @Column(nullable = false)
     private LocalDateTime endDate;
     @Column(nullable = false)
-    private Integer videoLengthInSeconds;
+    private int videoLengthInSeconds;
+    @Column(nullable = false)
+    @OneToMany
+    private Set<VideoEntity> videos = new HashSet<>();
+    @OneToMany
+    private Set<DisplayEntity> displays = new HashSet<>();
     @ManyToOne
-    private LedDisplayEntity ledDisplayCampaign;
+    private  ClientEntity client;
 
-    public CampaignEntity() {
+    public OrderEntity() {
     }
 
-    public LedDisplayEntity getLedDisplayCampaign() {
-        return ledDisplayCampaign;
+    public ClientEntity getClient() {
+        return client;
     }
 
-    public void setLedDisplayCampaign(LedDisplayEntity ledDisplayCampaign) {
-        this.ledDisplayCampaign = ledDisplayCampaign;
+    public void setClient(ClientEntity client) {
+        this.client = client;
     }
 
     public Long getId() {
@@ -39,7 +46,6 @@ public class CampaignEntity {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -65,13 +71,27 @@ public class CampaignEntity {
         this.endDate = endDate;
     }
 
-    public Integer getVideoLengthInSeconds() {
+    public int getVideoLengthInSeconds() {
         return videoLengthInSeconds;
     }
 
-    public void setVideoLengthInSeconds(Integer videoLengthInSeconds) {
+    public void setVideoLengthInSeconds(int videoLengthInSeconds) {
         this.videoLengthInSeconds = videoLengthInSeconds;
     }
 
+    public Set<VideoEntity> getVideos() {
+        return videos;
+    }
 
+    public void setVideos(Set<VideoEntity> videos) {
+        this.videos = videos;
+    }
+
+    public Set<DisplayEntity> getDisplays() {
+        return displays;
+    }
+
+    public void setDisplays(Set<DisplayEntity> displays) {
+        this.displays = displays;
+    }
 }

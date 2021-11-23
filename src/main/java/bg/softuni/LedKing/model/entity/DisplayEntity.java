@@ -11,7 +11,7 @@ import static javax.persistence.EnumType.STRING;
 
 @Entity
 @Table(name = "LedDisplays")
-public class LedDisplayEntity {
+public class DisplayEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +44,7 @@ public class LedDisplayEntity {
   @Column(nullable = false, name = "comments")
   private String commentary;
 
-  public LedDisplayEntity() {
+  public DisplayEntity() {
   }
 
   public Long getId() {
