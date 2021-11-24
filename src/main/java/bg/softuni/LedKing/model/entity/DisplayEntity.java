@@ -16,10 +16,10 @@ public class DisplayEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Enumerated(STRING)
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private CategoryEnum category;
-  @Enumerated(STRING)
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private DisplayTypeEnum type;
 

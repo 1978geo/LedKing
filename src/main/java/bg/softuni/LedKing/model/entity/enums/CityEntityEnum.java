@@ -15,7 +15,8 @@ public enum CityEntityEnum {
     STARA_ZAGORA,
     SLIVEN,
     PAZARDZHIK,
-    VELINGRAD;
+    VELINGRAD,
+    OTHER;
 
 
 }

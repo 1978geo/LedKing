@@ -1,11 +1,13 @@
 package bg.softuni.LedKing.model.binding;
 
+import bg.softuni.LedKing.model.entity.DisplayEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
-public class CampaignAddBindingModel {
+public class OrderAddBindingModel {
 
     @NotBlank(message = "Name can not be null or empty")
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 characters")
@@ -21,8 +23,17 @@ public class CampaignAddBindingModel {
     @NotNull(message = "Length cannot be null")
     @Size(min = 3, max = 300, message = "Video spot length must be between 3 and 300 seconds")
     private Integer videoSpotLength;
+    private Set<DisplayEntity> orderedDisplays;
 
-    public CampaignAddBindingModel() {
+    public OrderAddBindingModel() {
+    }
+
+    public Set<DisplayEntity> getOrderedDisplays() {
+        return orderedDisplays;
+    }
+
+    public void setOrderedDisplays(Set<DisplayEntity> orderedDisplays) {
+        this.orderedDisplays = orderedDisplays;
     }
 
     public String getName() {
