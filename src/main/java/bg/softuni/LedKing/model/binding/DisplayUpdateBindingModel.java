@@ -5,9 +5,9 @@ import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
 import javax.validation.constraints.NotNull;
 import java.net.URI;
 
-public class DisplayAddBindingModel {
+public class DisplayUpdateBindingModel {
     @NotNull
-    private Long displayId;
+    private Long id;
     @NotNull
     private CityEntityEnum city;
     @NotNull
@@ -18,15 +18,15 @@ public class DisplayAddBindingModel {
     private Integer maximumAdvertisingTime;
     private String commentary;
 
-    public DisplayAddBindingModel() {
+    public DisplayUpdateBindingModel() {
     }
 
-    public Long getDisplayId() {
-        return displayId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDisplayId(Long displayId) {
-        this.displayId = displayId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public CityEntityEnum getCity() {

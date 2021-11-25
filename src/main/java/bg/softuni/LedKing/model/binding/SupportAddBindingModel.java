@@ -11,7 +11,8 @@ import java.net.URI;
 import java.time.LocalDateTime;
 
 public class SupportAddBindingModel {
-
+    @NotNull
+    private Long displayId;
     @NotNull
     private CityEntityEnum city;
     @NotNull
@@ -25,6 +26,14 @@ public class SupportAddBindingModel {
 
     public CityEntityEnum getCity() {
         return city;
+    }
+
+    public Long getDisplayId() {
+        return displayId;
+    }
+
+    public void setDisplayId(Long displayId) {
+        this.displayId = displayId;
     }
 
     public void setCity(CityEntityEnum city) {

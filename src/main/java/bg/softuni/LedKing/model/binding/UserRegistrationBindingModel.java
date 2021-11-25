@@ -2,11 +2,7 @@ package bg.softuni.LedKing.model.binding;
 
 
 import bg.softuni.LedKing.model.validator.UniqueUserName;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 
 public class UserRegistrationBindingModel {
@@ -31,7 +27,8 @@ public class UserRegistrationBindingModel {
   @Email(message = "Email not valid")
   private String email;
   @NotBlank (message = "Phone number can not be null or empty")
-  @Size(min=7, max=16, message = "Phone number length must be between 4 and 20 digits")
+  //todo do we need to be that strict?
+  @Digits(message = "Phone number must contain between 7 and 16 digits", integer = 0, fraction = 0)
   private Integer phoneNumber;
 
   public UserRegistrationBindingModel() {

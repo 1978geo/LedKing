@@ -1,28 +1,23 @@
-package bg.softuni.LedKing.model.binding;
+package bg.softuni.LedKing.model.view;
 
 import bg.softuni.LedKing.model.entity.enums.CategoryEnum;
 import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
 import bg.softuni.LedKing.model.entity.enums.DisplayTypeEnum;
 import bg.softuni.LedKing.model.entity.enums.PixelPitchTypeEnum;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-public class BuyRentAddBindingModel {
-    @NotNull
+public class RentViewModel {
     private CategoryEnum category;
-    @NotNull
     private DisplayTypeEnum type;
-    @NotNull
     private CityEntityEnum city;
-    @NotNull
     private PixelPitchTypeEnum pixel;
-    @NotNull
     private BigDecimal sizeWidth;
-    @NotNull
     private BigDecimal sizeHeight;
+    private String email;
+    private int phoneNumber;
 
-    public BuyRentAddBindingModel() {
+    public RentViewModel() {
     }
 
     public CategoryEnum getCategory() {
@@ -71,5 +66,21 @@ public class BuyRentAddBindingModel {
 
     public void setSizeHeight(BigDecimal sizeHeight) {
         this.sizeHeight = sizeHeight;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

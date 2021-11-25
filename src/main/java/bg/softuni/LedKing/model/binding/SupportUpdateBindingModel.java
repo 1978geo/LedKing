@@ -5,28 +5,26 @@ import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
 import javax.validation.constraints.NotNull;
 import java.net.URI;
 
-public class DisplayAddBindingModel {
+public class SupportUpdateBindingModel {
     @NotNull
-    private Long displayId;
+    private Long id;
     @NotNull
     private CityEntityEnum city;
     @NotNull
     private String location;
     @NotNull
     private URI imageUrl;
-    @NotNull
-    private Integer maximumAdvertisingTime;
     private String commentary;
 
-    public DisplayAddBindingModel() {
+    public SupportUpdateBindingModel() {
     }
 
-    public Long getDisplayId() {
-        return displayId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDisplayId(Long displayId) {
-        this.displayId = displayId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public CityEntityEnum getCity() {
@@ -51,14 +49,6 @@ public class DisplayAddBindingModel {
 
     public void setImageUrl(URI imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Integer getMaximumAdvertisingTime() {
-        return maximumAdvertisingTime;
-    }
-
-    public void setMaximumAdvertisingTime(Integer maximumAdvertisingTime) {
-        this.maximumAdvertisingTime = maximumAdvertisingTime;
     }
 
     public String getCommentary() {

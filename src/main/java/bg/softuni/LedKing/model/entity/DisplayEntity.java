@@ -7,8 +7,6 @@ import javax.persistence.*;
 
 import java.net.URI;
 
-import static javax.persistence.EnumType.STRING;
-
 @Entity
 @Table(name = "Displays")
 public class DisplayEntity {

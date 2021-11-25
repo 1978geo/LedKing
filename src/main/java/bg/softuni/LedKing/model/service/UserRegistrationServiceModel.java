@@ -37,7 +37,9 @@ public class UserRegistrationServiceModel {
   }
 
   public String getUsername() {
-    return username;
+    return username != null ?
+            username.trim() :
+            null;
   }
 
   public void setUsername(String username) {

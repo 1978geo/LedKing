@@ -1,32 +1,29 @@
-package bg.softuni.LedKing.model.binding;
+package bg.softuni.LedKing.model.view;
 
 import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
 
-import javax.validation.constraints.NotNull;
 import java.net.URI;
 
-public class DisplayAddBindingModel {
-    @NotNull
-    private Long displayId;
-    @NotNull
+
+public class DisplayAdvertiseViewModel {
+
+    private Long id;
     private CityEntityEnum city;
-    @NotNull
     private String location;
-    @NotNull
     private URI imageUrl;
-    @NotNull
+    private Integer freeAdvertisingTime;
     private Integer maximumAdvertisingTime;
     private String commentary;
 
-    public DisplayAddBindingModel() {
+    public DisplayAdvertiseViewModel() {
     }
 
-    public Long getDisplayId() {
-        return displayId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDisplayId(Long displayId) {
-        this.displayId = displayId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public CityEntityEnum getCity() {
@@ -51,6 +48,14 @@ public class DisplayAddBindingModel {
 
     public void setImageUrl(URI imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Integer getFreeAdvertisingTime() {
+        return freeAdvertisingTime;
+    }
+
+    public void setFreeAdvertisingTime(Integer freeAdvertisingTime) {
+        this.freeAdvertisingTime = freeAdvertisingTime;
     }
 
     public Integer getMaximumAdvertisingTime() {

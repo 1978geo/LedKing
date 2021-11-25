@@ -1,24 +1,26 @@
-package bg.softuni.LedKing.model.binding;
+package bg.softuni.LedKing.model.service;
 
 import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
-
-import javax.validation.constraints.NotNull;
 import java.net.URI;
 
-public class DisplayAddBindingModel {
-    @NotNull
+public class DisplayAddServiceModel {
+    private Long id;
     private Long displayId;
-    @NotNull
     private CityEntityEnum city;
-    @NotNull
     private String location;
-    @NotNull
     private URI imageUrl;
-    @NotNull
     private Integer maximumAdvertisingTime;
     private String commentary;
 
-    public DisplayAddBindingModel() {
+    public DisplayAddServiceModel() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getDisplayId() {
