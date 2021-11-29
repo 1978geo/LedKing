@@ -5,7 +5,7 @@ import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
 import java.net.URI;
 
 
-public class DisplayAdvertiseViewModel {
+public class DisplayViewModel {
 
     private Long id;
     private CityEntityEnum city;
@@ -15,7 +15,7 @@ public class DisplayAdvertiseViewModel {
     private Integer maximumAdvertisingTime;
     private String commentary;
 
-    public DisplayAdvertiseViewModel() {
+    public DisplayViewModel() {
     }
 
     public Long getId() {
@@ -38,8 +38,9 @@ public class DisplayAdvertiseViewModel {
         return location;
     }
 
-    public void setLocation(String location) {
+    public DisplayViewModel setLocation(String location) {
         this.location = location;
+        return null;
     }
 
     public URI getImageUrl() {

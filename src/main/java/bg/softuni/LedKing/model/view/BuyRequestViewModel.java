@@ -4,10 +4,9 @@ import bg.softuni.LedKing.model.entity.enums.CategoryEnum;
 import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
 import bg.softuni.LedKing.model.entity.enums.DisplayTypeEnum;
 import bg.softuni.LedKing.model.entity.enums.PixelPitchTypeEnum;
-
 import java.math.BigDecimal;
 
-public class RentViewModel {
+public class BuyRequestViewModel {
     private CategoryEnum category;
     private DisplayTypeEnum type;
     private CityEntityEnum city;
@@ -17,7 +16,7 @@ public class RentViewModel {
     private String email;
     private int phoneNumber;
 
-    public RentViewModel() {
+    public BuyRequestViewModel() {
     }
 
     public CategoryEnum getCategory() {
