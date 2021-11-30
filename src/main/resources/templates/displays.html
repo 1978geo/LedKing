@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center text-white m-3">All Displays</h2>
+    <div class='row mb-4 d-flex justify-content-around'>
+        <div th:each="display : ${allDisplays}" th:object="${display}"
+             class="brand-section col-md-5 mr-auto d-flex flex-column">
+            <h2>Display type:
+                <span th:text="*{location}">Display location</span>
+            </h2>
+            <div>Models:
+                <table>
+                    <tr>
+                        <th>No</th>
+                        <th>City</th>
+                        <th>Location</th>
+                        <th>Picture</th>
+                        <th>FreeAdvertisingTime</th>
+                        <th>MaximumAdvertisingTime</th>
+                        <th>Commentary</th>
+
+                    </tr>
+                    <tr th:each="location : ${display.locations}" th:object="${location}">
+                        <th th:text="*{id}">No</th>
+                        <th th:text="*{city}">City</th>
+                        <th th:text="*{location}">Display Location Category</th>
+                        <th><img th:src="*{imageUrl}" alt="image" src="/"
+                                 class="img-thumbnail rounded"></th>
+                        <th th:text="*{freeAdvertisingTime}">Free Advertising Time</th>
+                        <th th:text="*{maximumAdvertisingTime}">Maximum Advertising Time</th>
+                        <th th:text="*{commentary}">Commentary</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <footer></footer>
+    </div>
+</div>
+</body>
+</html>
