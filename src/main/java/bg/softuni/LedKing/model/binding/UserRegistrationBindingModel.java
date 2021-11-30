@@ -26,7 +26,7 @@ public class UserRegistrationBindingModel {
   @NotBlank (message = "Email can not be null or empty")
   @Email(message = "Email not valid")
   private String email;
-  @NotBlank (message = "Phone number can not be null or empty")
+  @NotNull (message = "Phone number can not be null or empty")
   //todo do we need to be that strict?
   @Digits(message = "Phone number must contain between 7 and 16 digits", integer = 0, fraction = 0)
   private Integer phoneNumber;

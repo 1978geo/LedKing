@@ -5,10 +5,11 @@ import bg.softuni.LedKing.model.view.DisplayViewModel;
 import bg.softuni.LedKing.repository.DisplayRepository;
 import bg.softuni.LedKing.service.DisplayService;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class DisplayServiceImpl implements DisplayService {
 
     private final DisplayRepository displayRepository;

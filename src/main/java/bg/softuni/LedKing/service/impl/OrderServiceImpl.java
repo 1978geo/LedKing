@@ -1,21 +1,18 @@
 package bg.softuni.LedKing.service.impl;
 
-import bg.softuni.LedKing.model.entity.CityEntity;
 import bg.softuni.LedKing.model.entity.OrderEntity;
-import bg.softuni.LedKing.model.entity.enums.CategoryEnum;
-import bg.softuni.LedKing.model.entity.enums.CityEntityEnum;
-import bg.softuni.LedKing.model.view.AllOrderViewModel;
 import bg.softuni.LedKing.model.view.OrderViewModel;
 import bg.softuni.LedKing.repository.DisplayRepository;
 import bg.softuni.LedKing.repository.OrderRepository;
 import bg.softuni.LedKing.repository.UserRepository;
 import bg.softuni.LedKing.service.OrderService;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
+
+@Service
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
