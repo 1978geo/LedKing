@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    th:fragment="page(baseUrl, title)"
+    >
+
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+    <div th:replace="fragments/navbar :: navbar">Navbar</div>
+
+    <div class="container with-background">
+        <h2 class="text-center" th:text="${title}"></h2>
+        <div th:replace="fragments/forms::infoBar(${info})" />
+        <form
+                th:action="@{{baseUrl}/{tail}(baseUrl=${baseUrl},tail=(${theModel.id} != null ? ${theModel.id} : '_create'))}"
+                th:method="${theModel.id} != null ? 'post' : 'put'"
+                th:object="${theModel}"
+                class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+            <div th:replace="~{__${baseUrl}__/fragments :: formRows}"></div>
+
+            <div class="row">
+                <div class="col" th:if="${#fields.hasGlobalErrors()}">
+                    <label class="error-text font-weight-bold">Errors</label>
+                    <ul class="form-control error-text">
+                        <li th:each="err : ${#fields.globalErrors()}" th:text="${err}" />
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-md-4">
+                    <div class="button-holder d-flex">
+                        <input type="submit" class="btn btn-info btn-lg" value="Save"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" th:replace="fragments/forms::footer" />
+
+</body>
+</html>

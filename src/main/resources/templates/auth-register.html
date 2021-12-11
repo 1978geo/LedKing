@@ -29,7 +29,7 @@
                     class="form-control"
                     placeholder="First name"/>
                 <p class="invalid-feedback errors alert alert-danger">
-                    First name is required and should be between 4 and 20 symbols.
+                    First name is required and should be between 2 and 20 symbols.
                 </p>
             </div>
             <div class="form-group col-md-6 mb-3">
@@ -41,7 +41,7 @@
                        type="text" min="2" max="20" class="form-control"
                        placeholder="Last name"/>
                 <p class="invalid-feedback errors alert alert-danger">
-                    Last name is required and should be between 4 and 20 symbols.
+                    Last name is required and should be between 2 and 20 symbols.
                 </p>
             </div>
 
@@ -107,7 +107,7 @@
                     Valid phone number is required.
                 </p>
             </div>
-            </div>
+        </div>
         <div th:if="${userNameOccupied}" class="row">
             <div class="form-group col-md-12 mb-6">
                 <p class="errors alert alert-danger">

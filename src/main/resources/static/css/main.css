@@ -57,3 +57,7 @@ form.main-form {
 .logged-user {
      color: white;
 }
+
+.with-background {
+     background-color: white;
+}

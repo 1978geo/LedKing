@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    >
+<head th:replace="fragments/head::head"></head>
+
+<body th:with="baseUrl=${'/admin/displays'}">
+
+    <div th:replace="fragments/navbar :: navbar">
+        Navbar
+    </div>
+
+    <div class="container with-background">
+        <h2 class="text-center text-black m-3">Displays</h2>
+        <div class='row mb-4 d-flex justify-content-around'>
+            <div th:replace="fragments/forms::infoBar(${info})" />
+            <div th:replace="fragments/forms::addButton(${baseUrl})" />
+
+            <table class="table">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">FreeAdvertisingTime</th>
+                    <th scope="col">MaximumAdvertisingTime</th>
+                    <th scope="col">Commentary</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                <tr th:each="item : ${theModel}" th:object="${item}">
+                    <td th:text="*{id}">No</td>
+                    <td th:text="*{city}">City</td>
+                    <td th:text="*{location}">Display Location Category</td>
+                    <td><img th:src="*{imageUrl}" alt="image" class="img-thumbnail rounded"></td>
+                    <td th:text="*{freeAdvertisingTime}">Free Advertising Time</td>
+                    <td th:text="*{maximumAdvertisingTime}">Maximum Advertising Time</td>
+                    <td th:text="*{commentary}">Commentary</td>
+                    <td>
+                        <div th:replace="fragments/forms::editButton(${baseUrl}, *{id})" />
+                    </td>
+                    <td>
+                        <div th:replace="fragments/forms::deleteButton(${baseUrl}, *{id})" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="container" th:replace="fragments/forms::footer" />
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    th:fragment="page(baseUrl, title)"
+    >
+
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+    <div th:replace="fragments/navbar :: navbar">Navbar</div>
+
+    <div class="container with-background">
+        <h2 class="text-center text-black m-3" th:text="${title}"></h2>
+        <div class='row mb-4 d-flex justify-content-around'>
+            <div th:replace="fragments/forms::infoBar(${info})" />
+            <div th:replace="fragments/forms::addButton(${baseUrl})" />
+
+            <table class="table">
+                <tr>
+                    <th scope="col" th:replace="~{__${baseUrl}__/fragments :: tableHead}"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                <tr th:each="item : ${theModel}" th:object="${item}">
+                    <td th:replace="~{__${baseUrl}__/fragments :: tableRow(${item})}"></td>
+                    <td>
+                        <div th:replace="fragments/forms::editButton(${baseUrl}, *{id})" />
+                    </td>
+                    <td>
+                        <div th:replace="fragments/forms::deleteButton(${baseUrl}, *{id})" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="container" th:replace="fragments/forms::footer" />
+</body>
+</html>
