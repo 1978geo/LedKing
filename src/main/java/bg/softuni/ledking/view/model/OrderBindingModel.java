@@ -4,18 +4,14 @@ import bg.softuni.ledking.repository.entity.ClientEntity;
 import bg.softuni.ledking.repository.entity.DisplayEntity;
 import bg.softuni.ledking.repository.entity.VideoEntity;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-public class OrderUpdateBindingModel {
-
-    private Long id;
+public class OrderBindingModel {
+    @NotNull
+    private Long orderId;
     @NotBlank(message = "Name can not be null or empty")
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 characters")
     private String name;
@@ -37,15 +33,15 @@ public class OrderUpdateBindingModel {
     @NotNull(message = "Client cannot be null")
     private ClientEntity client;
 
-    public OrderUpdateBindingModel() {
+    public OrderBindingModel() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Set<DisplayEntity> getOrderedDisplaysInCampaign() {

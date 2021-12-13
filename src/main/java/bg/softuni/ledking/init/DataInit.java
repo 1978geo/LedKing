@@ -30,6 +30,7 @@ public class DataInit implements CommandLineRunner {
         userService.initializeUsersAndRoles();
         displayService.initializeDisplay();
         orderService.initializeOrders();
+        clientService.initializeClient();
 
     }
 }
