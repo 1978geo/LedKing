@@ -5,43 +5,45 @@ import bg.softuni.ledking.repository.entity.DisplayEntity;
 import bg.softuni.ledking.repository.entity.VideoEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 public class OrderBindingModel {
-    @NotNull
-    private Long orderId;
+
+    private Long id;
     @NotBlank(message = "Name can not be null or empty")
     @Size(min = 3, max = 20, message = "Name length must be between 3 and 20 characters")
     private String name;
-    @NotNull(message = "Date cannot be null")
+//    @NotEmpty(message = "Date cannot be empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @FutureOrPresent(message = "Date cannot be in the past")
+//    @FutureOrPresent(message = "Date cannot be in the past")
     private LocalDateTime startDate;
-    @NotNull(message = "Date cannot be null")
+//    @NotEmpty(message = "Date cannot be empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @FutureOrPresent(message = "Date cannot be in the past")
+//    @FutureOrPresent(message = "Date cannot be in the past")
     private LocalDateTime endDate;
     @NotNull(message = "Length cannot be null")
-    @Size(min = 3, max = 300, message = "Video spot length must be between 3 and 300 seconds")
-    private Integer videoSpotLength;
-    @NotNull(message = "Ordered Displays in Campaign cannot be null")
+//    @Size(min = 3, max = 300, message = "Video spot length must be between 3 and 300 seconds")
+    private BigDecimal videoSpotLength;
+
     private Set<DisplayEntity> orderedDisplaysInCampaign;
-    @NotNull(message = "Videos for Campaign cannot be null")
+
     private Set<VideoEntity> videosForCampaign = new HashSet<>();
-    @NotNull(message = "Client cannot be null")
+
     private ClientEntity client;
 
     public OrderBindingModel() {
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Set<DisplayEntity> getOrderedDisplaysInCampaign() {
@@ -92,11 +94,11 @@ public class OrderBindingModel {
         this.endDate = endDate;
     }
 
-    public Integer getVideoSpotLength() {
+    public BigDecimal getVideoSpotLength() {
         return videoSpotLength;
     }
 
-    public void setVideoSpotLength(Integer videoSpotLength) {
+    public void setVideoSpotLength(BigDecimal videoSpotLength) {
         this.videoSpotLength = videoSpotLength;
     }
 }

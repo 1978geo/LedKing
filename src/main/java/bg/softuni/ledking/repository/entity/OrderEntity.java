@@ -1,6 +1,9 @@
 package bg.softuni.ledking.repository.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,11 +18,11 @@ public class OrderEntity {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
     @Column(nullable = false)
-    private LocalDateTime endDate;
+    private LocalDate endDate;
     @Column(nullable = false)
-    private int videoLengthInSeconds;
+    private BigDecimal videoSpotLength;
     @Column(nullable = false)
     @OneToMany
     private Set<VideoEntity> videos = new HashSet<>();
@@ -55,28 +58,28 @@ public class OrderEntity {
         this.name = name;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public int getVideoLengthInSeconds() {
-        return videoLengthInSeconds;
+    public BigDecimal getVideoSpotLength() {
+        return videoSpotLength;
     }
 
-    public void setVideoLengthInSeconds(int videoLengthInSeconds) {
-        this.videoLengthInSeconds = videoLengthInSeconds;
+    public void setVideoSpotLength(BigDecimal videoLengthInSeconds) {
+        this.videoSpotLength = videoLengthInSeconds;
     }
 
     public Set<VideoEntity> getVideos() {

@@ -8,20 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class EntityController<ViewModel, BindingModel> {
+public abstract class EntityController<ServiceModel, ViewModel> {
 
     private final static Logger logger = LoggerFactory.getLogger(EntityController.class);
-    protected final CrudService<ViewModel> theService;
-    protected final Class<ViewModel> viewModelClass;
-    protected final Class<BindingModel> bindingModelClass;
+    protected final CrudService<ServiceModel> theService;
+    protected final Class<ServiceModel> viewModelClass;
+    protected final Class<ViewModel> bindingModelClass;
     protected final ModelMapper modelMapper;
     protected final String baseUrl;
-    protected final Function<ViewModel, Long> idReader;
+    protected final Function<ServiceModel, Long> idReader;
 
     protected final static String infoKey = "info";
     protected final static String modelKey = "theModel";
@@ -30,12 +29,12 @@ public abstract class EntityController<ViewModel, BindingModel> {
     protected final static String createPath = "/_create";
 
     public EntityController(
-            CrudService<ViewModel> theService,
+            CrudService<ServiceModel> theService,
             ModelMapper modelMapper,
             String baseUrl,
-            Class<ViewModel> viewModelClass,
-            Class<BindingModel> bindingModelClass,
-            Function<ViewModel, Long> idReader) {
+            Class<ServiceModel> viewModelClass,
+            Class<ViewModel> bindingModelClass,
+            Function<ServiceModel, Long> idReader) {
         this.theService = theService;
         this.modelMapper = modelMapper;
         this.viewModelClass = viewModelClass;
@@ -46,7 +45,7 @@ public abstract class EntityController<ViewModel, BindingModel> {
 
     @GetMapping("/")
     public String getAll(Model model) {
-        List<ViewModel> theModel = theService.getAll();
+        List<ServiceModel> theModel = theService.getAll();
         model.addAttribute(modelKey, theModel);
         return baseUrl + "/all";
     }
@@ -70,16 +69,16 @@ public abstract class EntityController<ViewModel, BindingModel> {
             @PathVariable Long id) {
 
         if (!model.containsAttribute(modelKey)) {
-            ViewModel viewModel = theService.loadById(id);
-            BindingModel bindingModel = modelMapper.map(viewModel, bindingModelClass);
-            model.addAttribute(modelKey, bindingModel);
+            ServiceModel serviceModel = theService.loadById(id);
+            ViewModel viewModel = modelMapper.map(serviceModel, bindingModelClass);
+            model.addAttribute(modelKey, viewModel);
         }
         return baseUrl + "/input-form";
     }
 
     @PostMapping("/{id}")
     public String update(
-            @Valid BindingModel bindingModel,
+            @Valid ViewModel viewModel,
             BindingResult bindingResult,
             @PathVariable Long id,
             RedirectAttributes redirectAttributes) {
@@ -87,26 +86,26 @@ public abstract class EntityController<ViewModel, BindingModel> {
         String selfUrl = baseUrl + "/" + id;
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute(modelKey, bindingModel);
+            redirectAttributes.addFlashAttribute(modelKey, viewModel);
             redirectAttributes.addFlashAttribute(viewModelBindingResultKey, bindingResult);
             return "redirect:" + selfUrl;
         }
 
         try {
-            ViewModel viewModel = modelMapper.map(bindingModel, viewModelClass);
-            prepareViewModelForUpdate(viewModel, bindingModel);
-            theService.update(viewModel);
+            ServiceModel serviceModel = modelMapper.map(viewModel, viewModelClass);
+            prepareViewModelForUpdate(serviceModel, viewModel);
+            theService.update(serviceModel);
             redirectAttributes.addFlashAttribute(infoKey, "Updated No: " + id);
             return "redirect:" + baseUrl + "/";
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            redirectAttributes.addFlashAttribute(modelKey, bindingModel);
+            redirectAttributes.addFlashAttribute(modelKey, viewModel);
             redirectAttributes.addFlashAttribute(infoKey, "Update failed: " + e.getMessage());
             return "redirect:" + selfUrl;
         }
     }
 
-    protected void prepareViewModelForUpdate(ViewModel viewModel, BindingModel bindingModel) {
+    protected void prepareViewModelForUpdate(ServiceModel serviceModel, ViewModel viewModel) {
 
     }
 
@@ -114,7 +113,7 @@ public abstract class EntityController<ViewModel, BindingModel> {
     public String showCreateForm(Model model) {
 
         if (!model.containsAttribute(modelKey)) {
-            BindingModel theModel = makeInstance(bindingModelClass);
+            ViewModel theModel = makeInstance(bindingModelClass);
             model.addAttribute(modelKey, theModel);
         }
         return baseUrl + "/input-form";
@@ -132,27 +131,27 @@ public abstract class EntityController<ViewModel, BindingModel> {
 
     @PutMapping(createPath)
     public String create(
-            @Valid BindingModel bindingModel,
+            @Valid ViewModel viewModel,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 
         String selfUrl = baseUrl + createPath;
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute(modelKey, bindingModel);
+            redirectAttributes.addFlashAttribute(modelKey, viewModel);
             redirectAttributes.addFlashAttribute(viewModelBindingResultKey, bindingResult);
             return "redirect:" + selfUrl;
         }
 
         try {
-            ViewModel viewModel = modelMapper.map(bindingModel, viewModelClass);
-            ViewModel persistedViewModel = theService.create(viewModel);
-            Long id = idReader.apply(persistedViewModel);
+            ServiceModel serviceModel = modelMapper.map(viewModel, viewModelClass);
+            ServiceModel persistedServiceModel = theService.create(serviceModel);
+            Long id = idReader.apply(persistedServiceModel);
             redirectAttributes.addFlashAttribute(infoKey, "Created No: " + id);
             return "redirect:" + baseUrl + "/";
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            redirectAttributes.addFlashAttribute(modelKey, bindingModel);
+            redirectAttributes.addFlashAttribute(modelKey, viewModel);
             redirectAttributes.addFlashAttribute(infoKey, "Create failed: " + e.getMessage());
             return "redirect:" + selfUrl;
         }

@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigInteger;
 
 
 @UniqueUserName
@@ -38,7 +39,7 @@ public class UserBindingModel {
   @NotNull (message = "Phone number can not be null or empty")
   //todo do we need to be that strict?
 //  @Digits(message = "Phone number must contain between 7 and 16 digits", integer = 0, fraction = 0)
-  private Integer phoneNumber;
+  private BigInteger phoneNumber;
 
   public UserBindingModel() {
   }
@@ -112,12 +113,11 @@ public class UserBindingModel {
     return this;
   }
 
-  public Integer getPhoneNumber() {
+  public BigInteger getPhoneNumber() {
     return phoneNumber;
   }
 
-  public UserBindingModel setPhoneNumber(Integer phoneNumber) {
+  public void setPhoneNumber(BigInteger phoneNumber) {
     this.phoneNumber = phoneNumber;
-    return this;
   }
 }

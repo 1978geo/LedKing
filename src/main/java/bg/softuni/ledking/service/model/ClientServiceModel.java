@@ -1,8 +1,5 @@
 package bg.softuni.ledking.service.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-
 
 public class ClientServiceModel {
 

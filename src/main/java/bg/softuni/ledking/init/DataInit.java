@@ -1,6 +1,4 @@
 package bg.softuni.ledking.init;
-
-
 import bg.softuni.ledking.service.ClientService;
 import bg.softuni.ledking.service.DisplayService;
 import bg.softuni.ledking.service.OrderService;

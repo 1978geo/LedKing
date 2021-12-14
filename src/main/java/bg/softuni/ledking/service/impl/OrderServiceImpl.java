@@ -6,6 +6,10 @@ import bg.softuni.ledking.service.OrderService;
 import bg.softuni.ledking.service.model.OrderServiceModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
@@ -32,13 +36,15 @@ public class OrderServiceImpl implements OrderService {
         if (orderRepository.count()==0){
             OrderEntity order1 = new OrderEntity();
             order1.setName("order1");
-            order1.setStartDate(LocalDateTime.of(2021, Month.DECEMBER, 1, 12, 0));
-            order1.setEndDate(LocalDateTime.of(2022, Month.DECEMBER, 1, 12, 0));
+            order1.setStartDate(LocalDate.of(2021, Month.DECEMBER,1));
+            order1.setEndDate(LocalDate.of(2022, Month.DECEMBER,1));
+            order1.setVideoSpotLength(BigDecimal.valueOf(15));
             //
             OrderEntity order2 = new OrderEntity();
             order2.setName("order2");
-            order2.setStartDate(LocalDateTime.of(2021, Month.DECEMBER, 1, 12, 0));
-            order2.setEndDate(LocalDateTime.of(2022, Month.DECEMBER, 1, 12, 0));
+            order2.setStartDate(LocalDate.of(2021, Month.DECEMBER, 1));
+            order2.setEndDate(LocalDate.of(2022, Month.DECEMBER, 1));
+            order2.setVideoSpotLength(BigDecimal.valueOf(18));
             //
             orderRepository.saveAll(List.of(order1, order2));
         }
