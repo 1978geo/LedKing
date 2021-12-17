@@ -6,6 +6,9 @@ import bg.softuni.ledking.service.ClientService;
 import bg.softuni.ledking.service.model.ClientServiceModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +32,7 @@ public class ClientServiceImpl implements ClientService {
             cocaCola.setId(1L);
             cocaCola.setName("Ivan Petrov");
             cocaCola.setEmail("petrov@cocacola.bg");
-            cocaCola.setPhoneNumber(1234567);
+            cocaCola.setPhoneNumber("1234567");
             clientRepository.save(cocaCola);
         }
     }

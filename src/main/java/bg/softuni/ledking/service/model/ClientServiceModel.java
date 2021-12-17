@@ -1,13 +1,15 @@
 package bg.softuni.ledking.service.model;
 
 
+import java.math.BigDecimal;
+
 public class ClientServiceModel {
 
 
     private Long id;
     private String name;
     private String email;
-     private int phoneNumber;
+     private String phoneNumber;
 
     public ClientServiceModel() {
     }
@@ -20,11 +22,11 @@ public class ClientServiceModel {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

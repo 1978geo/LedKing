@@ -42,7 +42,7 @@
                        name="startDate"
                        th:field="*{startDate}"
                        th:errorclass="is-invalid"
-                       type="date" min="2" max="20" class="form-control"
+                       type="date" class="form-control"
                        placeholder="Start Date"/>
                 <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="invalid-feedback errors alert alert-danger">
                     errors

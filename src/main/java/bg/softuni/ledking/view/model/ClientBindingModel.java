@@ -1,13 +1,16 @@
 package bg.softuni.ledking.view.model;
 
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class ClientBindingModel {
 
 
     private Long id;
     private String name;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public ClientBindingModel() {
     }
@@ -36,11 +39,11 @@ public class ClientBindingModel {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

@@ -6,8 +6,7 @@ import bg.softuni.ledking.repository.entity.VideoEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,11 +19,11 @@ public class OrderBindingModel {
 //    @NotEmpty(message = "Date cannot be empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @FutureOrPresent(message = "Date cannot be in the past")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 //    @NotEmpty(message = "Date cannot be empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @FutureOrPresent(message = "Date cannot be in the past")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
     @NotNull(message = "Length cannot be null")
 //    @Size(min = 3, max = 300, message = "Video spot length must be between 3 and 300 seconds")
     private BigDecimal videoSpotLength;
@@ -78,19 +77,19 @@ public class OrderBindingModel {
         this.name = name;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
