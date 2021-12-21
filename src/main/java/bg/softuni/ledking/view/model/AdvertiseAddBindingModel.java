@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class AdvertiseAddBindingModel {
@@ -16,11 +17,11 @@ public class AdvertiseAddBindingModel {
     @NotNull(message = "Date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @FutureOrPresent(message = "Date cannot be in the past")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
     @NotNull(message = "Date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @FutureOrPresent(message = "Date cannot be in the past")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
     @NotNull
     private VideoReadyEnum videoSpotReady;
     @Email
@@ -56,19 +57,19 @@ public class AdvertiseAddBindingModel {
         this.city = city;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

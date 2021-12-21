@@ -43,7 +43,7 @@ public abstract class EntityController<ServiceModel, ViewModel> {
         this.idReader = idReader;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getAll(Model model) {
         List<ServiceModel> theModel = theService.getAll();
         model.addAttribute(modelKey, theModel);
@@ -55,11 +55,11 @@ public abstract class EntityController<ServiceModel, ViewModel> {
         try {
             theService.delete(id);
             redirectAttributes.addFlashAttribute(infoKey, "Deleted No: " + id);
-            return "redirect:" + baseUrl + "/";
+            return "redirect:" + baseUrl + "";
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             redirectAttributes.addFlashAttribute(infoKey, "Delete failed: " + e.getMessage());
-            return "redirect:" + baseUrl + "/";
+            return "redirect:" + baseUrl + "";
         }
     }
 
@@ -96,7 +96,7 @@ public abstract class EntityController<ServiceModel, ViewModel> {
             prepareViewModelForUpdate(serviceModel, viewModel);
             theService.update(serviceModel);
             redirectAttributes.addFlashAttribute(infoKey, "Updated No: " + id);
-            return "redirect:" + baseUrl + "/";
+            return "redirect:" + baseUrl + "";
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             redirectAttributes.addFlashAttribute(modelKey, viewModel);
@@ -148,7 +148,7 @@ public abstract class EntityController<ServiceModel, ViewModel> {
             ServiceModel persistedServiceModel = theService.create(serviceModel);
             Long id = idReader.apply(persistedServiceModel);
             redirectAttributes.addFlashAttribute(infoKey, "Created No: " + id);
-            return "redirect:" + baseUrl + "/";
+            return "redirect:" + baseUrl + "";
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             redirectAttributes.addFlashAttribute(modelKey, viewModel);

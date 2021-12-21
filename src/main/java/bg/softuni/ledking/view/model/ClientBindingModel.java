@@ -1,9 +1,6 @@
 package bg.softuni.ledking.view.model;
 
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 public class ClientBindingModel {
 
 

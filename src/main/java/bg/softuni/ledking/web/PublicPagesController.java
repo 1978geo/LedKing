@@ -21,4 +21,13 @@ public class PublicPagesController {
         return "/history";
     }
 
+//    @GetMapping("/rentOrBuy")
+//    public String getRentOrBuy() {
+//        return "/rentOrBuy";
+//    }
+//
+//    @GetMapping("/advertiseOrSupport")
+//    public String getAdvertiseOrSupport() {
+//        return "/advertiseOrSupport";
+//    }
 }

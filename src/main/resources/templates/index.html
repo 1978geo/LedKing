@@ -14,7 +14,7 @@
 
 
 <div class="container-fluid">
-    <form class="main-form mx-auto col-md-2 d-flex flex-column justify-content-center"/>
+    <form class="main-form mx-auto col-md-2 d-flex flex-column justify-content-center"></form>
     <h5 class="text-center text-white mt-9 font-weight-bold ">Welcome to LedKing
 
         <span sec:authorize="isAuthenticated()">,</span>
@@ -26,6 +26,38 @@
 <!--        </span>-->
     </h5>
 </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <form th:action="@{/rentOrBuy}" th:method="post">
+                    <input type="submit" class="btn btn-info btn-lg" value="Buy"/>
+                </form>
+                <br>
+                <br>
+                <br>
+                <div class="button-holder d-flex">
+                    <form th:action="@{/rentOrBuy}" th:method="post">
+                        <input type="submit" class="btn btn-info btn-lg" value="Rent"/>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="button-holder d-flex">
+                    <form th:action="@{/advertiseOrSupport}" th:method="post">
+                        <input type="submit" class="btn btn-info btn-lg" value="Advertise"/>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="button-holder d-flex">
+                    <form th:action="@{/advertiseOrSupport}" th:method="post" >
+                        <input type="submit" class="btn btn-info btn-lg" value="Support"/>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 <div>
     <footer> </footer>
