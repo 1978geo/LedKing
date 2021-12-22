@@ -18,7 +18,50 @@
             th:method="post"
             th:object="${advertisingModel}"
             class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+
+<!--        <li class="h-item dropdown" sec:authorize="hasRole('ADMIN')">&ndash;&gt;-->
+<!--                      <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"-->
+<!--                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        Admin-->
+<!--                      </a>-->
+<!--                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/statistics}">Statistics</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/displays/}">Displays</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/orders/}">Orders</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/clients/}">Clients</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/users/}">Users</a>-->
+<!--                      </div>-->
+<!--                    </li>-->
+<!--        <div class="form-group">-->
+<!--            <div class="text-white label-holder d-flex justify-content-center">-->
+<!--                <label for="category" class="h4 mb-2">Category</label>-->
+<!--            </div>-->
+<!--            <select th:errorclass="is-invalid" class="browser-default custom-select" id="category" name="category">-->
+<!--                <option value="">Select categoryEntity</option>-->
+<!--                <option th:each="cat : ${T(com.example.exam15122021ShoppingListApp.model.entity.CategoryName).values()}"-->
+<!--                        th:text="${cat}" th:value="${cat}" th:selected="${cat} == *{category}"-->
+<!--                        value="FOOD">Food</option>-->
+<!--            </select>-->
+<!--            <small class="text-danger invalid-feedback">Category must be selected!</small>-->
+<!--        </div>-->
         <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="category" class="text-white font-weight-bold">Category</label>
+                <input
+                        id="category"
+                        th:field="*{category}"
+                        th:each="category : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"
+                        th:text="${category}" th:value="${category}" th:selected="${category} == *{category}"
+                        value="CategoryEnum"
+                        th:errorclass="is-invalid"
+                        type="text"
+                        class="form-control"
+                        placeholder="Category"/>
+
+                <p class="invalid-feedback errors alert alert-danger">
+                    Category must be selected!
+                </p>
+            </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="cityName" class="text-white font-weight-bold">City Name</label>
                 <input
@@ -32,6 +75,10 @@
                     Please enter correct city name.
                 </p>
             </div>
+
+
+        </div>
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="startDate" class="text-white font-weight-bold">Start Date</label>
                 <input id="startDate"
@@ -44,9 +91,6 @@
                     Start date should be valid and could not be in the past.
                 </p>
             </div>
-
-        </div>
-        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="endDate" class="text-white font-weight-bold">End Date</label>
                 <input id="endDate"
@@ -59,20 +103,21 @@
                     End date should be valid and could not be in the past.
                 </p>
             </div>
+
+        </div>
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="videoSpotReady" class="text-white font-weight-bold">VideoSpot Ready</label>
-                <input id="videoSpotReady"
-                       name="videoSpotReady"
-                       th:field="*{videoSpotReady}"
+                <label for="video" class="text-white font-weight-bold">VideoSpot Ready</label>
+                <input id="video"
+                       name="video"
+                       th:field="*{video}"
                        th:errorclass="is-invalid"
                        type="text" class="form-control"
-                       placeholder="videoSpotReady"/>
+                       placeholder="video"/>
                 <p class="invalid-feedback errors alert alert-danger">
                     VideoSpot Ready or Not.
                 </p>
             </div>
-        </div>
-        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="email" class="text-white font-weight-bold">Email</label>
                 <input id="email"
@@ -85,6 +130,9 @@
                     errors
                 </p>
             </div>
+
+        </div>
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="phoneNumber" class="text-white font-weight-bold">Phone Number</label>
                 <input id="phoneNumber"
