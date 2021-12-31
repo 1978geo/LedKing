@@ -5,16 +5,14 @@
 
 <head th:replace="fragments/head::head"></head>
 
-
 <body>
 
 <div th:replace="fragments/navbar :: navbar">
     Navbar
 </div>
 
-
 <div class="container-fluid">
-    <form class="main-form mx-auto col-md-2 d-flex flex-column justify-content-center"></form>
+    <form class="main-form mx-auto col-md-2 d-flex flex-column justify-content-center"/>
     <h5 class="text-center text-white mt-9 font-weight-bold ">Welcome to LedKing
 
         <span sec:authorize="isAuthenticated()">,</span>
@@ -26,39 +24,58 @@
 <!--        </span>-->
     </h5>
 </div>
+
+<body>
+<div>
+    <video autoplay="" controls="" style="border-left-style: solid;margin-left: 25%;margin-top: 4%;" width="860" height="480">
+        <source id="vidsrc" src="https://res.cloudinary.com/dyltmujve/video/upload/v1639226133/02_Geo_vr5cxs.mp4" type="video/mp4">
+    </video>
+
+</div>
+
+</body>
+
 <th:block sec:authorize="!isAuthenticated()">
         <div class="row">
             <div class="col col-md-4">
-                <form th:action="@{/rentOrBuy}" th:method="post">
-                    <input type="submit" class="btn btn-info btn-lg" value="Buy"/>
+                <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: -85%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <input type="submit" class="btn btn-info btn-lg" value="Support">
                 </form>
-                <br>
+<!--                <form th:action="@{/rentOrBuy}" th:method="post">-->
+<!--                    <input type="submit" class="btn btn-info btn-lg" value="Buy"/>-->
+<!--                </form>-->
                 <br>
                 <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/rentOrBuy}" th:method="post">
-                        <input type="submit" class="btn btn-info btn-lg" value="Rent"/>
+                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: -72%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Buy">
                     </form>
+<!--                    <form th:action="@{/rentOrBuy}" th:method="post">-->
+<!--                        <input type="submit" class="btn btn-info btn-lg" value="Rent"/>-->
+<!--                    </form>-->
                 </div>
                 <br>
-                <br>
-                <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post">
-                        <input type="submit" class="btn btn-info btn-lg" value="Advertise"/>
+                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: -105%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Advertise">
                     </form>
+<!--                    <form th:action="@{/advertiseOrSupport}" th:method="post">-->
+<!--                        <input type="submit" class="btn btn-info btn-lg" value="Advertise"/>-->
+<!--                    </form>-->
                 </div>
                 <br>
-                <br>
-                <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post" >
-                        <input type="submit" class="btn btn-info btn-lg" value="Support"/>
+                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: -52%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Rent">
                     </form>
+<!--                    <form th:action="@{/advertiseOrSupport}" th:method="post" >-->
+<!--                        <input type="submit" class="btn btn-info btn-lg" value="Support"/>-->
+<!--                    </form>-->
                 </div>
             </div>
         </div>
 </th:block>
+
 <div>
     <footer> </footer>
 </div>

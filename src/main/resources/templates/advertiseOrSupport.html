@@ -47,16 +47,30 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="category" class="text-white font-weight-bold">Category</label>
-                <input
-                        id="category"
-                        th:field="*{category}"
-                        th:each="category : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"
-                        th:text="${category}" th:value="${category}" th:selected="${category} == *{category}"
-                        value="CategoryEnum"
-                        th:errorclass="is-invalid"
-                        type="text"
-                        class="form-control"
-                        placeholder="Category"/>
+                <select  id="category"
+                         th:field="*{category}"
+                         th:errorclass="is-invalid"
+                         type="text"
+                         class="form-control"
+                         placeholder="Category"
+                >
+                    <option th:each="categoryOption : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"
+                            th:value="${categoryOption}"
+                            th:text="${categoryOption}"
+                            th:selected="${categoryOption} == *{category}"
+                    >
+                    </option>
+                </select>
+<!--                <input-->
+<!--                        id="category"-->
+<!--                        th:field="*{category}"-->
+<!--                        th:each="category : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"-->
+<!--                        th:text="${category}" th:value="${category}" th:selected="${category} == *{category}"-->
+<!--                        value="CategoryEnum"-->
+<!--                        th:errorclass="is-invalid"-->
+<!--                        type="text"-->
+<!--                        class="form-control"-->
+<!--                        placeholder="Category"/>-->
 
                 <p class="invalid-feedback errors alert alert-danger">
                     Category must be selected!
