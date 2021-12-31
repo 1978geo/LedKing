@@ -38,8 +38,8 @@
 <th:block sec:authorize="!isAuthenticated()">
         <div class="row">
             <div class="col col-md-4">
-                <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: -85%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                    <input type="submit" class="btn btn-info btn-lg" value="Support">
+                <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: -85%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <input type="submit" class="btn btn-info btn-lg" value="Rent">
                 </form>
 <!--                <form th:action="@{/rentOrBuy}" th:method="post">-->
 <!--                    <input type="submit" class="btn btn-info btn-lg" value="Buy"/>-->
@@ -65,8 +65,8 @@
                 </div>
                 <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: -52%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                        <input type="submit" class="btn btn-info btn-lg" value="Rent">
+                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: -52%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Support">
                     </form>
 <!--                    <form th:action="@{/advertiseOrSupport}" th:method="post" >-->
 <!--                        <input type="submit" class="btn btn-info btn-lg" value="Support"/>-->
