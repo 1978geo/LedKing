@@ -27,7 +27,7 @@
 
 <body>
 <div>
-    <video autoplay="" controls="" style="border-left-style: solid;margin-left: 25%;margin-top: 4%;" width="860" height="480">
+    <video autoplay="" controls="" style="border-left-style: solid;margin-left: 25%;margin-top: 2%;" width="860" height="480">
         <source id="vidsrc" src="https://res.cloudinary.com/dyltmujve/video/upload/v1639226133/02_Geo_vr5cxs.mp4" type="video/mp4">
     </video>
 
@@ -37,40 +37,31 @@
 
 <th:block sec:authorize="!isAuthenticated()">
         <div class="row">
-            <div class="col col-md-4">
-                <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: -85%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                    <input type="submit" class="btn btn-info btn-lg" value="Rent">
-                </form>
-<!--                <form th:action="@{/rentOrBuy}" th:method="post">-->
-<!--                    <input type="submit" class="btn btn-info btn-lg" value="Buy"/>-->
-<!--                </form>-->
-                <br>
-                <br>
+            <div class="col-1 col-md-1" style="padding-left: 15px;padding-right: 15px;border-top-width: 0px;border-top-style: solid;margin-top: -28%;" >
+
                 <div class="button-holder d-flex">
-                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: -72%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                        <input type="submit" class="btn btn-info btn-lg" value="Buy">
-                    </form>
-<!--                    <form th:action="@{/rentOrBuy}" th:method="post">-->
-<!--                        <input type="submit" class="btn btn-info btn-lg" value="Rent"/>-->
-<!--                    </form>-->
-                </div>
-                <br>
-                <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: -105%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <form th:action="@{/advertiseOrSupport}" th:method="post"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
                         <input type="submit" class="btn btn-info btn-lg" value="Advertise">
                     </form>
-<!--                    <form th:action="@{/advertiseOrSupport}" th:method="post">-->
-<!--                        <input type="submit" class="btn btn-info btn-lg" value="Advertise"/>-->
-<!--                    </form>-->
+                </div>
+                <br>
+                <br>
+                <div class="button-holder d-flex">
+                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: 40%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Buy">
+                    </form>
                 </div>
                 <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: -52%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: 55%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Rent">
+                    </form>
+                </div>
+                <br>
+                <div class="button-holder d-flex">
+                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: 70%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
                         <input type="submit" class="btn btn-info btn-lg" value="Support">
                     </form>
-<!--                    <form th:action="@{/advertiseOrSupport}" th:method="post" >-->
-<!--                        <input type="submit" class="btn btn-info btn-lg" value="Support"/>-->
-<!--                    </form>-->
                 </div>
             </div>
         </div>
