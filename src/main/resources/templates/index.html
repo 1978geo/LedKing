@@ -13,7 +13,7 @@
 
 <div class="container-fluid">
     <form class="main-form mx-auto col-md-2 d-flex flex-column justify-content-center"/>
-    <h5 class="text-center text-white mt-9 font-weight-bold ">Welcome to LedKing
+    <h5 class="text-center text-white mt-9 font-weight-bold ">Welcome to LED King
 
         <span sec:authorize="isAuthenticated()">,</span>
         <span sec:authorize="isAuthenticated()" sec:authentication="name">
@@ -24,7 +24,7 @@
 <!--        </span>-->
     </h5>
 </div>
-
+<th:block sec:authorize="!isAuthenticated()">
 <body>
 <div>
     <video autoplay="" controls="" style="border-left-style: solid;margin-left: 25%;margin-top: 2%;" width="860" height="480">
@@ -34,33 +34,33 @@
 </div>
 
 </body>
-
+</th:block>
 <th:block sec:authorize="!isAuthenticated()">
         <div class="row">
             <div class="col-1 col-md-1" style="padding-left: 15px;padding-right: 15px;border-top-width: 0px;border-top-style: solid;margin-top: -28%;" >
 
                 <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                        <input type="submit" class="btn btn-info btn-lg" value="Advertise">
+                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: 25%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                        <input type="submit" class="btn btn-info btn-lg" value="Реклама">
                     </form>
                 </div>
                 <br>
                 <br>
                 <div class="button-holder d-flex">
                     <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: 40%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                        <input type="submit" class="btn btn-info btn-lg" value="Buy">
+                        <input type="submit" class="btn btn-info btn-lg" value="Покупка">
                     </form>
                 </div>
                 <br>
                 <div class="button-holder d-flex">
                     <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: 55%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                        <input type="submit" class="btn btn-info btn-lg" value="Rent">
+                        <input type="submit" class="btn btn-info btn-lg" value="Наем">
                     </form>
                 </div>
                 <br>
                 <div class="button-holder d-flex">
                     <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: 70%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
-                        <input type="submit" class="btn btn-info btn-lg" value="Support">
+                        <input type="submit" class="btn btn-info btn-lg" value="Поддръжка">
                     </form>
                 </div>
             </div>

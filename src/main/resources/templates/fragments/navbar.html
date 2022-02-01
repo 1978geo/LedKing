@@ -8,7 +8,7 @@
 <div th:fragment="navbar">
 
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/"><img alt="led picture" src="/images/newLogoHomeButton.png" class="logo"></a>
+    <a class="navbar-brand" href="/"><img alt="led picture" src="/images/newLogo1.png" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,14 +19,14 @@
 
         <th:block sec:authorize="!isAuthenticated()">
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/history}">History</a>
+          <a class="nav-link" th:href="@{/history}">История</a>
         </li>
         <!-- TODO -->
         <li class="nav-item" >
-          <a class="nav-link" th:href="@{/aboutUs}">About Us</a>
+          <a class="nav-link" th:href="@{/aboutUs}">За нас</a>
         </li>
         <li class="nav-item" >
-          <a class="nav-link" th:href="@{/contacts}">Contacts</a>
+          <a class="nav-link" th:href="@{/contacts}">Контакти</a>
         </li>
         </th:block>
 
@@ -83,10 +83,10 @@
 
 
         <li class="nav-item" sec:authorize="!isAuthenticated()">
-          <a class="nav-link" th:href="@{/users/register}">Register</a>
+          <a class="nav-link" th:href="@{/users/register}">Регистрация</a>
         </li>
         <li class="nav-item" sec:authorize="!isAuthenticated()">
-          <a class="nav-link" th:href="@{/users/login}">Login</a>
+          <a class="nav-link" th:href="@{/users/login}">Влез</a>
         </li>
 
       </ul>

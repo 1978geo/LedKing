@@ -13,7 +13,7 @@ public class DisplayEntity {
   private Long id;
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private CategoryEnum category = CategoryEnum.RENT;
+  private CategoryEnum category = CategoryEnum.ADVERTISE;
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private DisplayTypeEnum type = DisplayTypeEnum.OUTDOOR;
