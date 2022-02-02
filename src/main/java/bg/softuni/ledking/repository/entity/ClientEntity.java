@@ -2,8 +2,6 @@ package bg.softuni.ledking.repository.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 
 @Entity
@@ -22,6 +20,14 @@ public class ClientEntity {
     private String phoneNumber;
 
     public ClientEntity() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -48,11 +54,6 @@ public class ClientEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 }

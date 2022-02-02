@@ -11,13 +11,13 @@ public class DisplayBindingModel {
     @NotNull
     private CityEntityEnum city;
     @NotNull
-    private String location;
+    private java.lang.String location;
     @NotNull
     private URI imageUrl;
     @NotNull
     private Integer maximumAdvertisingTime;
 
-    private String commentary;
+    private java.lang.String commentary;
 
     public DisplayBindingModel() {
     }
@@ -38,11 +38,11 @@ public class DisplayBindingModel {
         this.city = city;
     }
 
-    public String getLocation() {
+    public java.lang.String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(java.lang.String location) {
         this.location = location;
     }
 
@@ -62,11 +62,11 @@ public class DisplayBindingModel {
         this.maximumAdvertisingTime = maximumAdvertisingTime;
     }
 
-    public String getCommentary() {
+    public java.lang.String getCommentary() {
         return commentary;
     }
 
-    public void setCommentary(String commentary) {
+    public void setCommentary(java.lang.String commentary) {
         this.commentary = commentary;
     }
 }

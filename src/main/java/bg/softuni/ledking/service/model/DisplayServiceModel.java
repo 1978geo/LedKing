@@ -9,11 +9,11 @@ public class DisplayServiceModel {
 
     private Long id;
     private CityEntityEnum city;
-    private String location;
+    private java.lang.String location;
     private URI imageUrl;
     private Integer freeAdvertisingTime;
     private Integer maximumAdvertisingTime;
-    private String commentary;
+    private java.lang.String commentary;
 
     public DisplayServiceModel() {
     }
@@ -34,11 +34,11 @@ public class DisplayServiceModel {
         this.city = city;
     }
 
-    public String getLocation() {
+    public java.lang.String getLocation() {
         return location;
     }
 
-    public DisplayServiceModel setLocation(String location) {
+    public DisplayServiceModel setLocation(java.lang.String location) {
         this.location = location;
         return null;
     }
@@ -67,11 +67,11 @@ public class DisplayServiceModel {
         this.maximumAdvertisingTime = maximumAdvertisingTime;
     }
 
-    public String getCommentary() {
+    public java.lang.String getCommentary() {
         return commentary;
     }
 
-    public void setCommentary(String commentary) {
+    public void setCommentary(java.lang.String commentary) {
         this.commentary = commentary;
     }
 }

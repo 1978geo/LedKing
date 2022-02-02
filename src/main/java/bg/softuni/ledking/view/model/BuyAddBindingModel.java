@@ -21,18 +21,18 @@ public class BuyAddBindingModel {
     private BigDecimal sizeHeight;
     @Email
     @NotNull
-    private String email;
+    private java.lang.String email;
     @NotNull
     private int phoneNumber;
 
     public BuyAddBindingModel() {
     }
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 

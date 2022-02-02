@@ -11,10 +11,10 @@ public class SupportAddBindingModel {
     @NotNull
     private CityEntityEnum city;
     @NotNull
-    private String location;
+    private java.lang.String location;
     @NotNull
     private URI imageUrl;
-    private String commentary;
+    private java.lang.String commentary;
 
     public SupportAddBindingModel() {
     }
@@ -35,11 +35,11 @@ public class SupportAddBindingModel {
         this.city = city;
     }
 
-    public String getLocation() {
+    public java.lang.String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(java.lang.String location) {
         this.location = location;
     }
 
@@ -51,11 +51,11 @@ public class SupportAddBindingModel {
         this.imageUrl = imageUrl;
     }
 
-    public String getCommentary() {
+    public java.lang.String getCommentary() {
         return commentary;
     }
 
-    public void setCommentary(String commentary) {
+    public void setCommentary(java.lang.String commentary) {
         this.commentary = commentary;
     }
 }

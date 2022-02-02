@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center text-white m-3">Advertise Requests</h2>
+    <div class='row mb-4 d-flex justify-content-around'>
+        <div th:each="requestAdv : ${allAdvRequests}" th:object="${requestAdv}"
+             class="brand-section col-md-5 mr-auto d-flex flex-column">
+            <h2>Adv Request:
+                <span th:text="*{category}">Category</span>
+            </h2>
+            <div>Campaigns:
+                <table>
+                    <tr>
+                        <th>No</th>
+                        <th>Category</th>
+                        <th>City Name</th>
+                        <th>StartDate</th>
+                        <th>EndDate</th>
+                        <th>VideoSpotReady</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+
+                    </tr>
+                    <tr th:each="category : ${requestAdv.category}" th:object="${category}">
+                        <th th:text="*{id}">No</th>
+                        <th th:text="*{category}">Category</th>
+                        <th th:text="*{city}"> City Name</th>
+                        <th th:text="*{startDate}">Start Date</th>
+                        <th th:text="*{endDate}">End Date</th>
+                        <th th:text="*{video}">Video</th>
+                        <th th:text="*{email}">Email</th>
+                        <th th:text="*{phoneNumber}">Phone Number</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <footer></footer>
+    </div>
+</div>
+</body>
+</html>

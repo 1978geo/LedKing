@@ -1,22 +1,33 @@
-package bg.softuni.ledking.service.model;
+package bg.softuni.ledking.repository.entity;
 
-import bg.softuni.ledking.repository.entity.CategoryEnum;
-import bg.softuni.ledking.repository.entity.CityEntityEnum;
-import bg.softuni.ledking.repository.entity.VideoReadyEnum;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 
-public class RequestAdvSupServiceModel {
+@Entity
+@Table(name="requestSup")
+public class RequestSupEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private CategoryEnum category = CategoryEnum.ADVERTISE;
-    private CityEntityEnum city;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private CategoryEnum category = CategoryEnum.SUPPORT;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private CityEntityEnum city = CityEntityEnum.SUNNY_BEACH;
+    @Column(nullable = false)
     private LocalDate startDate;
+    @Column(nullable = false)
     private LocalDate endDate;
-    private VideoReadyEnum video;
-    private String email;
-    private String phoneNumber;
+    @Column(nullable = false)
+    @Email
+    private java.lang.String email;
+    @Column(nullable = false)
+    private java.lang.String phoneNumber;
 
-    public RequestAdvSupServiceModel() {
+    public RequestSupEntity() {
     }
 
     public Long getId() {
@@ -59,27 +70,19 @@ public class RequestAdvSupServiceModel {
         this.endDate = endDate;
     }
 
-    public VideoReadyEnum getVideo() {
-        return video;
-    }
-
-    public void setVideo(VideoReadyEnum video) {
-        this.video = video;
-    }
-
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public java.lang.String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(java.lang.String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

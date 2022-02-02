@@ -12,13 +12,12 @@
 </div>
 
 <div class="container">
-    <h2 class="text-center text-white">Advertise or Support</h2>
-    <form
-            th:action="@{/advertiseOrSupport}"
+       <form
+            th:action="@{/support}"
             th:method="post"
-            th:object="${advertisingModel}"
+            th:object="${supportModel}"
             class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
-
+    <h2 class="text-center text-white">Запитване за поддръжка</h2>
 <!--        <li class="h-item dropdown" sec:authorize="hasRole('ADMIN')">&ndash;&gt;-->
 <!--                      <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"-->
 <!--                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
@@ -45,39 +44,28 @@
 <!--            <small class="text-danger invalid-feedback">Category must be selected!</small>-->
 <!--        </div>-->
         <div class="row">
+<!--            <div class="form-group col-md-6 mb-3">-->
+<!--                <label for="category" class="text-white font-weight-bold">Category</label>-->
+<!--                <select  id="category"-->
+<!--                         th:field="*{category}"-->
+<!--                         th:errorclass="is-invalid"-->
+<!--                         type="text"-->
+<!--                         class="form-control"-->
+<!--                         placeholder="Category"-->
+<!--                >-->
+<!--                    <option th:each="categoryOption : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"-->
+<!--                            th:value="${categoryOption}"-->
+<!--                            th:text="${categoryOption}"-->
+<!--                            th:selected="${categoryOption} == *{category}"-->
+<!--                    >-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--                <p class="invalid-feedback errors alert alert-danger">-->
+<!--                    Category must be selected!-->
+<!--                </p>-->
+<!--            </div>-->
             <div class="form-group col-md-6 mb-3">
-                <label for="category" class="text-white font-weight-bold">Category</label>
-                <select  id="category"
-                         th:field="*{category}"
-                         th:errorclass="is-invalid"
-                         type="text"
-                         class="form-control"
-                         placeholder="Category"
-                >
-                    <option th:each="categoryOption : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"
-                            th:value="${categoryOption}"
-                            th:text="${categoryOption}"
-                            th:selected="${categoryOption} == *{category}"
-                    >
-                    </option>
-                </select>
-<!--                <input-->
-<!--                        id="category"-->
-<!--                        th:field="*{category}"-->
-<!--                        th:each="category : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"-->
-<!--                        th:text="${category}" th:value="${category}" th:selected="${category} == *{category}"-->
-<!--                        value="CategoryEnum"-->
-<!--                        th:errorclass="is-invalid"-->
-<!--                        type="text"-->
-<!--                        class="form-control"-->
-<!--                        placeholder="Category"/>-->
-
-                <p class="invalid-feedback errors alert alert-danger">
-                    Category must be selected!
-                </p>
-            </div>
-            <div class="form-group col-md-6 mb-3">
-                <label for="cityName" class="text-white font-weight-bold">City Name</label>
+                <label for="cityName" class="text-white font-weight-bold">Град</label>
                 <input
                         id="cityName"
                         th:field="*{city}"
@@ -89,12 +77,23 @@
                     Please enter correct city name.
                 </p>
             </div>
-
+            <div class="form-group col-md-6 mb-3">
+                <label for="phoneNumber" class="text-white font-weight-bold">Телефонен номер</label>
+                <input id="phoneNumber"
+                       name="phoneNumber"
+                       th:field="*{phoneNumber}"
+                       th:errorclass="is-invalid"
+                       type="text" min=0 max=9999999999999 class="form-control"
+                       placeholder="Phone Number"/>
+                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback errors alert alert-danger">
+                    errors
+                </p>
+            </div>
 
         </div>
         <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="startDate" class="text-white font-weight-bold">Start Date</label>
+                <label for="startDate" class="text-white font-weight-bold">Начална дата</label>
                 <input id="startDate"
                        name="startDate"
                        th:field="*{startDate}"
@@ -106,7 +105,7 @@
                 </p>
             </div>
             <div class="form-group col-md-6 mb-3">
-                <label for="endDate" class="text-white font-weight-bold">End Date</label>
+                <label for="endDate" class="text-white font-weight-bold">Крайна дата</label>
                 <input id="endDate"
                        name="endDate"
                        th:field="*{endDate}"
@@ -120,20 +119,20 @@
 
         </div>
         <div class="row">
+<!--            <div class="form-group col-md-6 mb-3">-->
+<!--                <label for="video" class="text-white font-weight-bold">VideoSpot Ready</label>-->
+<!--                <input id="video"-->
+<!--                       name="video"-->
+<!--                       th:field="*{video}"-->
+<!--                       th:errorclass="is-invalid"-->
+<!--                       type="text" class="form-control"-->
+<!--                       placeholder="video"/>-->
+<!--                <p class="invalid-feedback errors alert alert-danger">-->
+<!--                    VideoSpot Ready or Not.-->
+<!--                </p>-->
+<!--            </div>-->
             <div class="form-group col-md-6 mb-3">
-                <label for="video" class="text-white font-weight-bold">VideoSpot Ready</label>
-                <input id="video"
-                       name="video"
-                       th:field="*{video}"
-                       th:errorclass="is-invalid"
-                       type="text" class="form-control"
-                       placeholder="video"/>
-                <p class="invalid-feedback errors alert alert-danger">
-                    VideoSpot Ready or Not.
-                </p>
-            </div>
-            <div class="form-group col-md-6 mb-3">
-                <label for="email" class="text-white font-weight-bold">Email</label>
+                <label for="email" class="text-white font-weight-bold">Имейл</label>
                 <input id="email"
                        name="email"
                        th:field="*{email}"
@@ -146,24 +145,11 @@
             </div>
 
         </div>
-        <div class="row">
-            <div class="form-group col-md-6 mb-3">
-                <label for="phoneNumber" class="text-white font-weight-bold">Phone Number</label>
-                <input id="phoneNumber"
-                       name="phoneNumber"
-                       th:field="*{phoneNumber}"
-                       th:errorclass="is-invalid"
-                       type="text" min=0 max=9999999999999 class="form-control"
-                       placeholder="Phone Number"/>
-                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback errors alert alert-danger">
-                    errors
-                </p>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col col-md-4">
                 <div class="button-holder d-flex">
-                    <input type="submit" class="btn btn-info btn-lg" value="Advertising request"/>
+                    <input type="submit" class="btn btn-info btn-lg" value="Запитване за поддръжка"/>
                 </div>
             </div>
         </div>

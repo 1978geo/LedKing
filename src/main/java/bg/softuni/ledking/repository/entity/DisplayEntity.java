@@ -22,7 +22,7 @@ public class DisplayEntity {
   private URI imageUrl = URI.create("/static/images/led.png");
 
   @Column(nullable = false)
-  private String location = "";
+  private String location  = "";
 
   @ManyToOne
   private CityEntity city;
@@ -40,6 +40,22 @@ public class DisplayEntity {
   private String commentary = "";
 
   public DisplayEntity() {
+  }
+
+  public String getLocation() {
+    return location;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public String getCommentary() {
+    return commentary;
+  }
+
+  public void setCommentary(String commentary) {
+    this.commentary = commentary;
   }
 
   public Long getId() {
@@ -82,13 +98,6 @@ public class DisplayEntity {
     this.imageUrl = imageUrl;
   }
 
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
 
   public Integer getDisplaySizeWidth() {
     return displaySizeWidth;
@@ -122,13 +131,6 @@ public class DisplayEntity {
     this.maximumAdvertisingTime = maximumAdvertisingTime;
   }
 
-  public String getCommentary() {
-    return commentary;
-  }
-
-  public void setCommentary(String commentary) {
-    this.commentary = commentary;
-  }
 
 
 }

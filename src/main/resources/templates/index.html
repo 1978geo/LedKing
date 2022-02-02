@@ -38,28 +38,30 @@
 <th:block sec:authorize="!isAuthenticated()">
         <div class="row">
             <div class="col-1 col-md-1" style="padding-left: 15px;padding-right: 15px;border-top-width: 0px;border-top-style: solid;margin-top: -28%;" >
-
                 <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: 25%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <form th:action="@{/advertise}" th:method="post" style="margin-top: 1%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+<!--                        <input type="submit" class="btn btn-info btn-lg" value="Реклама">-->
+                    </form>
+                    <form th:action="@{/advertise}" th:method="post" style="margin-top: -2%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
                         <input type="submit" class="btn btn-info btn-lg" value="Реклама">
                     </form>
                 </div>
                 <br>
                 <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: 40%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <form th:action="@{/buy}" th:method="post" style="margin-top: 40%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
                         <input type="submit" class="btn btn-info btn-lg" value="Покупка">
                     </form>
                 </div>
                 <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/rentOrBuy}" th:method="post" style="margin-top: 55%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <form th:action="@{/rent}" th:method="post" style="margin-top: 55%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
                         <input type="submit" class="btn btn-info btn-lg" value="Наем">
                     </form>
                 </div>
                 <br>
                 <div class="button-holder d-flex">
-                    <form th:action="@{/advertiseOrSupport}" th:method="post" style="margin-top: 70%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
+                    <form th:action="@{/support}" th:method="post" style="margin-top: 70%;"><input type="hidden" name="_csrf" value="68bc0940-7ea0-4e74-9c65-0eae16ab840e">
                         <input type="submit" class="btn btn-info btn-lg" value="Поддръжка">
                     </form>
                 </div>

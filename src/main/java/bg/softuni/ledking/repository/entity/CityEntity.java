@@ -9,7 +9,7 @@ public class CityEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String name;
+    private CityEntityEnum name;
 
     public CityEntity() {
     }
@@ -22,11 +22,11 @@ public class CityEntity {
         this.id = id;
     }
 
-    public String getName() {
+    public CityEntityEnum getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(CityEntityEnum name) {
         this.name = name;
     }
 }

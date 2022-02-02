@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head::head"></head>
+
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+<div class="container">
+        <form
+            th:action="@{/advertise}"
+            th:method="post"
+            th:object="${advertisingModel}"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+        <h2 class="text-center text-white">Запитване за реклама</h2>
+<!--        <li class="h-item dropdown" sec:authorize="hasRole('ADMIN')">&ndash;&gt;-->
+<!--                      <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"-->
+<!--                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        Admin-->
+<!--                      </a>-->
+<!--                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/statistics}">Statistics</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/displays/}">Displays</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/orders/}">Orders</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/clients/}">Clients</a>-->
+<!--                        <a class="dropdown-item" th:href="@{/admin/users/}">Users</a>-->
+<!--                      </div>-->
+<!--                    </li>-->
+<!--        <div class="form-group">-->
+<!--            <div class="text-white label-holder d-flex justify-content-center">-->
+<!--                <label for="category" class="h4 mb-2">Category</label>-->
+<!--            </div>-->
+<!--            <select th:errorclass="is-invalid" class="browser-default custom-select" id="category" name="category">-->
+<!--                <option value="">Select categoryEntity</option>-->
+<!--                <option th:each="cat : ${T(com.example.exam15122021ShoppingListApp.model.entity.CategoryName).values()}"-->
+<!--                        th:text="${cat}" th:value="${cat}" th:selected="${cat} == *{category}"-->
+<!--                        value="FOOD">Food</option>-->
+<!--            </select>-->
+<!--            <small class="text-danger invalid-feedback">Category must be selected!</small>-->
+<!--        </div>-->
+        <div class="row">
+<!--            <div class="form-group col-md-6 mb-3">-->
+<!--                <label for="category" class="text-white font-weight-bold">Category</label>-->
+<!--                <select  id="category"-->
+<!--                         th:field="*{category}"-->
+<!--                         th:errorclass="is-invalid"-->
+<!--                         type="text"-->
+<!--                         class="form-control"-->
+<!--                         placeholder="Category"-->
+<!--                >-->
+<!--                    <option th:each="categoryOption : ${T(bg.softuni.ledking.repository.entity.CategoryEnum).values()}"-->
+<!--                            th:value="${categoryOption}"-->
+<!--                            th:text="${categoryOption}"-->
+<!--                            th:selected="${categoryOption} == *{category}"-->
+<!--                    >-->
+<!--                    </option>-->
+<!--                </select>-->
+<!--                <p class="invalid-feedback errors alert alert-danger">-->
+<!--                    Category must be selected!-->
+<!--                </p>-->
+<!--            </div>-->
+            <div class="form-group col-md-6 mb-3">
+                <label for="cityName" class="text-white font-weight-bold">Град</label>
+                <input
+                        id="cityName"
+                        th:field="*{city}"
+                        th:errorclass="is-invalid"
+                        type="text"
+                        class="form-control"
+                        placeholder="City name"/>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Моля, въведете име на град.
+                </p>
+            </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="video" class="text-white font-weight-bold">Видео клип</label>
+                            <select  id="video"
+                                     th:field="*{video}"
+                                     th:errorclass="is-invalid"
+                                     type="text"
+                                     class="form-control"
+                                     placeholder="video"
+                            >
+                                <option th:each="videoOption : ${T(bg.softuni.ledking.repository.entity.VideoReadyEnum).values()}"
+                                        th:value="${videoOption}"
+                                        th:text="${videoOption}"
+                                        th:selected="${videoOption} == *{video}"
+                                >
+                                </option>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Video must be selected!
+                            </p>
+                        </div>
+<!--            <div class="form-group col-md-6 mb-3">-->
+<!--                <label for="video" class="text-white font-weight-bold">Видео клип</label>-->
+<!--                <input id="video"-->
+<!--                       name="video"-->
+<!--                       th:field="*{video}"-->
+<!--                       th:errorclass="is-invalid"-->
+<!--                       type="text" class="form-control"-->
+<!--                       placeholder="video"/>-->
+<!--                <p class="invalid-feedback errors alert alert-danger">-->
+<!--                    VideoSpot Ready or Not.-->
+<!--                </p>-->
+<!--            </div>-->
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="startDate" class="text-white font-weight-bold">Начална дата</label>
+                <input id="startDate"
+                       name="startDate"
+                       th:field="*{startDate}"
+                       th:errorclass="is-invalid"
+                       type="date"  class="form-control"
+                       placeholder="Start date"/>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Началната дата трябва да е валидна и не може да бъде в миналото.
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="endDate" class="text-white font-weight-bold">Крайна дата</label>
+                <input id="endDate"
+                       name="endDate"
+                       th:field="*{endDate}"
+                       th:errorclass="is-invalid"
+                       type="date"  class="form-control"
+                       placeholder="End date"/>
+                <p class="invalid-feedback errors alert alert-danger">
+                    Крайната дата трябва да е валидна и не може да бъде в миналото.
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="phoneNumber" class="text-white font-weight-bold">Телефонен номер</label>
+                <input id="phoneNumber"
+                       name="phoneNumber"
+                       th:field="*{phoneNumber}"
+                       th:errorclass="is-invalid"
+                       type="text" min=0 max=9999999999999 class="form-control"
+                       placeholder="Phone Number"/>
+                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback errors alert alert-danger">
+                    Въведете валиден телефонен номер
+                </p>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label for="email" class="text-white font-weight-bold">Имейл</label>
+                <input id="email"
+                       name="email"
+                       th:field="*{email}"
+                       th:errorclass="is-invalid"
+                       type="email" class="form-control"
+                       placeholder="Email"/>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback errors alert alert-danger">
+                    Въведете валиден имейл
+                </p>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Запитване за реклама"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer> </footer>
+</div>
+
+</body>
+</html>

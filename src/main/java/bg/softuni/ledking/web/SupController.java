@@ -1,45 +1,41 @@
 package bg.softuni.ledking.web;
 
-import bg.softuni.ledking.repository.entity.CategoryEnum;
-import bg.softuni.ledking.service.RequestAdvSupService;
-import bg.softuni.ledking.service.model.RequestAdvSupServiceModel;
-import bg.softuni.ledking.view.model.AdvSupAddBindingModel;
+import bg.softuni.ledking.service.RequestSupService;
+import bg.softuni.ledking.service.model.RequestSupServiceModel;
+import bg.softuni.ledking.view.model.SupAddBindingModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.stream.Collectors;
 
 @Controller
 
-public class AdvSupController {
+public class SupController {
 
-    public final static String PATH_USERS_REGISTER = "/advertiseOrSupport";
+    public final static String PATH_USERS_REGISTER = "/support";
 
-    private final RequestAdvSupService requestAdvSupService;
+    private final RequestSupService requestSupService;
     private final ModelMapper modelMapper;
 
-    public AdvSupController(RequestAdvSupService requestAdvSupService,
-                            ModelMapper modelMapper) {
-        this.requestAdvSupService = requestAdvSupService;
+    public SupController(RequestSupService requestSupService,
+                         ModelMapper modelMapper) {
+        this.requestSupService = requestSupService;
         this.modelMapper = modelMapper;
     }
 
-    @ModelAttribute("advertisingModel")
-    public AdvSupAddBindingModel advertisingModel() {
-        return new AdvSupAddBindingModel();
+    @ModelAttribute("supportModel")
+    public SupAddBindingModel supportModel() {
+        return new SupAddBindingModel();
     }
 
     @GetMapping(PATH_USERS_REGISTER)
-    public String createAdvertisement() {
-        return "advertiseOrSupport";
+    public String createSupport() {
+        return "supportRequest";
     }
 
 //    public String index (HttpSession httpSession, Model model){
@@ -65,19 +61,19 @@ public class AdvSupController {
 
     @PostMapping(PATH_USERS_REGISTER)
     public String create(
-            @Valid AdvSupAddBindingModel advertisingModel,
+            @Valid SupAddBindingModel supportModel,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors() ) {
-            redirectAttributes.addFlashAttribute("advertisingModel", advertisingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.advertisingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("supportModel", supportModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.supportModel", bindingResult);
 
             return "redirect:" + PATH_USERS_REGISTER;
         }
 
-        RequestAdvSupServiceModel viewModel = modelMapper.map(advertisingModel, RequestAdvSupServiceModel.class);
-        requestAdvSupService.create(viewModel);
+        RequestSupServiceModel viewModel = modelMapper.map(supportModel, RequestSupServiceModel.class);
+        requestSupService.create(viewModel);
         //
         return "redirect:/";
     }

@@ -2,9 +2,7 @@ package bg.softuni.ledking.repository.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,10 +52,6 @@ public class OrderEntity {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -96,5 +90,8 @@ public class OrderEntity {
 
     public void setDisplays(Set<DisplayEntity> displays) {
         this.displays = displays;
+    }
+
+    public void setName(java.lang.String order1) {
     }
 }

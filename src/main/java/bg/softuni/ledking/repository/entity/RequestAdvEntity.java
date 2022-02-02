@@ -2,21 +2,18 @@ package bg.softuni.ledking.repository.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name="requestAddSup")
-public class RequestAdvSupEntity {
+@Table(name="requestAdv")
+public class RequestAdvEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CategoryEnum category;
+    private CategoryEnum category = CategoryEnum.ADVERTISE;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CityEntityEnum city = CityEntityEnum.SUNNY_BEACH;
@@ -26,14 +23,14 @@ public class RequestAdvSupEntity {
     private LocalDate endDate;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private VideoReadyEnum video = VideoReadyEnum.NO;
+    private VideoReadyEnum video = VideoReadyEnum.НЕ;
     @Column(nullable = false)
     @Email
-    private String email;
+    private java.lang.String email;
     @Column(nullable = false)
-    private String phoneNumber;
+    private java.lang.String phoneNumber;
 
-    public RequestAdvSupEntity() {
+    public RequestAdvEntity() {
     }
 
     public Long getId() {
@@ -84,19 +81,19 @@ public class RequestAdvSupEntity {
         this.video = video;
     }
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public java.lang.String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(java.lang.String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

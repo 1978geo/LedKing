@@ -4,20 +4,20 @@ import bg.softuni.ledking.repository.entity.CategoryEnum;
 import bg.softuni.ledking.repository.entity.CityEntityEnum;
 import bg.softuni.ledking.repository.entity.VideoReadyEnum;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class AdvSupAddBindingModel {
+public class AdvAddBindingModel {
 
     //TODO multiple choice - if it is possible?
     private Long id;
     @NotNull
-    private CategoryEnum category;
+    private CategoryEnum category = CategoryEnum.ADVERTISE;
     @NotNull
-    private CityEntityEnum city = CityEntityEnum.SUNNY_BEACH;
+    private CityEntityEnum city;
     @NotNull(message = "Date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @FutureOrPresent(message = "Date cannot be in the past")
@@ -27,14 +27,14 @@ public class AdvSupAddBindingModel {
     @FutureOrPresent(message = "Date cannot be in the past")
     private LocalDate endDate;
     @NotNull
-    private VideoReadyEnum video = VideoReadyEnum.NO;
+    private VideoReadyEnum video = VideoReadyEnum.НЕ;
     @Email
     @NotNull
-    private String email;
+    private java.lang.String email;
     @NotNull
     private int phoneNumber;
 
-    public AdvSupAddBindingModel() {
+    public AdvAddBindingModel() {
     }
 
     public Long getId() {
@@ -53,11 +53,11 @@ public class AdvSupAddBindingModel {
         this.category = category;
     }
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 

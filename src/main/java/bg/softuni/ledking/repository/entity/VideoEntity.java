@@ -12,7 +12,7 @@ public class VideoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String name;
+    private CityEntityEnum name;
 
     @Column(nullable = false)
     private Integer videoLengthInSeconds;
@@ -32,11 +32,11 @@ public class VideoEntity {
     }
 
 
-    public String getName() {
+    public CityEntityEnum getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(CityEntityEnum name) {
         this.name = name;
     }
 
