@@ -18,11 +18,9 @@ public class SupAddBindingModel {
     private CityEntityEnum city;
     @NotNull(message = "Date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @FutureOrPresent(message = "Date cannot be in the past")
     private LocalDate startDate;
     @NotNull(message = "Date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @FutureOrPresent(message = "Date cannot be in the past")
     private LocalDate endDate;
     @Email
     @NotNull
