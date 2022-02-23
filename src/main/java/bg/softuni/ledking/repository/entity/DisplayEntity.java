@@ -16,7 +16,7 @@ public class DisplayEntity {
   private CategoryEnum category = CategoryEnum.ADVERTISE;
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private DisplayTypeEnum type = DisplayTypeEnum.OUTDOOR;
+  private DisplayTypeEnum type = DisplayTypeEnum.ВЪНШЕН;
 
   @Column(nullable = false)
   private URI imageUrl = URI.create("/static/images/led.png");

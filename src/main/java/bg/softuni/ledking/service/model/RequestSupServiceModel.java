@@ -12,10 +12,18 @@ public class RequestSupServiceModel {
     private String city;
     private LocalDate startDate;
     private LocalDate endDate;
-    private java.lang.String email;
-    private java.lang.String phoneNumber;
+    private String email;
+    private Integer phoneNumber;
 
     public RequestSupServiceModel() {
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
@@ -66,11 +74,4 @@ public class RequestSupServiceModel {
         this.email = email;
     }
 
-    public java.lang.String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(java.lang.String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 }

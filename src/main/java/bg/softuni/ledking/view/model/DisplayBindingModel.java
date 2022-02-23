@@ -11,13 +11,13 @@ public class DisplayBindingModel {
     @NotNull
     private CityEntityEnum city;
     @NotNull
-    private java.lang.String location;
+    private String location;
     @NotNull
     private URI imageUrl;
     @NotNull
     private Integer maximumAdvertisingTime;
 
-    private java.lang.String commentary;
+    private String commentary;
 
     public DisplayBindingModel() {
     }

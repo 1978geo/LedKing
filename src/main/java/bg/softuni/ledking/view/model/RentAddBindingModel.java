@@ -10,22 +10,26 @@ import java.math.BigDecimal;
 
 public class RentAddBindingModel {
     @NotNull
+    private String city;
+    @NotNull
     private DisplayTypeEnum type;
     @NotNull
-    private CityEntityEnum city;
-    @NotNull
     private PixelPitchTypeEnum pixel;
-    @NotNull
-    private BigDecimal sizeWidth;
-    @NotNull
-    private BigDecimal sizeHeight;
     @Email
     @NotNull
     private java.lang.String email;
     @NotNull
-    private int phoneNumber;
+    private Integer phoneNumber;
 
     public RentAddBindingModel() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public java.lang.String getEmail() {
@@ -36,11 +40,11 @@ public class RentAddBindingModel {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -52,14 +56,6 @@ public class RentAddBindingModel {
         this.type = type;
     }
 
-    public CityEntityEnum getCity() {
-        return city;
-    }
-
-    public void setCity(CityEntityEnum city) {
-        this.city = city;
-    }
-
     public PixelPitchTypeEnum getPixel() {
         return pixel;
     }
@@ -68,19 +64,4 @@ public class RentAddBindingModel {
         this.pixel = pixel;
     }
 
-    public BigDecimal getSizeWidth() {
-        return sizeWidth;
-    }
-
-    public void setSizeWidth(BigDecimal sizeWidth) {
-        this.sizeWidth = sizeWidth;
-    }
-
-    public BigDecimal getSizeHeight() {
-        return sizeHeight;
-    }
-
-    public void setSizeHeight(BigDecimal sizeHeight) {
-        this.sizeHeight = sizeHeight;
-    }
 }

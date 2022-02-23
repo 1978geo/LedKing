@@ -65,14 +65,22 @@
 <!--                </p>-->
 <!--            </div>-->
             <div class="form-group col-md-6 mb-3">
-                <label for="cityName" class="text-white font-weight-bold">Град</label>
-                <input
-                        id="cityName"
+                <label for="city" class="text-white font-weight-bold">Град</label>
+                <select
+                        id="city"
                         th:field="*{city}"
                         th:errorclass="is-invalid"
                         type="text"
                         class="form-control"
-                        placeholder="Град"/>
+                        placeholder="Град">
+                    <option th:each="cityOption : ${T(bg.softuni.ledking.repository.entity.CityEntityEnum).values()}"
+                            th:value="${cityOption}"
+                            th:text="${cityOption}"
+                            th:selected="${cityOption} == *{city}"
+                    >
+                    </option>
+                </select>
+
                 <p class="invalid-feedback errors alert alert-danger">
                     Моля, въведете име на град.
                 </p>

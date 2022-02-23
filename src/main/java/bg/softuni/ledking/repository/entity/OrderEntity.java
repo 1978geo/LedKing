@@ -32,6 +32,14 @@ public class OrderEntity {
     public OrderEntity() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public ClientEntity getClient() {
         return client;
     }
@@ -46,10 +54,6 @@ public class OrderEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public LocalDate getStartDate() {
@@ -92,6 +96,5 @@ public class OrderEntity {
         this.displays = displays;
     }
 
-    public void setName(java.lang.String order1) {
-    }
+
 }

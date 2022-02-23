@@ -9,46 +9,13 @@ public class DisplayServiceModel {
 
     private Long id;
     private CityEntityEnum city;
-    private java.lang.String location;
+    private String location;
     private URI imageUrl;
     private Integer freeAdvertisingTime;
     private Integer maximumAdvertisingTime;
-    private java.lang.String commentary;
+    private String commentary;
 
     public DisplayServiceModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public CityEntityEnum getCity() {
-        return city;
-    }
-
-    public void setCity(CityEntityEnum city) {
-        this.city = city;
-    }
-
-    public java.lang.String getLocation() {
-        return location;
-    }
-
-    public DisplayServiceModel setLocation(java.lang.String location) {
-        this.location = location;
-        return null;
-    }
-
-    public URI getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(URI imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public Integer getFreeAdvertisingTime() {
@@ -67,11 +34,45 @@ public class DisplayServiceModel {
         this.maximumAdvertisingTime = maximumAdvertisingTime;
     }
 
-    public java.lang.String getCommentary() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public CityEntityEnum getCity() {
+        return city;
+    }
+
+    public void setCity(CityEntityEnum city) {
+        this.city = city;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public DisplayServiceModel setLocation(java.lang.String location) {
+        this.location = location;
+        return null;
+    }
+
+    public URI getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(URI imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+
+    public String getCommentary() {
         return commentary;
     }
 
-    public void setCommentary(java.lang.String commentary) {
+    public void setCommentary(String commentary) {
         this.commentary = commentary;
     }
 }

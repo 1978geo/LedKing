@@ -1,46 +1,49 @@
 package bg.softuni.ledking.view.model;
 
-import bg.softuni.ledking.repository.entity.CityEntityEnum;
 import bg.softuni.ledking.repository.entity.DisplayTypeEnum;
 import bg.softuni.ledking.repository.entity.PixelPitchTypeEnum;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 public class BuyAddBindingModel {
+    @NotBlank
+    private String city;
     @NotNull
     private DisplayTypeEnum type;
     @NotNull
-    private CityEntityEnum city;
-    @NotNull
     private PixelPitchTypeEnum pixel;
-    @NotNull
-    private BigDecimal sizeWidth;
-    @NotNull
-    private BigDecimal sizeHeight;
     @Email
+    @NotBlank
+    private String email;
     @NotNull
-    private java.lang.String email;
-    @NotNull
-    private int phoneNumber;
+    private Integer phoneNumber;
 
     public BuyAddBindingModel() {
     }
 
-    public java.lang.String getEmail() {
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(java.lang.String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -52,14 +55,6 @@ public class BuyAddBindingModel {
         this.type = type;
     }
 
-    public CityEntityEnum getCity() {
-        return city;
-    }
-
-    public void setCity(CityEntityEnum city) {
-        this.city = city;
-    }
-
     public PixelPitchTypeEnum getPixel() {
         return pixel;
     }
@@ -68,19 +63,4 @@ public class BuyAddBindingModel {
         this.pixel = pixel;
     }
 
-    public BigDecimal getSizeWidth() {
-        return sizeWidth;
-    }
-
-    public void setSizeWidth(BigDecimal sizeWidth) {
-        this.sizeWidth = sizeWidth;
-    }
-
-    public BigDecimal getSizeHeight() {
-        return sizeHeight;
-    }
-
-    public void setSizeHeight(BigDecimal sizeHeight) {
-        this.sizeHeight = sizeHeight;
-    }
 }

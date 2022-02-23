@@ -30,7 +30,7 @@ public class ClientServiceImpl implements ClientService {
             cocaCola.setId(1L);
             cocaCola.setName("Ivan Petrov");
             cocaCola.setEmail("petrov@cocacola.bg");
-            cocaCola.setPhoneNumber("1234567");
+            cocaCola.setPhoneNumber(1234567);
             clientRepository.save(cocaCola);
         }
     }

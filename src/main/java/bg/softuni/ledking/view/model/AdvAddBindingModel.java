@@ -5,9 +5,7 @@ import bg.softuni.ledking.repository.entity.CityEntityEnum;
 import bg.softuni.ledking.repository.entity.VideoReadyEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class AdvAddBindingModel {
@@ -27,12 +25,20 @@ public class AdvAddBindingModel {
     @NotNull
     private VideoReadyEnum video = VideoReadyEnum.НЕ;
     @Email
+    @NotBlank
+    private String email;
     @NotNull
-    private java.lang.String email;
-    @NotNull
-    private int phoneNumber;
+    private Integer phoneNumber;
 
     public AdvAddBindingModel() {
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
@@ -57,14 +63,6 @@ public class AdvAddBindingModel {
 
     public void setEmail(java.lang.String email) {
         this.email = email;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public CityEntityEnum getCity() {

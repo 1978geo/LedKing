@@ -16,7 +16,7 @@ public class RequestAdvEntity {
     private CategoryEnum category = CategoryEnum.ADVERTISE;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CityEntityEnum city = CityEntityEnum.SUNNY_BEACH;
+    private CityEntityEnum city = CityEntityEnum.СЛЪНЧЕВ_БРЯГ;
     @Column(nullable = false)
     private LocalDate startDate;
     @Column(nullable = false)
@@ -26,11 +26,19 @@ public class RequestAdvEntity {
     private VideoReadyEnum video = VideoReadyEnum.НЕ;
     @Column(nullable = false)
     @Email
-    private java.lang.String email;
+    private String email;
     @Column(nullable = false)
-    private java.lang.String phoneNumber;
+    private Integer phoneNumber;
 
     public RequestAdvEntity() {
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
@@ -81,19 +89,12 @@ public class RequestAdvEntity {
         this.video = video;
     }
 
-    public java.lang.String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(java.lang.String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public java.lang.String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(java.lang.String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 }

@@ -17,9 +17,17 @@ public class ClientEntity {
     @Email
     private String email;
     @Column(nullable = false)
-    private String phoneNumber;
+    private Integer phoneNumber;
 
     public ClientEntity() {
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -36,14 +44,6 @@ public class ClientEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {

@@ -9,9 +9,17 @@ public class ClientServiceModel {
     private Long id;
     private String name;
     private String email;
-     private String phoneNumber;
+    private Integer phoneNumber;
 
     public ClientServiceModel() {
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -22,13 +30,6 @@ public class ClientServiceModel {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public Long getId() {
         return id;

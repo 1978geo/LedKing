@@ -12,12 +12,12 @@
 </div>
 
 <div class="container">
-       <form
-            th:action="@{/support}"
+        <form
+            th:action="@{/rent}"
             th:method="post"
-            th:object="${supportModel}"
+            th:object="${rentModel}"
             class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
-    <h2 class="text-center text-white">Запитване за поддръжка</h2>
+        <h2 class="text-center text-white">Запитване за наем</h2>
 <!--        <li class="h-item dropdown" sec:authorize="hasRole('ADMIN')">&ndash;&gt;-->
 <!--                      <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"-->
 <!--                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
@@ -43,7 +43,7 @@
 <!--            </select>-->
 <!--            <small class="text-danger invalid-feedback">Category must be selected!</small>-->
 <!--        </div>-->
-        <div class="row">
+
 <!--            <div class="form-group col-md-6 mb-3">-->
 <!--                <label for="category" class="text-white font-weight-bold">Category</label>-->
 <!--                <select  id="category"-->
@@ -64,70 +64,64 @@
 <!--                    Category must be selected!-->
 <!--                </p>-->
 <!--            </div>-->
+            <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="cityName" class="text-white font-weight-bold">Град</label>
+                    <label for="city" class="text-white font-weight-bold">Град</label>
+                    <input id="city"
+                           name="city"
+                           th:field="*{city}"
+                           th:errorclass="is-invalid"
+                           type="city" class="form-control"
+                           placeholder="Град"/>
+                    <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="invalid-feedback errors alert alert-danger">
+                        Въведете име на град.
+                    </p>
+            </div>
+                <div class="form-group col-md-6 mb-3">
+                <label for="type" class="text-white font-weight-bold">Вид екран</label>
                 <select
-                        id="cityName"
-                        th:field="*{city}"
+                        id="type"
+                        th:field="*{type}"
                         th:errorclass="is-invalid"
                         type="text"
                         class="form-control"
-                        placeholder="Град">
-                    <option th:each="cityOption : ${T(bg.softuni.ledking.repository.entity.CityEntityEnum).values()}"
-                            th:value="${cityOption}"
-                            th:text="${cityOption}"
-                            th:selected="${cityOption} == *{city}"
+                        placeholder="Вид екран">
+                    <option th:each="typeOption : ${T(bg.softuni.ledking.repository.entity.DisplayTypeEnum).values()}"
+                            th:value="${typeOption}"
+                            th:text="${typeOption}"
+                            th:selected="${typeOption} == *{type}"
                     >
                     </option>
                 </select>
-                <p class="invalid-feedback errors alert alert-danger">
-                    Въведете име на град.
-                </p>
-            </div>
-            <div class="form-group col-md-6 mb-3">
-                <label for="startDate" class="text-white font-weight-bold">Начална дата</label>
-                <input id="startDate"
-                       name="startDate"
-                       th:field="*{startDate}"
-                       th:errorclass="is-invalid"
-                       type="date"  class="form-control"
-                       placeholder="Начална дата"/>
-                <p class="invalid-feedback errors alert alert-danger">
-                    Въведете валидна начална дата.
-                </p>
-            </div>
 
-        </div>
-        <div class="row">
-
-            <div class="form-group col-md-6 mb-3">
-                <label for="endDate" class="text-white font-weight-bold">Крайна дата</label>
-                <input id="endDate"
-                       name="endDate"
-                       th:field="*{endDate}"
-                       th:errorclass="is-invalid"
-                       type="date"  class="form-control"
-                       placeholder="Крайна дата"/>
                 <p class="invalid-feedback errors alert alert-danger">
-                    Въведете валидна крайна дата.
+                    Изберете вид екран.
                 </p>
             </div>
-            <div class="form-group col-md-6 mb-3">
-                <label for="email" class="text-white font-weight-bold">Имейл</label>
-                <input id="email"
-                       name="email"
-                       th:field="*{email}"
-                       th:errorclass="is-invalid"
-                       type="email" class="form-control"
-                       placeholder="Имейл"/>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback errors alert alert-danger">
-                    Въведете валиден имейл.
-                </p>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="pixel" class="text-white font-weight-bold">Разстояние между пиксели</label>
+                            <select  id="pixel"
+                                     th:field="*{pixel}"
+                                     th:errorclass="is-invalid"
+                                     type="text"
+                                     class="form-control"
+                                     placeholder="Разстояние между пиксели"
+                            >
+                                <option th:each="pixelOption : ${T(bg.softuni.ledking.repository.entity.PixelPitchTypeEnum).values()}"
+                                        th:value="${pixelOption}"
+                                        th:text="${pixelOption}"
+                                        th:selected="${pixelOption} == *{pixel}"
+                                >
+                                </option>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Изберете разстояние между пиксели.
+                            </p>
+                        </div>
 <!--            <div class="form-group col-md-6 mb-3">-->
-<!--                <label for="video" class="text-white font-weight-bold">VideoSpot Ready</label>-->
+<!--                <label for="video" class="text-white font-weight-bold">Видео клип</label>-->
 <!--                <input id="video"-->
 <!--                       name="video"-->
 <!--                       th:field="*{video}"-->
@@ -146,17 +140,32 @@
                        th:field="*{phoneNumber}"
                        th:errorclass="is-invalid"
                        type="text" min=0 max=9999999999999 class="form-control"
-                       placeholder="Тел. номер"/>
+                       placeholder="Телефонен номер"/>
                 <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback errors alert alert-danger">
-                    errors
+                    Въведете валиден телефонен номер.
                 </p>
             </div>
+            </div>
+                <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="email" class="text-white font-weight-bold">Имейл</label>
+                <input id="email"
+                       name="email"
+                       th:field="*{email}"
+                       th:errorclass="is-invalid"
+                       type="email" class="form-control"
+                       placeholder="Имейл"/>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback errors alert alert-danger">
+                    Въведете валиден имейл.
+                </p>
+            </div>
+
         </div>
 
         <div class="row">
             <div class="col col-md-4">
                 <div class="button-holder d-flex">
-                    <input type="submit" class="btn btn-info btn-lg" value="Запитване за поддръжка"/>
+                    <input type="submit" class="btn btn-info btn-lg" value="Запитване за наем"/>
                 </div>
             </div>
         </div>

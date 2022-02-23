@@ -24,11 +24,19 @@ public class SupAddBindingModel {
     private LocalDate endDate;
     @Email
     @NotNull
-    private java.lang.String email;
+    private String email;
     @NotNull
-    private int phoneNumber;
+    private Integer phoneNumber;
 
     public SupAddBindingModel() {
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
@@ -53,14 +61,6 @@ public class SupAddBindingModel {
 
     public void setEmail(java.lang.String email) {
         this.email = email;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public CityEntityEnum getCity() {

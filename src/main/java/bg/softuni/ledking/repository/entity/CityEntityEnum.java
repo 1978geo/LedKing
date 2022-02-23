@@ -1,22 +1,23 @@
 package bg.softuni.ledking.repository.entity;
 
 public enum CityEntityEnum {
-    VARNA,
-    SOFIA,
-    PLOVDIV,
-    SUNNY_BEACH,
-    NESSEBAR,
-    BANSKO,
-    BURGAS,
-    RUSE,
-    VELIKO_TARNOVO,
-    GABROVO,
-    SEVLIEVO,
-    STARA_ZAGORA,
-    SLIVEN,
-    PAZARDZHIK,
-    VELINGRAD,
-    OTHER;
-
-
+    БАНСКО,
+    БЛАГОЕВГРАД,
+    БУРГАС,
+    ВАРНА,
+    ВЕЛИКО_ТЪРНОВО,
+    ВЕЛИНГРАД,
+    ГАБРОВО,
+    ГОЦЕ_ДЕЛЧЕВ,
+    НЕСЕБЪР,
+    ПАЗАРДЖИК,
+    ПЛОВДИВ,
+    РУСЕ,
+    СЕВЛИЕВО,
+    СЛИВЕН,
+    СЛЪНЧЕВ_БРЯГ,
+    СТАРА_ЗАГОРА,
+    СОФИЯ,
+    ТРОЯН,
+    ДРУГИ;
 }
