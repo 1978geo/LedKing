@@ -1,12 +1,12 @@
 package bg.softuni.ledking.repository.entity;
 
 public enum PixelPitchTypeEnum {
-    два_мм,
-    три_мм,
-    четири_мм,
-    пет_мм,
-    шест_мм,
-    осем_мм,
+    _2_мм,
+    _3_мм,
+    _4_мм,
+    _5_мм,
+    _6_мм,
+    _8_мм,
     други;
 
 }
