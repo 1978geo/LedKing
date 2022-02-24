@@ -13,7 +13,7 @@ public abstract class BuyRentEntity {
     private String city;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private PixelPitchTypeEnum pixel = PixelPitchTypeEnum.осем_мм;
+    private PixelPitchTypeEnum pixel = PixelPitchTypeEnum._8_мм;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private DisplayTypeEnum type = DisplayTypeEnum.ВЪНШЕН;

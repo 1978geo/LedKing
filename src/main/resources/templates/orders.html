@@ -25,6 +25,8 @@
             <th>StartDate</th>
             <th>EndDate</th>
             <th>VideoLengthInSeconds</th>
+            <th>City</th>
+            <th>Location</th>
 
           </tr>
           <tr th:each="name : ${order.name}" th:object="${name}">
@@ -33,6 +35,8 @@
             <th th:text="*{startDate}">Campaign Start Date</th>
             <th th:text="*{endDate}">Campaign End Date</th>
             <th th:text="*{videoSpotLength}">Video Length in Seconds</th>
+            <th th:text="*{city}">City</th>
+            <th th:text="*{location}">Location</th>
           </tr>
         </table>
       </div>
