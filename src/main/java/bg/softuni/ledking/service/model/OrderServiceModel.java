@@ -16,10 +16,28 @@ public class OrderServiceModel {
     private LocalDate endDate;
     private Integer videoSpotLength;
     private Set<DisplayEntity> orderedDisplaysInCampaign;
+    private String city;
+    private String location;
     private Set<VideoEntity> videosForCampaign;
     private ClientEntity client;
 
     public OrderServiceModel() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Long getId() {

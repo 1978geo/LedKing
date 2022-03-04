@@ -39,12 +39,16 @@ public class OrderServiceImpl implements OrderService {
             order1.setStartDate(LocalDate.of(2021, Month.DECEMBER,1));
             order1.setEndDate(LocalDate.of(2022, Month.DECEMBER,1));
             order1.setVideoSpotLength(BigDecimal.valueOf(15));
+            order1.setCity("ВАРНА");
+            order1.setLocation("Orbita");
             //
             OrderEntity order2 = new OrderEntity();
             order2.setName("order2");
             order2.setStartDate(LocalDate.of(2021, Month.DECEMBER, 1));
             order2.setEndDate(LocalDate.of(2022, Month.DECEMBER, 1));
             order2.setVideoSpotLength(BigDecimal.valueOf(18));
+            order2.setCity("ВАРНА");
+            order2.setLocation("Katedrala");
             //
             orderRepository.saveAll(List.of(order1, order2));
         }

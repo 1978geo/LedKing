@@ -28,6 +28,10 @@ public class OrderBindingModel {
 //    @Size(min = 3, max = 300, message = "Video spot length must be between 3 and 300 seconds")
     private BigDecimal videoSpotLength;
 
+    private String city;
+
+    private String location;
+
     private Set<DisplayEntity> orderedDisplaysInCampaign;
 
     private Set<VideoEntity> videosForCampaign = new HashSet<>();
@@ -35,6 +39,22 @@ public class OrderBindingModel {
     private ClientEntity client;
 
     public OrderBindingModel() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Long getId() {

@@ -24,12 +24,32 @@ public class OrderEntity {
     @Column(nullable = false)
     @OneToMany
     private Set<VideoEntity> videos = new HashSet<>();
+    @Column(nullable = false)
+    private String city;
+    @Column(nullable = false)
+    private String location;
     @OneToMany
     private Set<DisplayEntity> displays = new HashSet<>();
     @ManyToOne
     private  ClientEntity client;
 
     public OrderEntity() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getName() {

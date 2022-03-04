@@ -13,7 +13,7 @@ public interface DisplayRepository extends JpaRepository<DisplayEntity, Long> {
 
     Optional<DisplayEntity> findByCategory(CategoryEnum category);
 
-    Optional<DisplayEntity> findByCity(CityEntity city);
+    Optional<DisplayEntity> findByCity(String city);
 
 
 }

@@ -25,7 +25,8 @@ public class DisplayServiceImpl implements DisplayService {
     public void initializeDisplay() {
         if (repository.count() == 0){
             DisplayEntity sunnyBeach = new DisplayEntity();
-            sunnyBeach.setLocation("SunnyBeach");
+            sunnyBeach.setCity("СЛЪНЧЕВ_БРЯГ");
+            sunnyBeach.setLocation("КУБАН_1");
             sunnyBeach.setCategory(CategoryEnum.ADVERTISE);
             repository.save(sunnyBeach);
         }

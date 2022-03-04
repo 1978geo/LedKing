@@ -24,8 +24,8 @@ public class DisplayEntity {
   @Column(nullable = false)
   private String location  = "";
 
-  @ManyToOne
-  private CityEntity city;
+  @Column(nullable = false)
+  private String city = "";
 
   @Column(nullable = false, name = "sizeWidth")
   private Integer displaySizeWidth = 0;
@@ -66,11 +66,11 @@ public class DisplayEntity {
     this.id = id;
   }
 
-  public CityEntity getCity() {
+  public String getCity() {
     return city;
   }
 
-  public void setCity(CityEntity city) {
+  public void setCity(String city) {
     this.city = city;
   }
 
