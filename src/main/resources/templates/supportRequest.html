@@ -120,9 +120,12 @@
                        th:errorclass="is-invalid"
                        type="email" class="form-control"
                        placeholder="Имейл"/>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback errors alert alert-danger">
+                <p class="invalid-feedback errors alert alert-danger">
                     Въведете валиден имейл.
                 </p>
+<!--                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback errors alert alert-danger">-->
+<!--                    Въведете валиден имейл.-->
+<!--                </p>-->
             </div>
         </div>
         <div class="row">
@@ -147,9 +150,12 @@
                        th:errorclass="is-invalid"
                        type="text" min=0 max=9999999999999 class="form-control"
                        placeholder="Тел. номер"/>
-                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback errors alert alert-danger">
-                    errors
+                <p class="invalid-feedback errors alert alert-danger">
+                    Въведете валиден телефонен номер.
                 </p>
+<!--                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback errors alert alert-danger">-->
+<!--                    errors-->
+<!--                </p>-->
             </div>
         </div>
 

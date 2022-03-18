@@ -5,6 +5,7 @@ import bg.softuni.ledking.repository.entity.CityEntityEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -23,7 +24,7 @@ public class SupAddBindingModel {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     @Email
-    @NotNull
+    @NotBlank
     private String email;
     @NotNull
     private Integer phoneNumber;

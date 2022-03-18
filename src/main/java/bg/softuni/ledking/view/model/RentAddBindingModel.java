@@ -5,18 +5,19 @@ import bg.softuni.ledking.repository.entity.DisplayTypeEnum;
 import bg.softuni.ledking.repository.entity.PixelPitchTypeEnum;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class RentAddBindingModel {
-    @NotNull
+    @NotBlank
     private String city;
     @NotNull
     private DisplayTypeEnum type;
     @NotNull
     private PixelPitchTypeEnum pixel;
     @Email
-    @NotNull
+    @NotBlank
     private java.lang.String email;
     @NotNull
     private Integer phoneNumber;
