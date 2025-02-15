@@ -1,0 +1,10 @@
+{
+  "billboards": [],
+  "cities": [],
+  "pages": {
+    "home": {
+      "title": "Home",
+      "content": "Welcome to the home page!"
+    }
+  }
+}
