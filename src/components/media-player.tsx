@@ -12,7 +12,6 @@ interface MediaPlayerProps
 export function MediaPlayer({ source, className, ...props }: MediaPlayerProps) {
   return (
     <video
-      controls
       className={className}
       {...props}
     >

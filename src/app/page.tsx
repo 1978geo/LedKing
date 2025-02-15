@@ -141,13 +141,13 @@ export default function Home() {
               height={1080}
               className='md:hidden '
             />
-            <div className='absolute perspective-[700px] perspective-origin-center w-[130%] h-[330px] top-[13.5%] -left-[5%] z-10'>
+            <div className='absolute perspective-[700px] perspective-origin-center w-[130%] h-[330px] top-[15%] -left-[5%] z-10'>
               <MediaPlayer
                 source='LEDKING.mp4'
                 autoPlay
                 className='h-full w-full object-cover rounded-[10px]'
                 style={{
-                  transform: 'rotateY(-40deg) skewY(-7deg) translateX(-25%)',
+                  transform: 'rotateY(-40deg) skewY(-7.5deg) translateX(-25%)',
                 }}
               />
             </div>
