@@ -2,7 +2,7 @@ import Image from 'next/image'
 import logo from '@/assets/Logo.png'
 import bgDesktop from '@/assets/main-bg-desktop.png'
 import bgMobile from '@/assets/main-bg-phone.png'
-import { Button } from '@/components/ui/button'
+import { MenuDialog } from '@/components/menu-dialog'
 
 export default function Home() {
   return (
@@ -130,12 +130,7 @@ export default function Home() {
               и Несебър. Изработваме и видео клипове. Ние сме част от
               основателите и член на Асоциацията за дигитална външна реклама.
             </p>
-            <Button
-              variant='outline'
-              className='w-full md:w-[284px] border-3 hover:cursor-pointer hover:bg-white hover:text-background/70 hover:border-b-white bg-transparent border-b-gold border-t-white/90 border-l-white/90 border-r-white/90 h-[68px] text-2xl font-semibold drop-shadow-text'
-            >
-              СТАРТИРАЙ ТУК
-            </Button>
+            <MenuDialog />
           </div>
           <div className='flex-1'>
             <Image
