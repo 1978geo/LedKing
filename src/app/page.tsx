@@ -3,6 +3,8 @@ import logo from '@/assets/Logo.png'
 import bgDesktop from '@/assets/main-bg-desktop.png'
 import bgMobile from '@/assets/main-bg-phone.png'
 import { MenuDialog } from '@/components/menu-dialog'
+import { MediaPlayer } from '@/components/media-player'
+import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 export default function Home() {
   return (
@@ -132,14 +134,24 @@ export default function Home() {
             </p>
             <MenuDialog />
           </div>
-          <div className='flex-1'>
+          <div className='flex-1 relative w-screen overflow-hidden'>
             <Image
               src={bgMobile}
               alt='background'
               width={1920}
               height={1080}
-              className='md:hidden object-cover'
+              className='md:hidden '
             />
+            <div className='absolute perspective-[700px] perspective-origin-center w-[130%] h-[330px] top-[13.5%] -left-[5%] z-10'>
+              <MediaPlayer
+                source='LEDKING.mp4'
+                autoPlay
+                className='h-full w-full object-cover rounded-[10px]'
+                style={{
+                  transform: 'rotateY(-40deg) skewY(-7deg) translateX(-25%)',
+                }}
+              />
+            </div>
           </div>
         </section>
       </div>
