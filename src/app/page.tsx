@@ -141,7 +141,7 @@ export default function Home() {
               height={1080}
               className='md:hidden '
             />
-            <div className='absolute perspective-[700px] perspective-origin-center w-[130%] h-[330px] top-[15%] -left-[5%] z-10'>
+            <div className='absolute perspective-[700px] perspective-origin-center w-[130%] h-[330px] top-[14%] -left-[5%] z-10'>
               <MediaPlayer
                 source='LEDKING.mp4'
                 autoPlay
