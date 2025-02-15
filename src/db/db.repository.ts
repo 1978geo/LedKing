@@ -3,8 +3,8 @@ import path from 'path'
 import { v4 as uuidv4 } from 'uuid'
 
 const dbPath = path.resolve(__dirname, 'db', 'ledking.db.json')
-
 interface Data {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 
