@@ -4,7 +4,6 @@ import bgDesktop from '@/assets/main-bg-desktop.png'
 import bgMobile from '@/assets/main-bg-phone.png'
 import { MenuDialog } from '@/components/menu-dialog'
 import { MediaPlayer } from '@/components/media-player'
-import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 export default function Home() {
   return (
