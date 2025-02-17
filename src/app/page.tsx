@@ -17,18 +17,18 @@ export default function Home() {
       />
       <div className='flex flex-col min-h-screen'>
         <div className='w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6] md:hidden' />
-        <section className='py-5 flex items-center justify-center md:justify-start w-full max-w-[1400px] mx-auto'>
+        <section className='py-5 md:py-[76px] flex items-center justify-center md:justify-start w-full max-w-[1400px] mx-auto'>
           <Image
             src={logo}
             alt='logo'
-            width={80}
-            height={80}
-            className='size-26 md:ml-10 z-10'
+            width={156}
+            height={129}
+            className='w-auto h-[129px] md:ml-10 z-10 object-contain'
             priority
           />
         </section>
         <section className='md:px-5 flex flex-col md:flex-row md:gap-4 w-full max-w-[1400px] mx-auto'>
-          <div className='p-6 md:p-[42px] md:pb-10 flex flex-col items-center justify-center lg:items-start bg-[rgba(171,168,187,0.2)] md:rounded-md w-full overflow-hidden backdrop-blur-xl flex-1 shrink max-w-[778px]'>
+          <div className='px-6 py-10 md:px-10 md:py-[60px] flex flex-col items-center justify-center lg:items-start bg-[rgba(171,168,187,0.2)] md:rounded-md w-full overflow-hidden backdrop-blur-xl flex-1 shrink max-w-[778px]'>
             <div className='flex flex-col lg:flex-row'>
               <h1
                 className='
