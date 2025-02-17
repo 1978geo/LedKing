@@ -17,7 +17,7 @@ export default function Home() {
       />
       <div className='flex flex-col min-h-screen'>
         <div className='w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6] md:hidden' />
-        <section className='py-5 lg:py-10 flex items-center justify-center md:justify-start w-full max-w-[1400px] mx-auto'>
+        <section className='py-5 flex items-center justify-center md:justify-start w-full max-w-[1400px] mx-auto'>
           <Image
             src={logo}
             alt='logo'
@@ -141,13 +141,15 @@ export default function Home() {
               height={1080}
               className='md:hidden '
             />
-            <div className='absolute perspective-[700px] perspective-origin-center w-[130%] h-[330px] top-[14%] -left-[5%] z-10'>
+            <div className='absolute perspective-[700px] perspective-origin-center w-[127%] h-[48.5%] top-[13%] -left-[3%] z-10'>
               <MediaPlayer
                 source='LEDKING.mp4'
+                muted
+                controls
                 autoPlay
                 className='h-full w-full object-cover rounded-[10px]'
                 style={{
-                  transform: 'rotateY(-40deg) skewY(-7.5deg) translateX(-25%)',
+                  transform: 'rotateY(-38.5deg) skewY(-7deg) translateX(-25%)',
                 }}
               />
             </div>

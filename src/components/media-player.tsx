@@ -1,5 +1,3 @@
-'use client'
-
 interface MediaPlayerProps
   extends React.DetailedHTMLProps<
     React.VideoHTMLAttributes<HTMLVideoElement>,
@@ -18,6 +16,12 @@ export function MediaPlayer({ source, className, ...props }: MediaPlayerProps) {
       <source
         src={source}
         type='video/mp4'
+      />
+      <track
+        kind='captions'
+        src='captions.vtt'
+        srcLang='en'
+        label='English'
       />
     </video>
   )
