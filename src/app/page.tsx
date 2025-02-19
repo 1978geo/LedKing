@@ -41,8 +41,8 @@ export default function Home() {
             <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[640px]'>
               <h1
                 className='
-            text-[64px]
-            leading-[64px]
+            text-[58px]
+            leading-[58px]
             font-semibold
             p-0
             m-0
@@ -61,8 +61,8 @@ export default function Home() {
               </h1>
               <h2
                 className='
-            text-[115px]
-            leading-[90px]
+            text-[104px]
+            leading-[104px]
             font-semibold
             p-0
             pb-2
@@ -85,8 +85,8 @@ export default function Home() {
             <div className='flex flex-col xl:flex-row'>
               <h2
                 className='
-            text-[74px]
-            leading-[74px]
+            text-[66px]
+            leading-[66px]
             font-semibold
             p-0
             m-0
@@ -105,8 +105,8 @@ export default function Home() {
               </h2>
               <h2
                 className='
-            text-[88px]
-            leading-[88px]
+            text-[78px]
+            leading-[78px]
             font-semibold
             p-0
             m-0
