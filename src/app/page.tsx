@@ -5,6 +5,8 @@ import leftBar from '@/assets/left-bar.png'
 import { MenuDialog } from '@/components/menu-dialog'
 import { MediaPlayer } from '@/components/media-player'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { LedStrip } from '@/components/led-strip'
+import { LedLogo } from '@/components/led-logo'
 
 export default function Home() {
   return (
@@ -17,16 +19,9 @@ export default function Home() {
         className='hidden md:block object-contain w-70 h-auto fixed top-1.5 left-0'
         priority
       />
-      <div className='block w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
+      <LedStrip />
       <section className='py-6 flex items-center justify-center xl:justify-start xl:py-14 xl:container xl:mx-auto w-full'>
-        <Image
-          src={logo}
-          alt='logo'
-          width={156}
-          height={129}
-          className='w-[98] h-[82px] xl:w-[156px] xl:h-[129px] xl:ml-10 z-10 object-contain'
-          priority
-        />
+        <LedLogo />
       </section>
 
       <div className='flex flex-col xl:flex-row-reverse xl:items-start xl:container xl:mx-auto'>
