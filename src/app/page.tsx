@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import logo from '@/assets/Logo.png'
 import centerFloor from '@/assets/center-floor.png'
 import leftBar from '@/assets/left-bar.png'
+import dots from '@/assets/dots.png'
 import { MenuDialog } from '@/components/menu-dialog'
 import { MediaPlayer } from '@/components/media-player'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
@@ -20,11 +20,11 @@ export default function Home() {
         priority
       />
       <Image
-        src={leftBar}
+        src={dots}
         alt='background'
         width={1920}
         height={1080}
-        className='hidden md:block object-contain w-40 rotate-y-180 h-auto fixed top-1.5 right-0 left-auto'
+        className='hidden md:block object-contain w-2xs rotate-y-180 h-auto fixed top-40 -right-20 left-auto'
         priority
       />
       <LedStrip />
