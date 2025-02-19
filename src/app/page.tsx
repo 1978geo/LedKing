@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import logo from '@/assets/Logo.png'
 import centerFloor from '@/assets/center-floor.png'
+import leftBar from '@/assets/left-bar.png'
 import { MenuDialog } from '@/components/menu-dialog'
 import { MediaPlayer } from '@/components/media-player'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
@@ -8,6 +9,14 @@ import { AspectRatio } from '@/components/ui/aspect-ratio'
 export default function Home() {
   return (
     <div className='flex flex-col w-full min-h-screen relative'>
+      <Image
+        src={leftBar}
+        alt='background'
+        width={1920}
+        height={1080}
+        className='hidden md:block object-contain w-70 h-auto fixed top-1.5 left-0'
+        priority
+      />
       <div className='block w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
       <section className='py-6 flex items-center justify-center xl:justify-start xl:py-14 xl:container xl:mx-auto w-full'>
         <Image
@@ -20,23 +29,29 @@ export default function Home() {
         />
       </section>
 
-      <div className='flex flex-col xl:flex-row-reverse xl:items-start xl:container flex-1 xl:mx-auto'>
-        <div className='container mx-auto flex-1 shrink-0'>
+      <div className='flex flex-col xl:flex-row-reverse xl:items-start xl:container xl:mx-auto'>
+        <div className='container relative xl:max-w-auto mx-auto xl:mx-0 flex-1 shrink-0 pb-4 xl:pb-0'>
           <AspectRatio
             ratio={16 / 9}
-            className='border-3 border-white/90 rounded-sm overflow-hidden mx-5 mb-8 border-b-gold border-t-white/90 border-l-white/90 border-r-white/90 drop-shadow-glow'
+            className='xl:perspective-[800px] 2xl:perspective-[1000px] perspective-origin-center mx-5 mb-8 xl:ml-6 xl:-mt-10 2xl:-mt-18 z-1'
           >
             <MediaPlayer
               source='LEDKING.mp4'
               muted
               controls
               autoPlay
-              className='object-cover w-full h-full'
+              className='border border-transparent rounded-sm overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
+              style={{
+                background:
+                  'linear-gradient(to right, rgba(184, 39, 252, 1), rgba(44, 144, 252, 1), rgba(184, 253, 51, 1), rgba(254, 200, 55, 1), rgba(253, 24, 146, 1))',
+                boxShadow:
+                  '0 -1px 5px rgba(184, 39, 252, 0.3), 0 5px 10px rgba(44, 144, 252, 0.3), 0 5px 10px rgba(184, 253, 51, 0.3), 0 5px 20px rgba(254, 200, 55, 0.3), 0 5px 30px rgba(253, 24, 146, 0.3), 0 10px 40px rgba(184, 39, 252, 0.3), 0 20px 50px rgba(44, 144, 252, 0.3), 0 20px 50px rgba(184, 253, 51, 0.3), 0 20px 60px rgba(254, 200, 55, 0.3), 0 20px 80px rgba(253, 24, 146, 0.3), inset 0 0 5px rgba(184, 39, 252, 0.7), inset 0 0 10px rgba(44, 144, 252, 1), inset 0 0 10px rgba(184, 253, 51, 1), inset 0 0 20px rgba(254, 200, 55, 1), inset 0 0 30px rgba(253, 24, 146, 1)',
+              }}
             />
           </AspectRatio>
         </div>
 
-        <section className='flex flex-col xl:flex-row xl:gap-4 w-full xl:max-w-[1366px] xl:flex-1 xl:shrink-1 mx-auto'>
+        <section className='flex flex-col xl:flex-row xl:gap-4 w-full xl:max-w-[640px] mx-auto'>
           <div className='px-6 py-10 flex flex-col items-center justify-center xl:items-start bg-[rgba(171,168,187,0.2)] xl:rounded-md w-full overflow-hidden backdrop-blur-xl'>
             <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[640px]'>
               <h1

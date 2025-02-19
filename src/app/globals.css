@@ -48,7 +48,7 @@
   --font-play: 'Play', sans-serif;
 
   --drop-shadow-text: 0 0 6px rgb(255 238 224 / 0.5);
-  --drop-shadow-glow: 0 0 10px rgb(255 255 255 / 0.5);
+  --drop-shadow-glow: 0 0 20px rgb(255 255 255 / 0.5);
 }
 
 @layer base {
@@ -92,5 +92,54 @@ body {
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+.shadow {
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(
+      45deg,
+      #fb0094,
+      #0000ff,
+      #00ff00,
+      #ffff00,
+      #ff0000,
+      #fb0094,
+      #0000ff,
+      #00ff00,
+      #ffff00,
+      #ff0000
+    );
+    background-size: 400%;
+    z-index: -1;
+    animation: shadow 20s linear infinite;
+  }
+
+  &:after {
+    top: -8px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    filter: blur(24px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes shadow {
+  0% {
+    background-position: 0 0;
+  }
+  50.01% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }
