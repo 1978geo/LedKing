@@ -7,8 +7,8 @@ import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 export default function Home() {
   return (
-    <div className='flex flex-col w-full h-screen relative'>
-      <div className='w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
+    <div className='flex flex-col w-full min-h-screen relative'>
+      <div className='block w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
       <section className='py-6 flex items-center justify-center xl:justify-start xl:py-14 xl:container xl:mx-auto w-full'>
         <Image
           src={logo}
