@@ -20,8 +20,8 @@ export default function Home() {
         />
       </section>
 
-      <div className='flex flex-col xl:flex-row-reverse xl:items-start xl:container flex-1 mx-auto'>
-        <div className='container mx-auto'>
+      <div className='flex flex-col xl:flex-row-reverse xl:items-start xl:container flex-1 xl:mx-auto'>
+        <div className='container mx-auto flex-1 shrink-0'>
           <AspectRatio
             ratio={16 / 9}
             className='border-3 border-white/90 rounded-sm overflow-hidden mx-5 mb-8 border-b-gold border-t-white/90 border-l-white/90 border-r-white/90 drop-shadow-glow'
@@ -36,9 +36,9 @@ export default function Home() {
           </AspectRatio>
         </div>
 
-        <section className='flex flex-col xl:flex-row xl:gap-4 w-full xl:max-w-[1366px] mx-auto'>
-          <div className='px-6 py-10 flex flex-col items-center justify-center xl:items-start bg-[rgba(171,168,187,0.2)] xl:rounded-md w-full overflow-hidden backdrop-blur-xl flex-1'>
-            <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[778px]'>
+        <section className='flex flex-col xl:flex-row xl:gap-4 w-full xl:max-w-[1366px] xl:flex-1 xl:shrink-1 mx-auto'>
+          <div className='px-6 py-10 flex flex-col items-center justify-center xl:items-start bg-[rgba(171,168,187,0.2)] xl:rounded-md w-full overflow-hidden backdrop-blur-xl'>
+            <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[640px]'>
               <h1
                 className='
             text-[64px]
@@ -53,8 +53,8 @@ export default function Home() {
             bg-clip-text
             xl:mr-2.5
             xl:inline-block
-            xl:text-[48px]
-            xl:leading-[48px]
+            xl:text-[62px]
+            xl:leading-[62px]
             '
               >
                 Ние Даваме
@@ -75,8 +75,8 @@ export default function Home() {
             border-b-2
           border-white/90
             xl:inline-block
-            xl:text-[48px]
-            xl:leading-[48px]
+            xl:text-[62px]
+            xl:leading-[62px]
             '
               >
                 Живот
@@ -97,8 +97,8 @@ export default function Home() {
             bg-clip-text
             xl:inline-block
             xl:mr-2.5
-            xl:text-[48px]
-            xl:leading-[48px]
+            xl:text-[60px]
+            xl:leading-[60px]
             '
               >
                 на Вашите
@@ -116,8 +116,8 @@ export default function Home() {
             to-gold
             bg-clip-text
             xl:inline-block
-            xl:text-[48px]
-            xl:leading-[48px]
+            xl:text-[60px]
+            xl:leading-[60px]
             '
               >
                 Реклами
@@ -134,16 +134,16 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className='flex-1 relative w-screen overflow-hidden'>
-          <Image
-            src={centerFloor}
-            alt='background'
-            width={1920}
-            height={1080}
-            className='object-cover w-full h-full'
-            priority
-          />
-        </div>
+      </div>
+      <div className='flex-1 relative w-screen'>
+        <Image
+          src={centerFloor}
+          alt='background'
+          width={1920}
+          height={1080}
+          className='object-cover w-full h-full'
+          priority
+        />
       </div>
       <footer className='w-full flex items-center justify-center text-muted-foreground text-xs py-4'>
         <p>
