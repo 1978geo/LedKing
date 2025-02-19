@@ -1,46 +1,48 @@
 import Image from 'next/image'
 import logo from '@/assets/Logo.png'
-import bgDesktop from '@/assets/main-bg-desktop.png'
-import bgMobile from '@/assets/main-bg-phone.png'
+import centerFloor from '@/assets/center-floor.png'
 import { MenuDialog } from '@/components/menu-dialog'
 import { MediaPlayer } from '@/components/media-player'
+import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 export default function Home() {
   return (
-    <div className='w-full h-full relative'>
-      <Image
-        src={bgDesktop}
-        alt='background'
-        width={1920}
-        height={1080}
-        className='absolute top-0 left-0 z-0 bottom-0 right-0 object-contain hidden md:block'
-      />
-      <div className='flex flex-col min-h-screen'>
-        <div className='w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6] md:hidden' />
-        <section className='py-5 md:py-[76px] flex items-center justify-center md:justify-start w-full max-w-[1400px] mx-auto'>
-          <Image
-            src={logo}
-            alt='logo'
-            width={156}
-            height={129}
-            className='w-auto h-[129px] md:ml-10 z-10 object-contain'
-            priority
-          />
-        </section>
-        <section className='md:px-5 flex flex-col md:flex-row md:gap-4 w-full max-w-[1400px] mx-auto'>
-          <div className='px-6 py-10 md:px-10 md:py-[60px] flex flex-col items-center justify-center lg:items-start bg-[rgba(171,168,187,0.2)] md:rounded-md w-full overflow-hidden backdrop-blur-xl flex-1 shrink max-w-[778px]'>
-            <div className='flex flex-col lg:flex-row'>
+    <div className='flex flex-col w-full h-screen relative'>
+      <div className='w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
+      <section className='py-6 flex items-center justify-center xl:justify-start xl:py-14 xl:container xl:mx-auto w-full'>
+        <Image
+          src={logo}
+          alt='logo'
+          width={156}
+          height={129}
+          className='w-[98] h-[82px] xl:w-[156px] xl:h-[129px] xl:ml-10 z-10 object-contain'
+          priority
+        />
+      </section>
+
+      <div className='flex flex-col xl:flex-row-reverse xl:items-start xl:container flex-1 mx-auto'>
+        <div className='container mx-auto'>
+          <AspectRatio
+            ratio={16 / 9}
+            className='border-3 border-white/90 rounded-sm overflow-hidden mx-5 mb-8 border-b-gold border-t-white/90 border-l-white/90 border-r-white/90 drop-shadow-glow'
+          >
+            <MediaPlayer
+              source='LEDKING.mp4'
+              muted
+              controls
+              autoPlay
+              className='object-cover w-full h-full'
+            />
+          </AspectRatio>
+        </div>
+
+        <section className='flex flex-col xl:flex-row xl:gap-4 w-full xl:max-w-[1366px] mx-auto'>
+          <div className='px-6 py-10 flex flex-col items-center justify-center xl:items-start bg-[rgba(171,168,187,0.2)] xl:rounded-md w-full overflow-hidden backdrop-blur-xl flex-1'>
+            <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[778px]'>
               <h1
                 className='
-            text-[clamp(14vw,14.5vw,15vw)]
-            leading-[clamp(14vw,14.5vw,15vw)]
-            md:text-[clamp(6.5vw,7vw,7.5vw)]
-            md:leading-[clamp(6.5vw,7vw,7.5vw)]
-            lg:text-[clamp(4vw,4.6vw,5vw)]
-            lg:leading-[clamp(4vw,4.6vw,5vw)]
-            xl:text-[64px]
-            xl:leading-[64px]
-            lg:inline-block
+            text-[64px]
+            leading-[64px]
             font-semibold
             p-0
             m-0
@@ -49,46 +51,42 @@ export default function Home() {
             from-white
             to-gold
             bg-clip-text
-            lg:mr-2.5'
+            xl:mr-2.5
+            xl:inline-block
+            xl:text-[48px]
+            xl:leading-[48px]
+            '
               >
                 Ние Даваме
               </h1>
               <h2
                 className='
-            text-[clamp(25vw,25.5vw,26vw)]
-            leading-[clamp(25vw,25.5vw,26vw)]
-            md:text-[clamp(12vw,12.5vw,13vw)]
-            md:leading-[clamp(12vw,12.5vw,13vw)]
-            lg:text-[clamp(4vw,4.6vw,5vw)]
-            lg:leading-[clamp(4vw,4.6vw,5vw)]
-            xl:text-[60px]
-            xl:leading-[60px]
+            text-[115px]
+            leading-[90px]
             font-semibold
             p-0
+            pb-2
             m-0
             drop-shadow-text
             bg-gradient-to-r
             from-white
             to-gold
             bg-clip-text
-            lg:inline-block
             border-b-2
-            border-white/90'
+          border-white/90
+            xl:inline-block
+            xl:text-[48px]
+            xl:leading-[48px]
+            '
               >
                 Живот
               </h2>
             </div>
-            <div className='flex flex-col lg:flex-row'>
+            <div className='flex flex-col xl:flex-row'>
               <h2
                 className='
-            text-[clamp(16vw,16.5vw,17vw)]
-            leading-[clamp(16vw,16.5vw,17vw)]
-            md:text-[clamp(7.5vw,8vw,8.5vw)]
-            md:leading-[clamp(7.5vw,8vw,8.5vw)]
-            lg:text-[clamp(4vw,4.5vw,5vw)]
-            lg:leading-[clamp(4vw,4.5vw,5vw)]
-            xl:text-[60px]
-            xl:leading-[60px]
+            text-[74px]
+            leading-[74px]
             font-semibold
             p-0
             m-0
@@ -97,21 +95,18 @@ export default function Home() {
             from-white
             to-gold
             bg-clip-text
-            lg:inline-block
-            lg:mr-2.5'
+            xl:inline-block
+            xl:mr-2.5
+            xl:text-[48px]
+            xl:leading-[48px]
+            '
               >
                 на Вашите
               </h2>
               <h2
                 className='
-            text-[clamp(19vw,19.5vw,20vw)]
-            leading-[clamp(19vw,19.5vw,20vw)]
-            md:text-[clamp(9vw,9.5vw,10vw)]
-            md:leading-[clamp(9vw,9.5vw,10vw)]
-            lg:text-[clamp(4vw,4.5vw,5vw)]
-            lg:leading-[clamp(4vw,4.5vw,5vw)]
-            xl:text-[60px]
-            xl:leading-[60px]
+            text-[88px]
+            leading-[88px]
             font-semibold
             p-0
             m-0
@@ -120,42 +115,41 @@ export default function Home() {
             from-white
             to-gold
             bg-clip-text
-            lg:inline-block'
+            xl:inline-block
+            xl:text-[48px]
+            xl:leading-[48px]
+            '
               >
                 Реклами
               </h2>
             </div>
 
-            <p className='w-full my-4 md:px-2 md:py-1 text-wrap text-white/40 text-center text-sm md:text-left'>
+            <p className='w-full my-4 xl:px-2 xl:py-1 text-wrap text-white/40 text-center text-sm xl:text-left max-w-[388px] xl:max-w-[778px]'>
               Външна видео LED-реклама. ТОП локации в София, Варна, Слънчев бряг
               и Несебър. Изработваме и видео клипове. Ние сме част от
               основателите и член на Асоциацията за дигитална външна реклама.
             </p>
-            <MenuDialog />
-          </div>
-          <div className='flex-1 relative w-screen overflow-hidden'>
-            <Image
-              src={bgMobile}
-              alt='background'
-              width={1920}
-              height={1080}
-              className='md:hidden '
-            />
-            <div className='absolute perspective-[700px] perspective-origin-center w-[127%] h-[48.5%] top-[13%] -left-[3%] z-10'>
-              <MediaPlayer
-                source='LEDKING.mp4'
-                muted
-                controls
-                autoPlay
-                className='h-full w-full object-cover rounded-[10px]'
-                style={{
-                  transform: 'rotateY(-38.5deg) skewY(-7deg) translateX(-25%)',
-                }}
-              />
+            <div className='w-full max-w-[388px] xl:max-w-[778px] mx-auto xl:mx-0'>
+              <MenuDialog />
             </div>
           </div>
         </section>
+        <div className='flex-1 relative w-screen overflow-hidden'>
+          <Image
+            src={centerFloor}
+            alt='background'
+            width={1920}
+            height={1080}
+            className='object-cover w-full h-full'
+            priority
+          />
+        </div>
       </div>
+      <footer className='w-full flex items-center justify-center text-muted-foreground text-xs py-4'>
+        <p>
+          &copy;{new Date().getFullYear()} LEDKing.bg - Всички права запазени
+        </p>
+      </footer>
     </div>
   )
 }
