@@ -24,7 +24,7 @@ export default function Home() {
         alt='background'
         width={1920}
         height={1080}
-        className='hidden md:block object-contain w-2xs rotate-y-180 h-auto fixed top-40 -right-20 left-auto'
+        className='hidden md:block object-contain w-[280px] h-auto fixed top-40 -right-8 left-auto'
         priority
       />
       <LedStrip />
