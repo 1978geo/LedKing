@@ -19,6 +19,14 @@ export default function Home() {
         className='hidden md:block object-contain w-70 h-auto fixed top-1.5 left-0'
         priority
       />
+      <Image
+        src={leftBar}
+        alt='background'
+        width={1920}
+        height={1080}
+        className='hidden md:block object-contain w-40 rotate-y-180 h-auto fixed top-1.5 right-0 left-auto'
+        priority
+      />
       <LedStrip />
       <section className='py-6 flex items-center justify-center xl:justify-start xl:py-14 xl:container xl:mx-auto w-full'>
         <LedLogo />
@@ -32,9 +40,11 @@ export default function Home() {
           >
             <MediaPlayer
               source='LEDKING.mp4'
-              muted
               controls
+              muted
               autoPlay
+              loop
+              playsInline
               className='border border-transparent rounded-sm overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
               style={{
                 background:
