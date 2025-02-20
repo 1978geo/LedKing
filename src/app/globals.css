@@ -40,6 +40,14 @@
   --color-chart-5: hsl(var(--chart-5));
 
   --color-gold: #ffdfb6;
+  --color-neon-blue: #2c90fc;
+  --color-neon-pink: #fd1892;
+  --color-neon-green: #b8fd33;
+  --color-neon-yellow: #fec837;
+
+  --color-primary-purple: #2c1c61;
+  --color-secondary-purple: #b052b8;
+  --color-primary-blue: #0621c9;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 4px);
@@ -106,16 +114,14 @@ body {
     height: calc(100% + 4px);
     background: linear-gradient(
       45deg,
-      #fb0094,
-      #0000ff,
-      #00ff00,
-      #ffff00,
-      #ff0000,
-      #fb0094,
-      #0000ff,
-      #00ff00,
-      #ffff00,
-      #ff0000
+      var(--color-neon-pink),
+      var(--color-neon-blue),
+      var(--color-neon-green),
+      var(--color-neon-yellow),
+      var(--color-neon-pink),
+      var(--color-neon-blue),
+      var(--color-neon-green),
+      var(--color-neon-yellow)
     );
     background-size: 400%;
     z-index: -1;
