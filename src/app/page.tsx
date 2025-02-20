@@ -55,7 +55,7 @@ export default function Home() {
               }}
             ></iframe> */}
             <MediaPlayer
-              source='LEDKing.mp4'
+              source='LEDKING.mp4'
               controls
               muted
               autoPlay
