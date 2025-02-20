@@ -1,29 +1,12 @@
-export interface City {
-  id: string
-  name: string
-  location: Location
-}
-
-export interface Address {
-  city: City
-  street: string
-}
-
-export interface Location {
-  latitude: number
-  longitude: number
-}
-
-export interface ScreenSize {
-  width: number
-  height: number
-}
+import { City, Size } from './Common.type'
 
 export interface Billboard {
   id: string
-  address: Address
+  city: City
+  address: string
+  location: Location
   photo: string
-  billboards: number
-  screenType: string
-  screenSize: ScreenSize
+  typeLED: string
+  countScreens: number
+  size: Size
 }

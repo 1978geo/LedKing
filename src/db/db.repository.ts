@@ -1,8 +1,10 @@
+'use server'
+
 import { promises as fs } from 'fs'
 import path from 'path'
 import { v4 as uuidv4 } from 'uuid'
 
-const dbPath = path.resolve(__dirname, 'db', 'ledking.db.json')
+const dbPath = path.resolve(process.cwd(), 'src', 'db', 'ledking.db.json')
 interface Data {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
@@ -51,6 +53,14 @@ export const findById = async <T extends Identifiable>(
 ): Promise<T> => {
   const db = await readDatabase()
   return db[collection].find((item: T) => item.id === id)
+}
+
+export const findAllByIds = async <T extends Identifiable>(
+  collection: string,
+  ids: string[],
+): Promise<number> => {
+  const db = await readDatabase()
+  return db[collection].filter((item: T) => ids.includes(item.id)).length
 }
 
 export const create = async <T extends Identifiable>(
