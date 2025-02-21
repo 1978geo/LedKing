@@ -81,7 +81,7 @@ export function LedCampaingForm({ cities }: LedCampaingFormProps) {
                       <FormControl>
                         <RadioGroupItem
                           value={city.id}
-                          className='hover:cursor-pointer'
+                          className='hover:cursor-pointer w-5 h-5'
                         />
                       </FormControl>
                       <FormLabel className='font-normal py-4 hover:cursor-pointer'>
