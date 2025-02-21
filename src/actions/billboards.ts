@@ -1,7 +1,7 @@
 'use server'
 
 export const getBillboards = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/billboards`, {
+  const res = await fetch(`${process.env.BASE_URL}/api/billboards`, {
     cache: 'force-cache',
   })
   if (!res.ok) throw new Error('Failed to fetch cities')
@@ -10,7 +10,7 @@ export const getBillboards = async () => {
 
 export const getBillboardsByCity = async (city: string) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/billboards?cityId=${city}`,
+    `${process.env.BASE_URL}/api/billboards?cityId=${city}`,
     {
       cache: 'force-cache',
     },

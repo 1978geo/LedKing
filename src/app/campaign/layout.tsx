@@ -24,7 +24,7 @@ export default function LedLayout({ children }: { children: React.ReactNode }) {
           <Navbar className='hidden lg:flex' />
         </div>
       </header>
-      <main className='flex flex-col flex-1'>{children}</main>
+      <main className='flex flex-col flex-1 overflow-x-hidden'>{children}</main>
       <footer className='h-16 flex flex-col md:flex-row items-center justify-center gap-x-4 gap-y-1'>
         <p className='text-muted-foreground text-xs'>
           &copy; LEDKing.bg - Всички права запазени.
