@@ -3,7 +3,7 @@ import { Billboard } from '@/types/Billboard.type'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const cityId = request?.nextUrl?.searchParams.get('cityId')
+  const cityId = request?.nextUrl?.searchParams?.get?.('cityId')
   const billboards = await find<Billboard>('billboards')
 
   if (cityId) {
