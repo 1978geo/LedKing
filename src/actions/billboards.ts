@@ -1,18 +1,20 @@
 'use server'
 
 export const getBillboards = async () => {
-  const response = await fetch(`${process.env.BASE_URL}/api/billboards`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/billboards`, {
     cache: 'force-cache',
   })
-  return await response.json()
+  if (!res.ok) throw new Error('Failed to fetch cities')
+  return await res.json()
 }
 
 export const getBillboardsByCity = async (city: string) => {
-  const response = await fetch(
-    `${process.env.BASE_URL}/api/billboards?cityId=${city}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/billboards?cityId=${city}`,
     {
       cache: 'force-cache',
     },
   )
-  return await response.json()
+  if (!res.ok) throw new Error('Failed to fetch cities')
+  return await res.json()
 }
