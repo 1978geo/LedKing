@@ -71,7 +71,7 @@ export function LedCampaingForm({ cities }: LedCampaingFormProps) {
                   {cities.map(city => (
                     <FormItem
                       className={cn(
-                        'flex items-center flex-nowrap space-x-2 space-y-0 px-4 rounded-full border border-slate-400',
+                        'flex items-center flex-nowrap space-x-2 space-y-0 px-4 rounded-full border border-slate-300',
                         field.value === city.id
                           ? 'bg-primary-purple/10 border-primary-purple'
                           : 'hover:bg-primary-purple hover:bg-opacity-10 hover:border-primary-purple hover:cursor-pointer',
