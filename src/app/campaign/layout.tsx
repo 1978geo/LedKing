@@ -11,7 +11,7 @@ export default function LedLayout({ children }: { children: React.ReactNode }) {
       <header className='flex flex-col'>
         <LedStrip />
         <div className='flex items-center justify-between px-5 py-3 lg:container lg:mx-auto'>
-          <LedLogo className='w-[94px] h-[76px] md:w-[94px] md:h-[76px] xl:w-[94px] xl:h-[76px]' />
+          <LedLogo className='w-[74px] h-[56px] xl:w-[94px] xl:h-[76px]' />
           <div className='lg:hidden'>
             <MenuDialog
               trigger={

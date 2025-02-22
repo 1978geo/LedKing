@@ -1,4 +1,4 @@
-import { City, Size } from './Common.type'
+import { City, Size, Location } from './Common.type'
 
 export interface Billboard {
   id: string

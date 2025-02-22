@@ -15,6 +15,7 @@ import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { CityEntity } from '@/types/City.type'
 import { cn } from '@/lib/utils'
+import { LEDMap } from '../led-map'
 
 interface LedCampaingFormProps {
   cities: CityEntity[]
@@ -53,48 +54,51 @@ export function LedCampaingForm({ cities }: LedCampaingFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit, onError)}
-        className='space-y-5 pt-4 relative'
+        className='space-y-5 relative'
       >
-        <div className='absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-white to-transparent pointer-events-none'></div>
-        <div className='absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-white to-transparent pointer-events-none'></div>
-        <FormField
-          name='city'
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <RadioGroup
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  className='grid grid-flow-col auto-cols-max items-center gap-2 overflow-x-auto px-10'
-                >
-                  {cities.map(city => (
-                    <FormItem
-                      className={cn(
-                        'flex items-center flex-nowrap space-x-2 space-y-0 px-4 rounded-full border border-slate-300',
-                        field.value === city.id
-                          ? 'bg-primary-purple/10 border-primary-purple'
-                          : 'hover:bg-primary-purple hover:bg-opacity-10 hover:border-primary-purple hover:cursor-pointer',
-                      )}
-                      key={city.id}
-                    >
-                      <FormControl>
-                        <RadioGroupItem
-                          value={city.id}
-                          className='hover:cursor-pointer w-5 h-5'
-                        />
-                      </FormControl>
-                      <FormLabel className='font-normal py-4 hover:cursor-pointer'>
-                        {city.name}
-                      </FormLabel>
-                    </FormItem>
-                  ))}
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <section className='max-w-screen mx-auto'>
+          <div className='absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-white to-transparent pointer-events-none'></div>
+          <div className='absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-white to-transparent pointer-events-none'></div>
+          <FormField
+            name='city'
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className='grid grid-flow-col auto-cols-max items-center gap-2 overflow-x-auto px-8'
+                  >
+                    {cities.map(city => (
+                      <FormItem
+                        className={cn(
+                          'flex items-center flex-nowrap space-x-2 space-y-0 pl-3 rounded-full border border-slate-300',
+                          field.value === city.id
+                            ? 'bg-primary-purple/10 border-primary-purple'
+                            : 'hover:bg-primary-purple hover:bg-opacity-10 hover:border-primary-purple hover:cursor-pointer',
+                        )}
+                        key={city.id}
+                      >
+                        <FormControl>
+                          <RadioGroupItem
+                            value={city.id}
+                            className='hover:cursor-pointer w-4 h-4'
+                          />
+                        </FormControl>
+                        <FormLabel className='font-normal py-3 pr-3 hover:cursor-pointer'>
+                          {city.name}
+                        </FormLabel>
+                      </FormItem>
+                    ))}
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
+        <LEDMap />
       </form>
     </Form>
   )

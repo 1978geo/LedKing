@@ -7,6 +7,7 @@ import { MediaPlayer } from '@/components/media-player'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { LedStrip } from '@/components/led-strip'
 import { LedLogo } from '@/components/led-logo'
+import { Footer } from '@/components/footer'
 
 export default function Home() {
   return (
@@ -181,11 +182,7 @@ export default function Home() {
           priority
         />
       </div>
-      <footer className='w-full flex items-center justify-center text-muted-foreground text-xs py-4'>
-        <p>
-          &copy;{new Date().getFullYear()} LEDKing.bg - Всички права запазени
-        </p>
-      </footer>
+      <Footer />
     </div>
   )
 }
