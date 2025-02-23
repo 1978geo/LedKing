@@ -37,12 +37,13 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
                 <Image
                   src={mapPinImg}
                   alt='LED Marker'
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
+                  className='h-9 object-contain'
                 />
               </PopoverTrigger>
               <PopoverContent
-                className='max-h-[200px] max-w-[200px] rounded-[8px] p-0.5 bg-white shadow-md'
+                className='rounded-[8px] p-0.5 bg-white shadow-md'
                 side='top'
                 align='center'
               >
