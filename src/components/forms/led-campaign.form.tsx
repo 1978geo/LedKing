@@ -15,8 +15,9 @@ import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { Checkbox } from '@/components/ui/checkbox'
 import { CityEntity } from '@/types/City.type'
 import LEDMap from '../led-map'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Billboard } from '@/types/Billboard.type'
+import { cn } from '@/lib/utils'
 
 interface LedCampaingFormProps {
   cities: CityEntity[]
@@ -27,7 +28,7 @@ type SubmitFormValues = z.output<typeof LedCampaingSchema>
 
 const initialValues: DefaultValues<SubmitFormValues> = {
   city: [],
-  location: '',
+  location: [],
   campaignStartDate: new Date(),
   campaignEndDate: new Date(),
   videoDuration: '',
@@ -44,6 +45,8 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
     defaultValues: initialValues,
   })
 
+  const selectedCityIds = form.watch('city')
+
   const onSubmit = (values: SubmitFormValues) => {
     console.log(values)
   }
@@ -52,13 +55,37 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
     console.error(error)
   }
 
+  const billboardsByCity = useMemo(
+    () =>
+      billboards.reduce((acc, billboard) => {
+        const city = cities.find(city => city.id === billboard.city.cityId)
+        if (!city) return acc
+
+        if (!acc[city.id]) {
+          acc[city.id] = []
+        }
+
+        acc[city.id].push(billboard)
+
+        return acc
+      }, {} as { [key: string]: Billboard[] }),
+    [billboards, cities],
+  )
+
+  const selectedBillboards = useMemo(
+    () => selectedCityIds.flatMap(cityId => billboardsByCity[cityId] || []),
+    [selectedCityIds, billboardsByCity],
+  )
+
+  console.log(selectedBillboards)
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit, onError)}
         className='space-y-5 relative'
       >
-        <section className='max-w-screen mx-auto'>
+        <div className='max-w-screen mx-auto'>
           <div className='absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-white to-transparent pointer-events-none'></div>
           <div className='absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-white to-transparent pointer-events-none'></div>
           <FormField
@@ -75,7 +102,11 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
                       return (
                         <FormItem
                           key={city.id}
-                          className='flex flex-row items-start min-w-max space-x-3 space-y-0 p-2.5 rounded-full border border-slate-400 mb-2.5'
+                          className={cn(
+                            'flex flex-row items-center min-w-max space-x-3 space-y-0 h-9 pl-3 rounded-full border border-slate-400 mb-2.5',
+                            field.value?.includes(city.id) &&
+                              'bg-primary-purple/20 border-primary-purple',
+                          )}
                         >
                           <FormControl>
                             <Checkbox
@@ -91,7 +122,7 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
                               }}
                             />
                           </FormControl>
-                          <FormLabel className='font-normal'>
+                          <FormLabel className='flex items-center font-normal h-full pr-3'>
                             {city.name}
                           </FormLabel>
                         </FormItem>
@@ -103,8 +134,11 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
               </FormItem>
             )}
           />
-        </section>
+        </div>
         <LEDMap billboards={billboards} />
+        <div>
+          <h3 className='text-2xl font-bold text-center'>Локация*</h3>
+        </div>
       </form>
     </Form>
   )
