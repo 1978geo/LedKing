@@ -2,7 +2,9 @@ import { z } from 'zod'
 
 export const LedCampaingSchema = z
   .object({
-    city: z.string().nonempty({ message: 'Изберете град' }),
+    city: z.array(z.string()).refine(value => value.some(item => item), {
+      message: 'Изберете град',
+    }),
     location: z.string().nonempty({ message: 'Изберете локация' }),
     campaignStartDate: z.coerce
       .date({ message: 'Изберете начална дата' })
