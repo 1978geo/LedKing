@@ -52,7 +52,7 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
                 align='center'
               >
                 <Image
-                  src={billboard.photo}
+                  src={billboard.photo ?? ''}
                   alt='LED location'
                   width={60}
                   height={60}
