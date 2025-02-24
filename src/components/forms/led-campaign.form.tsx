@@ -14,8 +14,8 @@ import {
 } from '@/components/ui/form'
 import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Billboard, City } from '@prisma/client'
 import { cn } from '@/lib/utils'
-import { Billboard, City } from '@/generated/client'
 import LEDMap from '../led-map'
 
 interface LedCampaingFormProps {

@@ -9,7 +9,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { Billboard } from '@/generated/client'
+import { Billboard } from '@prisma/client'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 function LEDMap({ billboards }: { billboards: Billboard[] }) {
