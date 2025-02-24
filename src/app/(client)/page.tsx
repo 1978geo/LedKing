@@ -3,7 +3,6 @@ import centerFloor from '@/assets/center-floor.png'
 import leftBar from '@/assets/left-bar.png'
 import dots from '@/assets/dots.png'
 import { MenuDialog } from '@/components/menu-dialog'
-import { MediaPlayer } from '@/components/media-player'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { LedStrip } from '@/components/led-strip'
 import { LedLogo } from '@/components/led-logo'
@@ -39,10 +38,10 @@ export default function Home() {
             ratio={16 / 9}
             className='xl:perspective-[800px] 2xl:perspective-[1000px] perspective-origin-center mx-5 mb-8 xl:ml-6 xl:-mt-10 2xl:-mt-18 z-1'
           >
-            {/* <iframe
+            <iframe
               width='560'
               height='315'
-              src='https://www.youtube.com/embed/tfwE-PLRMrU?si=b2XLFgpz2gBXSkwS?Version=3&autoplay=1&showinfo=0&loop=1'
+              src='https://www.youtube.com/embed/yyW4paANpV8?si=6NWnl_lS3h8RZ4X8'
               title='YouTube video player'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerPolicy='strict-origin-when-cross-origin'
@@ -54,22 +53,7 @@ export default function Home() {
                 boxShadow:
                   '0 -1px 5px rgba(184, 39, 252, 0.3), 0 5px 10px rgba(44, 144, 252, 0.3), 0 5px 10px rgba(184, 253, 51, 0.3), 0 5px 20px rgba(254, 200, 55, 0.3), 0 5px 30px rgba(253, 24, 146, 0.3), 0 10px 40px rgba(184, 39, 252, 0.3), 0 20px 50px rgba(44, 144, 252, 0.3), 0 20px 50px rgba(184, 253, 51, 0.3), 0 20px 60px rgba(254, 200, 55, 0.3), 0 20px 80px rgba(253, 24, 146, 0.3), inset 0 0 5px rgba(184, 39, 252, 0.7), inset 0 0 10px rgba(44, 144, 252, 1), inset 0 0 10px rgba(184, 253, 51, 1), inset 0 0 20px rgba(254, 200, 55, 1), inset 0 0 30px rgba(253, 24, 146, 1)',
               }}
-            ></iframe> */}
-            <MediaPlayer
-              source='LEDKING.mp4'
-              controls
-              muted
-              autoPlay
-              loop
-              playsInline
-              className='border border-transparent rounded-sm overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
-              style={{
-                background:
-                  'linear-gradient(to right, rgba(184, 39, 252, 1), rgba(44, 144, 252, 1), rgba(184, 253, 51, 1), rgba(254, 200, 55, 1), rgba(253, 24, 146, 1))',
-                boxShadow:
-                  '0 -1px 5px rgba(184, 39, 252, 0.3), 0 5px 10px rgba(44, 144, 252, 0.3), 0 5px 10px rgba(184, 253, 51, 0.3), 0 5px 20px rgba(254, 200, 55, 0.3), 0 5px 30px rgba(253, 24, 146, 0.3), 0 10px 40px rgba(184, 39, 252, 0.3), 0 20px 50px rgba(44, 144, 252, 0.3), 0 20px 50px rgba(184, 253, 51, 0.3), 0 20px 60px rgba(254, 200, 55, 0.3), 0 20px 80px rgba(253, 24, 146, 0.3), inset 0 0 5px rgba(184, 39, 252, 0.7), inset 0 0 10px rgba(44, 144, 252, 1), inset 0 0 10px rgba(184, 253, 51, 1), inset 0 0 20px rgba(254, 200, 55, 1), inset 0 0 30px rgba(253, 24, 146, 1)',
-              }}
-            />
+            ></iframe>
           </AspectRatio>
         </div>
 
