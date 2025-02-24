@@ -33,13 +33,13 @@ export function MenuDialog({ trigger }: MenuDialogProps) {
         {trigger ?? (
           <Button
             variant='outline'
-            className='w-full xl:w-[284px] border-3 hover:cursor-pointer hover:bg-white hover:text-background/70 hover:border-b-white bg-transparent border-b-gold border-t-white/90 border-l-white/90 border-r-white/90 h-[68px] text-2xl font-semibold drop-shadow-text'
+            className='text-white hover:text-primary-purple w-full xl:w-[284px] border-3 hover:cursor-pointer hover:bg-white hover:border-b-white bg-transparent border-b-gold border-t-white/90 border-l-white/90 border-r-white/90 h-[68px] text-2xl font-semibold drop-shadow-text'
           >
             СТАРТИРАЙ ТУК
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className='flex px-4 flex-col gap-y-4 bg-[rgba(171,168,187,0.2)]  backdrop-blur-xl w-[calc(100%-20px)] mx-auto rounded-md border-border xl:max-w-xs'>
+      <DialogContent className='text-white/60 flex px-4 flex-col gap-y-4 bg-[rgba(171,168,187,0.3)]  backdrop-blur-xl w-[calc(100%-20px)] mx-auto rounded-md xl:max-w-xs border-transparent'>
         <DialogTitle></DialogTitle>
         <DialogDescription className='hidden'></DialogDescription>
         <Link

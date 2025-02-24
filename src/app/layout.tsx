@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${playSans.variable} antialiased`}>{children}</body>
+      <body className={`${playSans.variable} antialiased bg-site-bg`}>
+        {children}
+      </body>
     </html>
   )
 }

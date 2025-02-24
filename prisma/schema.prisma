@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model City {
+  id         String   @id @default(cuid())
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  billboards Billboard[]
+}
+
+model Billboard {
+  id           String   @id @default(cuid())
+  address      String
+  lat          Float
+  lng          Float
+  type         String
+  countScreens Int
+  width        Int
+  height       Int
+  photo        String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  cityId       String
+  city         City     @relation(fields: [cityId], references: [id])
+}

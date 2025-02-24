@@ -1,14 +1,13 @@
 'use server'
 
-import { CityEntity } from '@/types/City.type'
+import { prisma } from '@/lib/prisma'
 
-export const getCities = async (): Promise<CityEntity[]> => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL ?? ''}/api/cities`,
-    {
-      cache: 'force-cache', // Ensure fresh data (optional)
+export const getCities = async () => {
+  const cities = await prisma.city.findMany({
+    include: {
+      billboards: true,
     },
-  )
-  if (!response.ok) throw new Error('Failed to fetch cities')
-  return response.json()
+  })
+
+  return cities
 }

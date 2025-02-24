@@ -11,7 +11,7 @@ import { Footer } from '@/components/footer'
 
 export default function Home() {
   return (
-    <div className='flex flex-col w-full min-h-screen relative'>
+    <div className='flex flex-col w-full min-h-screen relative bg-site-bg'>
       <Image
         src={leftBar}
         alt='background'
@@ -78,6 +78,7 @@ export default function Home() {
             <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[640px]'>
               <h1
                 className='
+            text-white
             text-[58px]
             leading-[58px]
             font-semibold
@@ -98,6 +99,7 @@ export default function Home() {
               </h1>
               <h2
                 className='
+          text-white
             text-[104px]
             leading-[104px]
             font-semibold
@@ -123,6 +125,7 @@ export default function Home() {
               <h2
                 className='
             text-[66px]
+            text-white
             leading-[66px]
             font-semibold
             p-0
@@ -143,6 +146,7 @@ export default function Home() {
               <h2
                 className='
             text-[78px]
+            text-white
             leading-[78px]
             font-semibold
             p-0

@@ -1,8 +1,9 @@
 'use client'
 
 import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import React, { useMemo } from 'react'
 import { DefaultValues, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
   FormControl,
@@ -13,14 +14,12 @@ import {
 } from '@/components/ui/form'
 import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { Checkbox } from '@/components/ui/checkbox'
-import { CityEntity } from '@/types/City.type'
-import LEDMap from '../led-map'
-import React, { useMemo } from 'react'
-import { Billboard } from '@/types/Billboard.type'
 import { cn } from '@/lib/utils'
+import { Billboard, City } from '@/generated/client'
+import LEDMap from '../led-map'
 
 interface LedCampaingFormProps {
-  cities: CityEntity[]
+  cities: City[]
   billboards: Billboard[]
 }
 
@@ -58,7 +57,7 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
   const billboardsByCity = useMemo(
     () =>
       billboards.reduce((acc, billboard) => {
-        const city = cities.find(city => city.id === billboard.city.cityId)
+        const city = cities.find(city => city.id === billboard.cityId)
         if (!city) return acc
 
         if (!acc[city.id]) {
