@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Play } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 
 const playSans = Play({
   variable: '--font-play-sans',
@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${playSans.variable} antialiased`}>{children}</body>
+      <body className={`${playSans.variable} antialiased bg-site-bg`}>
+        {children}
+      </body>
     </html>
   )
 }

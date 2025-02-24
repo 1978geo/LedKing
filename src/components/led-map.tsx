@@ -3,9 +3,13 @@
 import Image from 'next/image'
 import React from 'react'
 import Map, { Marker } from 'react-map-gl/mapbox'
-import { Billboard } from '@/types/Billboard.type'
 import mapPinImg from '@/assets/map-pin.png'
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { Billboard } from '@prisma/client'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 function LEDMap({ billboards }: { billboards: Billboard[] }) {
@@ -27,8 +31,8 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
         {billboards.map((billboard, index) => (
           <Marker
             key={index}
-            longitude={billboard.location.lng}
-            latitude={billboard.location.lat}
+            longitude={billboard.lng}
+            latitude={billboard.lat}
             anchor='bottom'
             className='curosr-pointer'
           >
@@ -48,7 +52,7 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
                 align='center'
               >
                 <Image
-                  src={billboard.photo}
+                  src={billboard.photo ?? ''}
                   alt='LED location'
                   width={60}
                   height={60}

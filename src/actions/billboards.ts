@@ -1,23 +1,74 @@
 'use server'
 
+import { prisma } from '@/lib/prisma'
+import { Prisma } from '@prisma/client'
+
 export const getBillboards = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/billboards`,
-    {
-      cache: 'force-cache',
+  const billboards = await prisma.billboard.findMany({
+    include: {
+      city: true,
     },
-  )
-  if (!res.ok) throw new Error('Failed to fetch cities')
-  return await res.json()
+  })
+
+  return billboards
 }
 
 export const getBillboardsByCity = async (city: string) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/billboards?cityId=${city}`,
-    {
-      cache: 'force-cache',
+  const billboards = await prisma.billboard.findMany({
+    where: {
+      city: {
+        name: city,
+      },
     },
-  )
-  if (!res.ok) throw new Error('Failed to fetch cities')
-  return await res.json()
+    include: {
+      city: true,
+    },
+  })
+
+  return billboards
+}
+
+export const getBillboardById = async (id: string) => {
+  const billboard = await prisma.billboard.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      city: true,
+    },
+  })
+
+  return billboard
+}
+
+export const createBillboard = async (data: Prisma.BillboardCreateInput) => {
+  const billboard = await prisma.billboard.create({
+    data,
+  })
+
+  return billboard
+}
+
+export const updateBillboard = async (
+  id: string,
+  data: Prisma.BillboardUpdateInput,
+) => {
+  const billboard = await prisma.billboard.update({
+    where: {
+      id,
+    },
+    data,
+  })
+
+  return billboard
+}
+
+export const deleteBillboard = async (id: string) => {
+  const billboard = await prisma.billboard.delete({
+    where: {
+      id,
+    },
+  })
+
+  return billboard
 }
