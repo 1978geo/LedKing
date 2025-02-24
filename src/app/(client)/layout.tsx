@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Play } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 
 const playSans = Play({
   variable: '--font-play-sans',
