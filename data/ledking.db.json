@@ -903,7 +903,7 @@
       "address": "ул. Георги С. Раковски №9 - Mall Yambol",
       "location": {
         "lat": 42.484647,
-        "lng": 265097640
+        "lng": 26.509764
       },
       "photo": "https://res.cloudinary.com/dyltmujve/image/upload/v1730420441/Mall_Yambol_btbgmh.jpg",
       "typeLED": "LED Екран",
@@ -922,7 +922,7 @@
       "address": "ул. Преслав №35 към Mall Yambol",
       "location": {
         "lat": 42.484647,
-        "lng": 265097640
+        "lng": 26.509764
       },
       "photo": "https://res.cloudinary.com/dyltmujve/image/upload/v1730420359/Yambol_1.2_qomlwg.jpg",
       "typeLED": "LED Екран",

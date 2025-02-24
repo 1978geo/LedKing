@@ -46,14 +46,6 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
 
   const selectedCityIds = form.watch('city')
 
-  const onSubmit = (values: SubmitFormValues) => {
-    console.log(values)
-  }
-
-  const onError = (error: unknown) => {
-    console.error(error)
-  }
-
   const billboardsByCity = useMemo(
     () =>
       billboards.reduce((acc, billboard) => {
@@ -76,7 +68,13 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
     [selectedCityIds, billboardsByCity],
   )
 
-  console.log(selectedBillboards)
+  const onSubmit = (values: SubmitFormValues) => {
+    console.log(values, selectedBillboards)
+  }
+
+  const onError = (error: unknown) => {
+    console.error(error)
+  }
 
   return (
     <Form {...form}>
@@ -119,6 +117,7 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
                                       ),
                                     )
                               }}
+                              className='rounded-full'
                             />
                           </FormControl>
                           <FormLabel className='flex items-center font-normal h-full pr-3'>
