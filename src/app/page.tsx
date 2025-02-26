@@ -45,7 +45,6 @@ export default function Home() {
               title='YouTube video player'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerPolicy='strict-origin-when-cross-origin'
-              allowFullScreen
               className='border border-transparent rounded-lg overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
               style={{
                 background:
