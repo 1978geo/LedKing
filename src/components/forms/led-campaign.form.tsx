@@ -154,9 +154,9 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
                               'bg-primary-purple/20 border-primary-purple text-primary-purple',
                           )}
                         >
-                          <div className='flex items-center justify-between'>
-                            <div className='flex items-center gap-x-4'>
-                              <FormControl>
+                          <FormControl>
+                            <div className='flex items-center justify-between'>
+                              <div className='flex items-center gap-x-4'>
                                 <Checkbox
                                   checked={field.value?.includes(billboard.id)}
                                   onCheckedChange={checked => {
@@ -173,73 +173,74 @@ function LedCampaingForm({ cities, billboards }: LedCampaingFormProps) {
                                   }}
                                   className='rounded-full size-6'
                                 />
-                              </FormControl>
-                              <FormLabel className='text-2xl'>
-                                {billboard.city.name}
-                              </FormLabel>
+
+                                <FormLabel className='text-2xl'>
+                                  {billboard.city.name}
+                                </FormLabel>
+                              </div>
+                              <div className='flex items-center justify-end gap-x-4'>
+                                <MapPinIcon size={24} />
+                                <ImageIcon size={24} />
+                              </div>
                             </div>
-                            <div className='flex items-center justify-end gap-x-4'>
-                              <MapPinIcon size={24} />
-                              <ImageIcon size={24} />
+
+                            <div
+                              className={cn(
+                                'flex h-[1px] w-full bg-gray-200',
+                                field.value?.includes(billboard.id) &&
+                                  'bg-primary-purple',
+                              )}
+                            />
+
+                            <div className='flex flex-col gap-y-0.5'>
+                              <h2 className='font-semibold text-lg text-wrap'>
+                                Адрес:
+                              </h2>
+                              <p>{billboard.address}</p>
                             </div>
-                          </div>
 
-                          <div
-                            className={cn(
-                              'flex h-[1px] w-full bg-gray-200',
-                              field.value?.includes(billboard.id) &&
-                                'bg-primary-purple',
-                            )}
-                          />
+                            <div
+                              className={cn(
+                                'flex h-[1px] w-full bg-gray-200',
+                                field.value?.includes(billboard.id) &&
+                                  'bg-primary-purple',
+                              )}
+                            />
 
-                          <div className='flex flex-col gap-y-0.5'>
-                            <h2 className='font-semibold text-lg text-wrap'>
-                              Адрес:
-                            </h2>
-                            <p>{billboard.address}</p>
-                          </div>
+                            <div className='flex flex-col gap-y-0.5'>
+                              <h2 className='font-semibold text-lg text-wrap'>
+                                Вид на екрана:
+                              </h2>
+                              <p>{billboard.type}</p>
+                            </div>
 
-                          <div
-                            className={cn(
-                              'flex h-[1px] w-full bg-gray-200',
-                              field.value?.includes(billboard.id) &&
-                                'bg-primary-purple',
-                            )}
-                          />
+                            <div
+                              className={cn(
+                                'flex h-[1px] w-full bg-gray-200',
+                                field.value?.includes(billboard.id) &&
+                                  'bg-primary-purple',
+                              )}
+                            />
 
-                          <div className='flex flex-col gap-y-0.5'>
-                            <h2 className='font-semibold text-lg text-wrap'>
-                              Вид на екрана:
-                            </h2>
-                            <p>{billboard.type}</p>
-                          </div>
-
-                          <div
-                            className={cn(
-                              'flex h-[1px] w-full bg-gray-200',
-                              field.value?.includes(billboard.id) &&
-                                'bg-primary-purple',
-                            )}
-                          />
-
-                          <div className='flex flex-col gap-y-0.5'>
-                            <h2 className='font-semibold text-lg text-wrap'>
-                              Размери:
-                            </h2>
-                            <p>
-                              {Intl.NumberFormat('bg-BG', {
-                                style: 'unit',
-                                unit: 'centimeter',
-                                unitDisplay: 'short',
-                              }).format(billboard.width)}{' '}
-                              x{' '}
-                              {Intl.NumberFormat('bg-BG', {
-                                style: 'unit',
-                                unit: 'centimeter',
-                                unitDisplay: 'short',
-                              }).format(billboard.height)}
-                            </p>
-                          </div>
+                            <div className='flex flex-col gap-y-0.5'>
+                              <h2 className='font-semibold text-lg text-wrap'>
+                                Размери:
+                              </h2>
+                              <p>
+                                {Intl.NumberFormat('bg-BG', {
+                                  style: 'unit',
+                                  unit: 'centimeter',
+                                  unitDisplay: 'short',
+                                }).format(billboard.width)}{' '}
+                                x{' '}
+                                {Intl.NumberFormat('bg-BG', {
+                                  style: 'unit',
+                                  unit: 'centimeter',
+                                  unitDisplay: 'short',
+                                }).format(billboard.height)}
+                              </p>
+                            </div>
+                          </FormControl>
                         </FormItem>
                       )
                     }}
