@@ -28,7 +28,7 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
         }}
         mapStyle='mapbox://styles/mapbox/streets-v11'
       >
-        {billboards.map((billboard, index) => (
+        {billboards.map(billboard => (
           <Marker
             key={`marker-${billboard.id}`}
             longitude={billboard.lng}
