@@ -168,52 +168,53 @@ function LedCampaingForm({
                           <FormControl>
                             <div className='flex flex-col gap-y-2'>
                               <div className='flex items-center justify-between'>
-                                <div className='flex items-center gap-x-4'>
-                                  <input
-                                    id={billboard.id}
-                                    type='checkbox'
-                                    aria-checked={field.value?.includes(
-                                      billboard.id,
-                                    )}
-                                    checked={field.value?.includes(
-                                      billboard.id,
-                                    )}
-                                    onChange={e =>
-                                      e.target.checked
-                                        ? field.onChange([
-                                            ...field.value,
-                                            billboard.id,
-                                          ])
-                                        : field.onChange(
-                                            field.value?.filter(
-                                              value => value !== billboard.id,
-                                            ),
-                                          )
-                                    }
-                                    className='absolute top-0 left-0 peer size-4 shrink-0 rounded-full opacity-0 z-20'
-                                  />
-                                  <div
-                                    className={cn(
-                                      'size-5 border border-slate-400 rounded-full flex items-center justify-center z-10',
-                                      field.value?.includes(billboard.id) &&
-                                        'bg-primary-purple border-primary-purple',
-                                    )}
-                                  >
-                                    {field.value?.includes(billboard.id) && (
-                                      <CheckIcon className='size-4 text-white' />
-                                    )}
-                                  </div>
-                                  <label
-                                    htmlFor={billboard.id}
-                                    className='flex items-center font-normal h-full pr-3'
-                                  >
+                                <label
+                                  htmlFor={billboard.id}
+                                  className='relative flex items-center justify-between w-full font-normal h-full pr-3'
+                                >
+                                  <div className='flex items-center gap-x-4'>
+                                    <input
+                                      id={billboard.id}
+                                      type='checkbox'
+                                      aria-checked={field.value?.includes(
+                                        billboard.id,
+                                      )}
+                                      checked={field.value?.includes(
+                                        billboard.id,
+                                      )}
+                                      onChange={e =>
+                                        e.target.checked
+                                          ? field.onChange([
+                                              ...field.value,
+                                              billboard.id,
+                                            ])
+                                          : field.onChange(
+                                              field.value?.filter(
+                                                value => value !== billboard.id,
+                                              ),
+                                            )
+                                      }
+                                      className='absolute top-0 left-0 peer size-4 shrink-0 rounded-full opacity-0 z-20'
+                                    />
+                                    <div
+                                      className={cn(
+                                        'size-5 border border-slate-400 rounded-full flex items-center justify-center z-10',
+                                        field.value?.includes(billboard.id) &&
+                                          'bg-primary-purple border-primary-purple',
+                                      )}
+                                    >
+                                      {field.value?.includes(billboard.id) && (
+                                        <CheckIcon className='size-4 text-white' />
+                                      )}
+                                    </div>
+
                                     {billboard.city.name}
-                                  </label>
-                                </div>
-                                <div className='flex items-center justify-end gap-x-4'>
-                                  <MapPinIcon size={24} />
-                                  <ImageIcon size={24} />
-                                </div>
+                                  </div>
+                                  <div className='flex items-center justify-end gap-x-4'>
+                                    <MapPinIcon size={24} />
+                                    <ImageIcon size={24} />
+                                  </div>
+                                </label>
                               </div>
 
                               <div
