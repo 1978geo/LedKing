@@ -14,7 +14,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 
 function LEDMap({ billboards }: { billboards: Billboard[] }) {
   return (
-    <div className='flex w-full h-[400px]'>
+    <div className='flex w-full h-[400px] lg:h-[700px]'>
       <Map
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
         initialViewState={{
