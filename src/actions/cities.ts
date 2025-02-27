@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import { CityWithBillboards } from '@/types/City'
 import { Prisma } from '@prisma/client'
 
 export const getCities = async () => {
@@ -10,7 +11,7 @@ export const getCities = async () => {
     },
   })
 
-  return cities
+  return cities as CityWithBillboards[]
 }
 
 export const getCityById = async (id: string) => {
@@ -21,7 +22,7 @@ export const getCityById = async (id: string) => {
     },
   })
 
-  return city
+  return city as CityWithBillboards
 }
 
 export const createCity = async (data: Prisma.CityCreateInput) => {
@@ -35,10 +36,13 @@ export const createCity = async (data: Prisma.CityCreateInput) => {
 export const updateCity = async (id: string, data: Prisma.CityUpdateInput) => {
   const city = await prisma.city.update({
     where: { id },
+    include: {
+      billboards: true,
+    },
     data,
   })
 
-  return city
+  return city as CityWithBillboards
 }
 
 export const deleteCity = async (id: string) => {

@@ -15,3 +15,5 @@ export interface Billboard {
   createdAt: Date
   updatedAt: Date
 }
+
+export type BillboardWithCity = Billboard & { city: City }

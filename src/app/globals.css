@@ -190,7 +190,7 @@
 
 html,
 body {
-  @apply min-h-screen w-screen font-play text-base leading-6 text-foreground bg-background;
+  @apply h-screen w-screen font-play text-base leading-6 text-foreground bg-background;
 }
 
 * {

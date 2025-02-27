@@ -7,3 +7,5 @@ export interface City {
   updatedAt: Date
   billboards: Billboard[]
 }
+
+export type CityWithBillboards = City & { billboards: Billboard[] }

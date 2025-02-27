@@ -7,8 +7,8 @@ import Link from 'next/link'
 
 export default function LedLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='flex flex-col flex-1 w-full min-h-screen bg-site-bg bg-gradient-to-r from-[rgba(6,33,201,0.5)] to-[rgba(176,82,184,0.5)]'>
-      <header className='flex flex-col'>
+    <div className='flex flex-col flex-1 w-full bg-site-bg'>
+      <header className='flex flex-col bg-gradient-to-r from-[rgba(6,33,201,0.5)] to-[rgba(176,82,184,0.5)]'>
         <LedStrip />
         <div className='flex items-center justify-between px-5 py-3 lg:container lg:mx-auto'>
           <LedLogo className='w-[74px] h-[56px] xl:w-[94px] xl:h-[76px]' />
@@ -24,8 +24,10 @@ export default function LedLayout({ children }: { children: React.ReactNode }) {
           <Navbar className='hidden lg:flex' />
         </div>
       </header>
-      <main className='flex flex-col flex-1 overflow-x-hidden'>{children}</main>
-      <footer className='h-16 flex flex-col md:flex-row items-center justify-center gap-x-4 gap-y-1'>
+      <main className='flex flex-col flex-1 overflow-x-hidden bg-white'>
+        {children}
+      </main>
+      <footer className='h-16 flex flex-col md:flex-row items-center justify-center gap-x-4 gap-y-1 bg-gradient-to-r from-[rgba(6,33,201,0.5)] to-[rgba(176,82,184,0.5)]'>
         <p className='text-muted-foreground text-xs'>
           &copy; LEDKing.bg - Всички права запазени.
         </p>

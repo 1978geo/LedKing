@@ -30,7 +30,7 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
       >
         {billboards.map((billboard, index) => (
           <Marker
-            key={index}
+            key={`marker-${billboard.id}`}
             longitude={billboard.lng}
             latitude={billboard.lat}
             anchor='bottom'

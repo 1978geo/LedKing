@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import { BillboardWithCity } from '@/types/Billboard'
 import { Prisma } from '@prisma/client'
 
 export const getBillboards = async () => {
@@ -10,7 +11,7 @@ export const getBillboards = async () => {
     },
   })
 
-  return billboards
+  return billboards as BillboardWithCity[]
 }
 
 export const getBillboardsByCity = async (city: string) => {
@@ -25,7 +26,7 @@ export const getBillboardsByCity = async (city: string) => {
     },
   })
 
-  return billboards
+  return billboards as BillboardWithCity[]
 }
 
 export const getBillboardById = async (id: string) => {
