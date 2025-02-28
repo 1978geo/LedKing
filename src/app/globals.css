@@ -201,7 +201,7 @@ body {
   }
 }
 
-.shadow {
+.rainbow-shadow {
   &:before,
   &:after {
     content: '';
@@ -223,7 +223,7 @@ body {
     );
     background-size: 400%;
     z-index: -1;
-    animation: shadow 20s linear infinite;
+    animation: rainbow-shadow 20s linear infinite;
   }
 
   &:after {
@@ -236,7 +236,7 @@ body {
   }
 }
 
-@keyframes shadow {
+@keyframes rainbow-shadow {
   0% {
     background-position: 0 0;
   }
@@ -245,5 +245,11 @@ body {
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+@media screen and (display-mode: standalone) {
+  header {
+    height: 70px;
   }
 }

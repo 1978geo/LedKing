@@ -1,7 +1,9 @@
+import { AppHeader } from '@/components/admin/app-header'
+
 export default function DashboardPage() {
   return (
-    <div className='px-8'>
-      <h1>Dashboard</h1>
+    <div>
+      <AppHeader />
     </div>
   )
 }
