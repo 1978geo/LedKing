@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Play } from 'next/font/google'
 import { DrawerCSSProvider } from '@/providers/drawer-css-provider'
 import { AppHeader } from '@/components/admin/app-header'
-import { AppSidebar } from '@/components/admin/app-sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import '../globals.css'
 
@@ -249,8 +248,7 @@ export default function AdminRootLayout({
       <body className={`${playSans.variable} antialiased`}>
         <DrawerCSSProvider>
           <div className='flex flex-col lg:flex-row w-full h-screen overflow-hidden'>
-            <AppSidebar />
-            <main className='flex flex-col flex-1 shrink-0 overflow-y-auto'>
+            <main className='flex flex-col flex-1 shrink-0 overflow-y-auto bg-slate-200'>
               <AppHeader className='hidden lg:block' />
               {children}
             </main>
