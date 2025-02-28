@@ -308,17 +308,17 @@ function LedCampaingForm({
                 gridTemplateColumns: '210px 410px 1fr 130px 150px 120px 120px',
               }}
             >
-              <div className='flex items-center px-2'>Град</div>
-              <div className='flex items-center px-2'>Адрес</div>
-              <div className='flex items-center break-words px-2'>
+              <div className='flex items-center px-4'>Град</div>
+              <div className='flex items-center px-4'>Адрес</div>
+              <div className='flex items-center break-words px-4'>
                 Брой Екрани
               </div>
-              <div className='flex items-center px-2'>Вид на Екрана</div>
-              <div className='flex items-center px-2'>Размер</div>
-              <div className='flex items-center text-center px-2'>
+              <div className='flex items-center px-4'>Вид на Екрана</div>
+              <div className='flex items-center px-4'>Размер</div>
+              <div className='flex items-center text-center px-4'>
                 GPS Координати
               </div>
-              <div className='flex items-center text-center px-2'>Снимка</div>
+              <div className='flex items-center text-center px-4'>Снимка</div>
             </div>
 
             <FormField
@@ -349,7 +349,7 @@ function LedCampaingForm({
                                     '210px 410px 1fr 130px 150px 120px 120px',
                                 }}
                               >
-                                <div className='flex items-center justify-between px-2 border-r border-gray-300'>
+                                <div className='flex items-center justify-between px-4 border-r border-gray-300'>
                                   <label
                                     htmlFor={billboard.id}
                                     className='relative flex items-center justify-between w-full font-normal h-full pr-3'
@@ -397,19 +397,19 @@ function LedCampaingForm({
                                   </label>
                                 </div>
 
-                                <div className='flex flex-col gap-y-0.5 text-sm justify-center px-2 border-r border-gray-300'>
+                                <div className='flex flex-col gap-y-0.5 text-sm justify-center px-4 border-r border-gray-300'>
                                   {billboard.address}
                                 </div>
 
-                                <div className='flex flex-col gap-y-0.5 text-sm text-center justify-center items-center px-2 border-r border-gray-300'>
+                                <div className='flex flex-col gap-y-0.5 text-sm text-center justify-center items-center px-4 border-r border-gray-300'>
                                   {billboard.countScreens}
                                 </div>
 
-                                <div className='flex flex-col gap-y-0.5 text-sm  justify-center items-center px-2 border-r border-gray-300'>
+                                <div className='flex flex-col gap-y-0.5 text-sm  justify-center items-center px-4 border-r border-gray-300'>
                                   {billboard.type}
                                 </div>
 
-                                <div className='flex flex-col gap-y-0.5 text-sm  justify-center items-center px-2 border-r border-gray-300'>
+                                <div className='flex flex-col gap-y-0.5 text-sm  justify-center items-center px-4 border-r border-gray-300'>
                                   {Intl.NumberFormat('bg-BG', {
                                     style: 'unit',
                                     unit: 'centimeter',
@@ -423,7 +423,7 @@ function LedCampaingForm({
                                   }).format(billboard.height)}
                                 </div>
 
-                                <div className='flex justify-center items-center px-2 border-r border-gray-300'>
+                                <div className='flex justify-center items-center px-4 border-r border-gray-300'>
                                   <MapPinIcon size={24} />
                                 </div>
 
