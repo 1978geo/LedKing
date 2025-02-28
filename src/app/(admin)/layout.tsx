@@ -248,10 +248,10 @@ export default function AdminRootLayout({
       </head>
       <body className={`${playSans.variable} antialiased`}>
         <DrawerCSSProvider>
-          <div className='flex flex-col md:flex-row w-full h-screen overflow-hidden'>
+          <div className='flex flex-col lg:flex-row w-full h-screen overflow-hidden'>
             <AppSidebar />
             <main className='flex flex-col flex-1 shrink-0 overflow-y-auto'>
-              <AppHeader className='hidden md:block' />
+              <AppHeader className='hidden lg:block' />
               {children}
             </main>
           </div>

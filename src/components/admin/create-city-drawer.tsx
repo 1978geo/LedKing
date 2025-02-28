@@ -27,14 +27,14 @@ export function CreateCityDrawer() {
           <PlusIcon />
         </Button>
       </DrawerTrigger>
-      <DrawerContent className='h-[42vh]'>
+      <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Add New City</DrawerTitle>
-          <DrawerDescription>
+          <DrawerTitle className='text-center'>Add New City</DrawerTitle>
+          <DrawerDescription className='text-center'>
             New city will be added to your list
           </DrawerDescription>
         </DrawerHeader>
-        <div className='h-full p-6'>
+        <div className='h-full px-8 pb-8'>
           <CreateCityForm onSubmit={() => setOpen(false)} />
         </div>
       </DrawerContent>

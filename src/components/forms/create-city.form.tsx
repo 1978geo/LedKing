@@ -46,7 +46,7 @@ export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className='w-full space-y-6 px-6'
+        className='w-full space-y-5 max-w-xl mx-auto'
       >
         <FormField
           control={form.control}

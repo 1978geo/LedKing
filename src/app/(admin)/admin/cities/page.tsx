@@ -8,10 +8,10 @@ export default async function CitiesPage() {
 
   return (
     <>
-      <AppHeader className='flex items-center justify-between p-0 px-6 py-4 bg-white/60 backdrop-blur-md'>
+      <AppHeader className='lg:hidden flex items-center justify-between p-0 px-6 py-4 bg-white/60 backdrop-blur-md'>
         <CreateCityDrawer />
       </AppHeader>
-      <div className='flex h-full flex-1 flex-col p-4 bg-slate-200/90 overflow-y-auto pb-26'>
+      <div className='lg:hidden flex h-full flex-1 flex-col p-4 bg-slate-200/90 overflow-y-auto pb-26'>
         {cities.map(city => (
           <CityRow
             key={city.id}
@@ -19,6 +19,7 @@ export default async function CitiesPage() {
           />
         ))}
       </div>
+      <div className='hidden lg:flex flex-col px-8'>Desktop</div>
     </>
   )
 }
