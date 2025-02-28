@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/prisma'
 import { CityWithBillboards } from '@/types/City'
 import { Prisma } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 
 export const getCities = async () => {
   const cities = await prisma.city.findMany({
@@ -30,6 +31,7 @@ export const createCity = async (data: Prisma.CityCreateInput) => {
     data,
   })
 
+  revalidatePath('/admin/cities')
   return city
 }
 

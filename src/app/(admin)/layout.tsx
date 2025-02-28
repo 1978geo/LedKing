@@ -1,7 +1,9 @@
-import { AppHeader } from '@/components/admin/app-header'
-import { AppSidebar } from '@/components/admin/app-sidebar'
 import type { Metadata } from 'next'
 import { Play } from 'next/font/google'
+import { DrawerCSSProvider } from '@/providers/drawer-css-provider'
+import { AppHeader } from '@/components/admin/app-header'
+import { AppSidebar } from '@/components/admin/app-sidebar'
+import { Toaster } from '@/components/ui/sonner'
 import '../globals.css'
 
 const playSans = Play({
@@ -22,7 +24,10 @@ export default function AdminRootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
+    <html
+      lang='en'
+      suppressHydrationWarning
+    >
       <head>
         <link
           rel='icon'
@@ -242,13 +247,16 @@ export default function AdminRootLayout({
         />
       </head>
       <body className={`${playSans.variable} antialiased`}>
-        <div className='flex flex-col md:flex-row w-full h-screen overflow-hidden'>
-          <AppSidebar />
-          <main className='flex flex-col flex-1 shrink-0 overflow-y-auto'>
-            <AppHeader className='hidden md:block' />
-            {children}
-          </main>
-        </div>
+        <DrawerCSSProvider>
+          <div className='flex flex-col md:flex-row w-full h-screen overflow-hidden'>
+            <AppSidebar />
+            <main className='flex flex-col flex-1 shrink-0 overflow-y-auto'>
+              <AppHeader className='hidden md:block' />
+              {children}
+            </main>
+          </div>
+        </DrawerCSSProvider>
+        <Toaster />
       </body>
     </html>
   )
