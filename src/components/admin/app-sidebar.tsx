@@ -11,8 +11,8 @@ export function AppSidebar() {
   const pathname = usePathname()
 
   return (
-    <nav className='flex flex-col w-60 border-r border-border h-screen p-4'>
-      <div className='flex items-center gap-x-3 mb-6 mt-4'>
+    <nav className='fixed bottom-6 left-5 right-5 md:relative flex md:flex-col md:w-60 md:border-r md:border-border md:h-screen md:p-4'>
+      <div className='hidden md:flex items-center gap-x-3 mb-6 mt-4'>
         <Image
           src={logo}
           alt='admin logo'
@@ -22,7 +22,7 @@ export function AppSidebar() {
         />
         <h3 className='font-semibold text-2xl'>LedKing</h3>
       </div>
-      <ul className='space-y-2 w-full flex flex-1 flex-col h-full'>
+      <ul className='hidden space-y-2 w-full md:flex flex-1 flex-col h-full'>
         {admingMenuItems.map(item => (
           <li
             key={item.title}
@@ -42,6 +42,28 @@ export function AppSidebar() {
             </Link>
           </li>
         ))}
+      </ul>
+
+      <ul className='md:hidden max-w-screen w-auto mx-auto h-full p-2.5 rounded-full overflow-hidden bg-slate-950/70 backdrop-blur flex items-center justify-between gap-x-1'>
+        {admingMenuItems
+          .filter(item => item.href !== '/admin/settings')
+          .map(item => (
+            <li
+              key={item.title}
+              className='flex items-center justify-center rounded-full'
+            >
+              <Link
+                href={item.href}
+                className={cn(
+                  'text-white/60 flex items-center justify-center size-11 rounded-full ',
+                  pathname === item.href ? ' bg-blue-600 text-white' : '',
+                )}
+              >
+                <item.icon className='size-5' />
+                <span className='hidden md:inline'>{item.title}</span>
+              </Link>
+            </li>
+          ))}
       </ul>
     </nav>
   )
