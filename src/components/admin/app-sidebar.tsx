@@ -33,7 +33,7 @@ export function AppSidebar() {
               className={cn(
                 'flex w-full text-md font-medium rounded-xl border-l-2 border-l-transparent items-center text-slate-500 gap-x-3 hover:bg-blue-100/80 hover:cursor-pointer py-3 px-4',
                 pathname === item.href
-                  ? 'border-l-blue-600 bg-blue-100/80 text-blue-600'
+                  ? 'border-l-primary bg-blue-100/80 text-primary'
                   : '',
               )}
             >
@@ -56,7 +56,7 @@ export function AppSidebar() {
                 href={item.href}
                 className={cn(
                   'text-white/60 flex items-center justify-center size-11 rounded-full ',
-                  pathname === item.href ? ' bg-blue-600 text-white' : '',
+                  pathname === item.href ? 'bg-primary text-white' : '',
                 )}
               >
                 <item.icon className='size-5' />

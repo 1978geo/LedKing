@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/popover'
 import { Button } from '../ui/button'
 import { Calendar } from '../ui/calendar'
+import { Slider } from '../ui/slider'
 
 type BillboardWithCity = Billboard & { city: City }
 type CityWithBillboards = City & { billboards: Billboard[] }
@@ -41,7 +42,7 @@ const initialValues: DefaultValues<SubmitFormValues> = {
   location: [],
   campaignStartDate: new Date(),
   campaignEndDate: new Date(),
-  videoDuration: '',
+  videoDuration: 0,
   supportNeeded: false,
   email: '',
   phone: '',
@@ -433,10 +434,10 @@ function LedCampaingForm({
             />
           </div>
 
-          <h3 className='text-2xl font-bold text-center my-10'>
+          <h3 className='text-2xl font-bold text-center mt-10 mb-2'>
             Период на рекламната кампания*
           </h3>
-          <div className='flex flex-col gap-y-4 lg:flex-row lg:gap-x-4 lg:gap-y-0 w-full lg:container mx-auto px-5'>
+          <div className='flex flex-col gap-y-4 lg:flex-row lg:gap-x-4 lg:gap-y-0 w-full lg:container mx-auto px-5 mb-10'>
             <FormField
               control={form.control}
               name='campaignStartDate'
@@ -521,6 +522,47 @@ function LedCampaingForm({
               )}
             />
           </div>
+
+          <section className='w-full h-[180px] bg-slate-100 flex flex-col items-center justify-center'>
+            <h3 className='text-2xl font-bold text-center mb-4 px-5'>
+              Времетраене на видеото (в секунди)*
+            </h3>
+            <div className='relative w-full max-w-lg mx-auto mb-8 px-5'>
+              <FormField
+                control={form.control}
+                name='videoDuration'
+                render={({ field }) => (
+                  <FormItem className='flex flex-col flex-1'>
+                    <FormControl>
+                      <Slider
+                        defaultValue={[0]}
+                        max={45}
+                        step={5}
+                        value={[field.value]}
+                        onValueChange={value => {
+                          console.log(value)
+                          field.onChange(value[0])
+                        }}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className='absolute w-full -bottom-8 left-1/2 -translate-x-1/2 flex mx-auto'>
+                <div className='flex-1 text-center'>0</div>
+                <div className='flex-1 text-center'>5</div>
+                <div className='flex-1 text-center'>10</div>
+                <div className='flex-1 text-center'>15</div>
+                <div className='flex-1 text-center'>20</div>
+                <div className='flex-1 text-center'>25</div>
+                <div className='flex-1 text-center'>30</div>
+                <div className='flex-1 text-center'>35</div>
+                <div className='flex-1 text-center'>40</div>
+                <div className='flex-1 text-center'>45</div>
+              </div>
+            </div>
+          </section>
         </div>
       </form>
     </Form>

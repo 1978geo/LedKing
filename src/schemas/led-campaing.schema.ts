@@ -18,7 +18,7 @@ export const LedCampaingSchema = z
       .refine(value => value > new Date(), {
         message: 'Крайната дата трябва да е след текущата',
       }),
-    videoDuration: z.string().nonempty({ message: 'Изберете времетраене' }),
+    videoDuration: z.number().min(5, { message: 'Изберете времетраене' }),
     supportNeeded: z.boolean().optional(),
     email: z.string().email({ message: 'Невалиден имейл' }),
     phone: z.string().nonempty({ message: 'Невалиден телефон' }),
