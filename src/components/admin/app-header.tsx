@@ -1,29 +1,48 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { admingMenuItems } from '@/constants'
 import { cn } from '@/lib/utils'
 import React from 'react'
+import { CreateCityDrawer } from './create-city-drawer'
+import { ChevronLeftIcon } from 'lucide-react'
 
 interface AppHeaderProps {
-  children?: React.ReactNode
   className?: string
 }
 
-export function AppHeader({ className, children }: AppHeaderProps) {
+export function AppHeader({ className }: AppHeaderProps) {
   const pathname = usePathname()
+  const router = useRouter()
 
   const title = admingMenuItems.find(item => item.href === pathname)?.title
 
   return (
     <header
       className={cn(
-        'bg-background p-8 flex items-center justify-between standalone:h-22',
+        'fixed top-0 left-0 right-0 lg:hidden bg-background flex flex-col text-white standalone:h-22 bg-gradient-to-r from-[rgba(4,21,128,0.85)] to-[rgba(132,56,140,0.85)] backdrop-blur',
         className,
       )}
     >
-      <h1 className='text-4xl'>{title}</h1>
-      {children}
+      <div
+        className={cn(
+          'flex items-center justify-between w-full py-6',
+          title ? 'px-8' : 'px-4',
+        )}
+      >
+        <h1 className='text-4xl flex items-center gap-x-5'>
+          {title ?? (
+            <>
+              <ChevronLeftIcon
+                className='size-6'
+                onClick={() => router.back()}
+              />
+              LedKing
+            </>
+          )}
+        </h1>
+        {pathname === '/admin/cities' && <CreateCityDrawer />}
+      </div>
     </header>
   )
 }

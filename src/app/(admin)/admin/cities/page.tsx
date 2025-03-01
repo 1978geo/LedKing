@@ -10,12 +10,8 @@ export default async function CitiesPage() {
 
   return (
     <>
-      <AppSidebar />
-      <AppHeader className='fixed top-0 left-0 right-0 lg:hidden flex items-center justify-between p-0 px-6 py-4 bg-white'>
-        <CreateCityDrawer />
-      </AppHeader>
-      <div className='lg:hidden flex h-full flex-1 flex-col p-4 bg-slate-200/90 overflow-y-auto pt-22 pb-26'>
-        <div className='flex items-center px-2.5 py-2 bg-slate-300 rounded-xl w-full mt-2 mb-5'>
+      <div className='lg:hidden flex h-full flex-1 flex-col p-4 bg-slate-200/90 overflow-y-auto pb-26'>
+        <div className='flex items-center px-2.5 py-2 bg-slate-300 rounded-xl w-full my-5'>
           <SearchIcon className='size-5 text-slate-500' />
           <input
             type='text'
@@ -30,7 +26,7 @@ export default async function CitiesPage() {
           />
         ))}
       </div>
-      <div className='hidden lg:flex flex-col px-8'>Desktop</div>
+      <div className='hidden lg:flex flex-col w-full px-8'>Desktop</div>
     </>
   )
 }

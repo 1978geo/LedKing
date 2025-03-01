@@ -4,6 +4,8 @@ import { DrawerCSSProvider } from '@/providers/drawer-css-provider'
 import { AppHeader } from '@/components/admin/app-header'
 import { Toaster } from '@/components/ui/sonner'
 import '../globals.css'
+import { AppSidebar } from '@/components/admin/app-sidebar'
+import { CreateCityDrawer } from '@/components/admin/create-city-drawer'
 
 const playSans = Play({
   variable: '--font-play-sans',
@@ -253,8 +255,9 @@ export default function AdminRootLayout({
       <body className={`${playSans.variable} antialiased`}>
         <DrawerCSSProvider>
           <div className='flex flex-col lg:flex-row w-full h-screen overflow-hidden'>
-            <main className='flex flex-col flex-1 shrink-0 overflow-y-auto bg-slate-200'>
-              <AppHeader className='hidden lg:block' />
+            <AppHeader />
+            <AppSidebar />
+            <main className='pt-22 lg:pt-0 flex flex-col lg:flex-row lg:w-full flex-1 shrink-0 overflow-y-auto bg-slate-200'>
               {children}
             </main>
           </div>

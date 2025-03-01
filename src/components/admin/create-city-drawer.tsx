@@ -23,7 +23,10 @@ export function CreateCityDrawer() {
       onOpenChange={setOpen}
     >
       <DrawerTrigger asChild>
-        <Button size='icon'>
+        <Button
+          size='icon'
+          variant='secondary'
+        >
           <PlusIcon />
         </Button>
       </DrawerTrigger>
