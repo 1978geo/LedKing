@@ -20,7 +20,7 @@ export function AppHeader({ className }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        'fixed top-0 w-full lg:hidden flex flex-col text-white bg-primary-purple z-50',
+        'sticky top-0 w-full lg:hidden flex flex-col text-white bg-primary-purple z-50',
         className,
       )}
     >

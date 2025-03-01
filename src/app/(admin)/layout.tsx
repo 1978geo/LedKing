@@ -255,7 +255,7 @@ export default function AdminRootLayout({
           <div className='flex flex-col lg:flex-row w-full h-screen'>
             <AppHeader />
             <AppSidebar />
-            <main className='mt-[68px] lg:pt-0 flex flex-col lg:flex-row lg:w-full flex-1 overflow-y-auto bg-slate-200'>
+            <main className='lg:pt-0 flex flex-col lg:flex-row lg:w-full flex-1 overflow-y-auto bg-slate-200'>
               {children}
             </main>
           </div>
