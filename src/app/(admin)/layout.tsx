@@ -5,7 +5,6 @@ import { AppHeader } from '@/components/admin/app-header'
 import { Toaster } from '@/components/ui/sonner'
 import '../globals.css'
 import { AppSidebar } from '@/components/admin/app-sidebar'
-import { CreateCityDrawer } from '@/components/admin/create-city-drawer'
 
 const playSans = Play({
   variable: '--font-play-sans',
