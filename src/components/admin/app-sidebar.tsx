@@ -44,7 +44,7 @@ export function AppSidebar() {
         ))}
       </ul>
 
-      <ul className='lg:hidden max-w-screen w-auto mx-auto h-full p-2.5 rounded-full overflow-hidden bg-slate-950/70 backdrop-blur flex items-center justify-between gap-x-1'>
+      <ul className='lg:hidden max-w-screen w-auto mx-auto h-full p-2 rounded-full overflow-hidden bg-slate-950/25 backdrop-blur flex items-center justify-between gap-x-1'>
         {admingMenuItems
           .filter(item => item.href !== '/admin/settings')
           .map(item => (
@@ -55,8 +55,8 @@ export function AppSidebar() {
               <Link
                 href={item.href}
                 className={cn(
-                  'text-white/60 flex items-center justify-center size-11 rounded-full ',
-                  pathname === item.href ? 'bg-primary text-white' : '',
+                  'text-white/70 flex items-center justify-center size-11 rounded-full ',
+                  pathname === item.href ? 'bg-white text-slate-600' : '',
                 )}
               >
                 <item.icon className='size-5' />

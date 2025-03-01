@@ -74,6 +74,8 @@ function LedCampaingForm({
     console.error(error)
   }
 
+  console.log(billboards)
+
   useEffect(() => {
     const selectedLocations = form.getValues('location')
     const filteredLocations = selectedLocations.filter(location =>
