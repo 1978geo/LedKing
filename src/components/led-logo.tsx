@@ -14,7 +14,7 @@ export function LedLogo({ className }: LedLogoProps) {
       width={156}
       height={129}
       className={cn(
-        'w-[76] h-[60px] md:w-[94px] md:h-[76px] xl:w-[156px] xl:h-[129px] xl:ml-10 z-10 object-contain',
+        'w-[60px] h-[42px] lg:w-[76px] lg:h-[58px] xl:ml-10 z-10 object-contain',
         className,
       )}
       priority

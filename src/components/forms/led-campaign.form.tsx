@@ -1,6 +1,7 @@
 'use client'
 
 import { z } from 'zod'
+import { format } from 'date-fns'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -14,8 +15,15 @@ import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { Billboard, City } from '@prisma/client'
 import { cn } from '@/lib/utils'
 import LEDMap from '../led-map'
-import { CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
+import { CalendarIcon, CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
 import { useEffect } from 'react'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { Button } from '../ui/button'
+import { Calendar } from '../ui/calendar'
 
 type BillboardWithCity = Billboard & { city: City }
 type CityWithBillboards = City & { billboards: Billboard[] }
@@ -302,12 +310,7 @@ function LedCampaingForm({
           </div>
 
           <div className='hidden lg:block max-w-7xl mx-auto'>
-            <div
-              className='grid text-sm text-black font-normal h-16 px-4.5 py-2 rounded-lg bg-gray-200'
-              style={{
-                gridTemplateColumns: '210px 410px 1fr 130px 150px 120px 120px',
-              }}
-            >
+            <div className='container mx-auto grid grid-cols-[200px_300px_1fr_1fr_110px_1fr_1fr] text-sm text-black font-normal h-16 px-4.5 py-2 rounded-lg bg-gray-200'>
               <div className='flex items-center px-4'>Град</div>
               <div className='flex items-center px-4'>Адрес</div>
               <div className='flex items-center break-words px-4'>
@@ -340,14 +343,10 @@ function LedCampaingForm({
                             <FormControl>
                               <div
                                 className={cn(
-                                  'grid px-6 rounded-lg min-h-16 border border-transparent',
+                                  'container mx-auto grid grid-cols-[200px_300px_1fr_1fr_110px_1fr_1fr] px-6 rounded-lg min-h-16 border border-transparent',
                                   field.value?.includes(billboard.id) &&
                                     'bg-primary-purple/20 border border-primary-purple',
                                 )}
-                                style={{
-                                  gridTemplateColumns:
-                                    '210px 410px 1fr 130px 150px 120px 120px',
-                                }}
                               >
                                 <div className='flex items-center justify-between px-4 border-r border-gray-300'>
                                   <label
@@ -410,17 +409,8 @@ function LedCampaingForm({
                                 </div>
 
                                 <div className='flex flex-col gap-y-0.5 text-sm  justify-center items-center px-4 border-r border-gray-300'>
-                                  {Intl.NumberFormat('bg-BG', {
-                                    style: 'unit',
-                                    unit: 'centimeter',
-                                    unitDisplay: 'short',
-                                  }).format(billboard.width)}{' '}
-                                  x{' '}
-                                  {Intl.NumberFormat('bg-BG', {
-                                    style: 'unit',
-                                    unit: 'centimeter',
-                                    unitDisplay: 'short',
-                                  }).format(billboard.height)}
+                                  {(billboard.width / 100).toFixed(2)} x{' '}
+                                  {(billboard.height / 100).toFixed(2)}
                                 </div>
 
                                 <div className='flex justify-center items-center px-4 border-r border-gray-300'>
@@ -437,6 +427,95 @@ function LedCampaingForm({
                       }}
                     />
                   ))}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <h3 className='text-2xl font-bold text-center my-10'>
+            Период на рекламната кампания*
+          </h3>
+          <div className='flex flex-col gap-y-4 lg:flex-row lg:gap-x-4 lg:gap-y-0 w-full lg:container mx-auto px-5'>
+            <FormField
+              control={form.control}
+              name='campaignStartDate'
+              render={({ field }) => (
+                <FormItem className='flex flex-col flex-1'>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={'outline'}
+                          className={cn(
+                            'w-full pl-3 text-left font-normal rounded-md shadow-none',
+                            !field.value && 'text-muted-foreground',
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, 'PPP')
+                          ) : (
+                            <span>Начална дата</span>
+                          )}
+                          <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent
+                      className='w-auto p-0'
+                      align='start'
+                    >
+                      <Calendar
+                        mode='single'
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={date => date < new Date()}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='campaignEndDate'
+              render={({ field }) => (
+                <FormItem className='flex flex-col flex-1'>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={'outline'}
+                          className={cn(
+                            'w-full pl-3 text-left font-normal rounded-md shadow-none',
+                            !field.value && 'text-muted-foreground',
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, 'PPP')
+                          ) : (
+                            <span>Крайна дата</span>
+                          )}
+                          <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent
+                      className='w-auto p-0'
+                      align='start'
+                    >
+                      <Calendar
+                        mode='single'
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={date => date < new Date()}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
                   <FormMessage />
                 </FormItem>
               )}
