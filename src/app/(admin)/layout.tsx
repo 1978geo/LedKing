@@ -40,10 +40,6 @@ export default function AdminRootLayout({
           href='/apple-icon-180.png'
         />
         <meta
-          name='apple-mobile-web-app-status-bar-style'
-          content='black-translucent'
-        />
-        <meta
           name='mobile-web-app-capable'
           content='yes'
         />
@@ -53,12 +49,15 @@ export default function AdminRootLayout({
         />
         <meta
           name='viewport'
-          content='initial-scale=1, viewport-fit=cover'
+          content='width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover'
         />
         <meta
           name='theme-color'
           content='#2c1c61'
-          media='(prefers-color-scheme: dark)'
+        />
+        <meta
+          name='format-detection'
+          content='telephone=yes'
         />
         <link
           rel='apple-touch-startup-image'
@@ -253,10 +252,10 @@ export default function AdminRootLayout({
       </head>
       <body className={`${playSans.variable} antialiased`}>
         <DrawerCSSProvider>
-          <div className='flex flex-col lg:flex-row w-full h-screen overflow-hidden'>
+          <div className='flex flex-col lg:flex-row w-full h-screen'>
             <AppHeader />
             <AppSidebar />
-            <main className='pt-22 lg:pt-0 flex flex-col lg:flex-row lg:w-full flex-1 shrink-0 overflow-y-auto bg-slate-200'>
+            <main className='mt-[68px] lg:pt-0 flex flex-col lg:flex-row lg:w-full flex-1 overflow-y-auto bg-slate-200'>
               {children}
             </main>
           </div>

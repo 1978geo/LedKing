@@ -44,7 +44,15 @@ export default function RootLayout({
         />
         <meta
           name='viewport'
-          content='initial-scale=1, viewport-fit=cover'
+          content='width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover'
+        />
+        <meta
+          name='theme-color'
+          content='#2c1c61'
+        />
+        <meta
+          name='format-detection'
+          content='telephone=yes'
         />
         <link
           rel='apple-touch-startup-image'

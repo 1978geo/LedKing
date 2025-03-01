@@ -20,17 +20,17 @@ export function AppHeader({ className }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 lg:hidden bg-background flex flex-col text-white standalone:h-22 bg-gradient-to-r from-[rgba(4,21,128,0.85)] to-[rgba(132,56,140,0.85)] backdrop-blur',
+        'fixed top-0 w-full lg:hidden flex flex-col text-white bg-primary-purple z-50',
         className,
       )}
     >
       <div
         className={cn(
-          'flex items-center justify-between w-full py-6',
+          'flex items-center justify-between w-full h-full py-4',
           title ? 'px-8' : 'px-4',
         )}
       >
-        <h1 className='text-4xl flex items-center gap-x-5'>
+        <h1 className='text-2xl flex items-center gap-x-5'>
           {title ?? (
             <>
               <ChevronLeftIcon

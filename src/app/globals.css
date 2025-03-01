@@ -117,8 +117,7 @@
 
 html,
 body {
-  @apply h-screen w-screen font-play text-base leading-6 text-foreground bg-background;
-  padding-top: env(safe-area-inset-top);
+  @apply block h-screen w-screen font-play text-base leading-6 text-foreground;
 }
 
 * {
@@ -178,6 +177,10 @@ body {
 
 @media screen and (display-mode: standalone) {
   header {
-    height: 70px;
+    height: 80px !important;
+  }
+
+  main {
+    margin-top: 80px !important;
   }
 }
