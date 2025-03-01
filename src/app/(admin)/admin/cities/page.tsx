@@ -1,8 +1,5 @@
 import { getCities } from '@/actions/cities'
-import { AppHeader } from '@/components/admin/app-header'
-import { AppSidebar } from '@/components/admin/app-sidebar'
 import { CityRow } from '@/components/admin/city-row-mobile'
-import { CreateCityDrawer } from '@/components/admin/create-city-drawer'
 import { SearchIcon } from 'lucide-react'
 
 export default async function CitiesPage() {
