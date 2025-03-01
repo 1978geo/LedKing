@@ -48,7 +48,7 @@ export function AppSidebar() {
         ))}
       </ul>
 
-      <ul className='lg:hidden max-w-screen w-auto mx-auto h-full p-2 rounded-full overflow-hidden bg-slate-950/25 backdrop-blur flex items-center justify-between gap-x-1'>
+      <ul className='lg:hidden max-w-screen w-auto mx-auto h-full p-2 rounded-full overflow-hidden bg-slate-900/60 backdrop-blur flex items-center justify-between gap-x-1'>
         {admingMenuItems
           .filter(item => item.href !== '/admin/settings')
           .map(item => (
