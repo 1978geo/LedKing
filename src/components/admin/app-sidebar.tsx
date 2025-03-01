@@ -15,7 +15,7 @@ export function AppSidebar() {
   if (!title) return null
 
   return (
-    <nav className='fixed bottom-6 left-5 right-5 flex lg:relative lg:left-0 lg:right-auto lg:bottom-0 lg:flex-col lg:w-60 lg:border-r lg:border-border lg:h-screen lg:p-4 lg:bg-white lg:border-l'>
+    <nav className='fixed bottom-5 left-5 right-5 flex lg:relative lg:left-0 lg:right-auto lg:bottom-0 lg:flex-col lg:w-60 lg:border-r lg:border-border lg:h-screen lg:p-4 lg:bg-white lg:border-l'>
       <div className='hidden lg:flex items-center gap-x-3 mb-6 mt-4'>
         <Image
           src={logo}
