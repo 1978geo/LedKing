@@ -12,7 +12,11 @@ import {
 import { Billboard } from '@prisma/client'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-function LEDMap({ billboards }: { billboards: Billboard[] }) {
+interface LEDMapProps {
+  billboards: Billboard[]
+}
+
+function LEDMap({ billboards }: LEDMapProps) {
   return (
     <div className='flex w-full h-[400px] lg:h-[600px]'>
       <Map
@@ -27,6 +31,7 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
           height: '100%',
         }}
         mapStyle='mapbox://styles/mapbox/streets-v11'
+        cooperativeGestures
       >
         {billboards.map(billboard => (
           <Marker
@@ -65,4 +70,4 @@ function LEDMap({ billboards }: { billboards: Billboard[] }) {
   )
 }
 
-export default React.memo(LEDMap)
+export default LEDMap
