@@ -117,7 +117,7 @@ function LedCampaingForm({
         .includes(location),
     )
     form.setValue('location', [...filteredLocations])
-  }, [selectedCityIds])
+  }, [selectedCityIds, form, selectedCitiesBillboards])
 
   return (
     <Form {...form}>
@@ -734,7 +734,8 @@ function LedCampaingForm({
                         className='text-primary-purple'
                       >
                         С изпращането на тази заявка се съгласявам личните ми
-                        данни да бъдат обработвани от "LED King" съгласно{' '}
+                        данни да бъдат обработвани от &quot;LED King&quot;
+                        съгласно{' '}
                         <Link
                           href='#'
                           className='underline'
