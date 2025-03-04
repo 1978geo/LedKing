@@ -94,8 +94,6 @@ function LedCampaingForm({
       videoDuration: values.videoDuration,
     }
 
-    console.log(JSON.stringify(emailData, null, 2))
-
     const { error, data } = await sendLEDCampaignEmail(emailData)
 
     if (data) {
@@ -499,7 +497,7 @@ function LedCampaingForm({
                         <Button
                           variant={'outline'}
                           className={cn(
-                            'w-full pl-3 h-12 text-lg rounded-lg text-left font-normal shadow-none',
+                            'w-full pl-3 h-12 text-lg rounded-lg text-left font-normal shadow-none border-form-border text-form-border',
                             !field.value && 'text-muted-foreground',
                           )}
                         >
@@ -541,7 +539,7 @@ function LedCampaingForm({
                         <Button
                           variant={'outline'}
                           className={cn(
-                            'w-full pl-3 h-12 text-lg rounded-lg text-left font-normal shadow-none',
+                            'w-full pl-3 h-12 text-lg rounded-lg text-left font-normal shadow-none border-form-border text-form-border',
                             !field.value && 'text-muted-foreground',
                           )}
                         >
@@ -668,7 +666,7 @@ function LedCampaingForm({
                       <Input
                         {...field}
                         type='email'
-                        className='w-full h-12 text-lg rounded-lg shadow-none'
+                        className='w-full h-12 text-lg rounded-lg shadow-none border-form-border text-form-border'
                         placeholder='Вашият емеил'
                       />
                     </FormControl>
@@ -689,7 +687,7 @@ function LedCampaingForm({
                       <Input
                         {...field}
                         type='tel'
-                        className='w-full h-12 text-lg rounded-lg shadow-none'
+                        className='w-full h-12 text-lg rounded-lg shadow-none border-form-border text-form-border'
                         placeholder='Вашият телефонен номер'
                       />
                     </FormControl>
@@ -708,7 +706,7 @@ function LedCampaingForm({
                   <FormControl>
                     <Textarea
                       {...field}
-                      className='resize-none shadow-none rounded-lg'
+                      className='resize-none shadow-none rounded-lg border-form-border text-form-border'
                       placeholder='Вашият коментар...'
                       rows={5}
                     />
