@@ -1,16 +1,9 @@
 import type { Metadata } from 'next'
-import { Play } from 'next/font/google'
 import { DrawerCSSProvider } from '@/providers/drawer-css-provider'
 import { AppHeader } from '@/components/admin/app-header'
 import { Toaster } from '@/components/ui/sonner'
 import '../globals.css'
 import { AppSidebar } from '@/components/admin/app-sidebar'
-
-const playSans = Play({
-  variable: '--font-play-sans',
-  subsets: ['latin', 'cyrillic'],
-  weight: ['400', '700'],
-})
 
 export const metadata: Metadata = {
   title: 'LedKing',
