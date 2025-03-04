@@ -12,6 +12,9 @@ export const getCities = async () => {
     },
     orderBy: [
       {
+        popularChoice: 'desc',
+      },
+      {
         name: 'asc',
       },
     ],

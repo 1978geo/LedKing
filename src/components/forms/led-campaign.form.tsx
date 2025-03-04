@@ -132,7 +132,7 @@ function LedCampaingForm({
             control={form.control}
             name='city'
             render={() => (
-              <FormItem className='flex flex-row items-center gap-x-2 overflow-x-auto px-8 w-full'>
+              <FormItem className='flex flex-row items-center gap-x-4 overflow-x-auto px-8 w-full pt-4'>
                 {cities.map(city => (
                   <FormField
                     key={city.id}
@@ -143,13 +143,13 @@ function LedCampaingForm({
                         <FormItem
                           key={city.id}
                           className={cn(
-                            'flex flex-row items-center min-w-max space-x-3 space-y-0 h-9 rounded-full border border-slate-400 mb-2.5',
+                            'flex flex-row items-center min-w-max space-x-3 space-y-0 h-10 rounded-full border border-slate-400 mb-2.5',
                             field.value?.includes(city.id) &&
                               'bg-primary-purple/20 border-primary-purple',
                           )}
                         >
                           <FormControl>
-                            <div className='relative flex items-center gap-x-1.5 px-2 pr-3'>
+                            <div className='relative flex items-center gap-x-2.5 px-2 pr-4'>
                               <input
                                 id={city.id}
                                 type='checkbox'
@@ -183,6 +183,11 @@ function LedCampaingForm({
                               >
                                 {city.name}
                               </label>
+                              {city.popularChoice && (
+                                <span className='absolute text-[10px] -top-4.5 min-w-max bg-white z-20 font-semibold text-primary-purple border border-primary-purple rounded-sm w-max px-1 h-4 flex items-center justify-center'>
+                                  популярнo
+                                </span>
+                              )}
                             </div>
                           </FormControl>
                         </FormItem>
