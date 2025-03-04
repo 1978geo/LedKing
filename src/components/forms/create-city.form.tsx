@@ -17,6 +17,7 @@ import { toast } from 'sonner'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { createCity } from '@/actions/cities'
+import { Switch } from '../ui/switch'
 
 interface CreateCityFormProps {
   onSubmit: () => void
@@ -27,6 +28,7 @@ export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
     resolver: zodResolver(CraeteCitySchema),
     defaultValues: {
       name: '',
+      popularChoice: false,
     },
   })
 
@@ -57,11 +59,29 @@ export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
               <FormControl>
                 <Input
                   placeholder='New York'
-                  className='shadow-none'
+                  className='shadow-none h-10.5 px-3 rounded-lg'
                   {...field}
                 />
               </FormControl>
-              <FormDescription>Enter city name here.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='popularChoice'
+          render={({ field }) => (
+            <FormItem>
+              <div className='flex items-center justify-between gap-x-3 px-3 py-2'>
+                <FormLabel>Make it a popular choice?</FormLabel>
+                <FormControl>
+                  <Switch
+                    className='shadow-none'
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </div>
               <FormMessage />
             </FormItem>
           )}

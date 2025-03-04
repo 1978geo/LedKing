@@ -10,9 +10,11 @@ export const getCities = async () => {
     include: {
       billboards: true,
     },
-    orderBy: {
-      name: 'asc',
-    },
+    orderBy: [
+      {
+        name: 'asc',
+      },
+    ],
   })
 
   return cities as CityWithBillboards[]
