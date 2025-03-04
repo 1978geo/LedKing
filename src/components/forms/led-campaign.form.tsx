@@ -198,7 +198,7 @@ function LedCampaingForm({
 
         <LEDMap billboards={billboards} />
 
-        <div className='flex flex-col gap-y-4 mb-16'>
+        <div className='flex flex-col mb-8'>
           {selectedCityIds.length > 0 && (
             <>
               <h3 className='text-2xl font-bold text-center mt-10 mb-2'>
@@ -482,10 +482,10 @@ function LedCampaingForm({
             </>
           )}
 
-          <h3 className='text-2xl font-bold text-center mt-10 mb-2'>
+          <h3 className='text-2xl font-bold text-center mt-10 mb-5'>
             Период на рекламната кампания*
           </h3>
-          <div className='flex flex-col gap-y-4 lg:flex-row lg:gap-x-4 lg:gap-y-0 w-full lg:max-w-7xl mx-auto mb-10'>
+          <div className='flex flex-col gap-y-4 lg:flex-row lg:gap-x-4 lg:gap-y-0 w-full lg:max-w-7xl mx-auto mb-10 px-5'>
             <FormField
               control={form.control}
               name='campaignStartDate'
@@ -497,7 +497,7 @@ function LedCampaingForm({
                         <Button
                           variant={'outline'}
                           className={cn(
-                            'w-full pl-3 text-left font-normal rounded-md shadow-none',
+                            'w-full pl-3 h-12 text-lg rounded-lg text-left font-normal shadow-none',
                             !field.value && 'text-muted-foreground',
                           )}
                         >
@@ -539,7 +539,7 @@ function LedCampaingForm({
                         <Button
                           variant={'outline'}
                           className={cn(
-                            'w-full pl-3 text-left font-normal rounded-md shadow-none',
+                            'w-full pl-3 h-12 text-lg rounded-lg text-left font-normal shadow-none',
                             !field.value && 'text-muted-foreground',
                           )}
                         >
@@ -571,7 +571,7 @@ function LedCampaingForm({
             />
           </div>
 
-          <section className='w-full h-[200px] bg-slate-100 flex flex-col items-center justify-center'>
+          <section className='w-full h-[336px] bg-slate-100 flex flex-col items-center justify-center px-5'>
             <h3 className='text-2xl font-bold text-center my-6 px-5'>
               Времетраене на видеото (в секунди)*
             </h3>
@@ -596,7 +596,7 @@ function LedCampaingForm({
                   </FormItem>
                 )}
               />
-              <div className='absolute w-full -bottom-8 left-1/2 -translate-x-1/2 flex mx-auto'>
+              <div className='absolute w-full -bottom-8 left-1/2 -translate-x-1/2 flex mx-auto px-1.5'>
                 <div className='flex-1 text-center'>0</div>
                 <div className='flex-1 text-center'>5</div>
                 <div className='flex-1 text-center'>10</div>
@@ -654,7 +654,7 @@ function LedCampaingForm({
             />
           </section>
 
-          <section className='flex flex-col gap-y-4 w-full max-w-7xl mx-auto py-10 px-10'>
+          <section className='flex flex-col gap-y-4 w-full max-w-7xl mx-auto py-10 px-5'>
             <div className='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 w-full'>
               <FormField
                 control={form.control}
