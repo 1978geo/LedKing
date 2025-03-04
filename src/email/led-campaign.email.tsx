@@ -1,5 +1,16 @@
+import { LedLogo } from '@/components/led-logo'
+import { LedStrip } from '@/components/led-strip'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { BillboardWithCity } from '@/types/Billboard'
 import { CityWithBillboards } from '@/types/City'
+import { ImageIcon, MailIcon, PhoneIcon } from 'lucide-react'
 
 export interface LEDCampaignEmailProps {
   campaignStartDate: string
@@ -24,72 +35,115 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
   supportNeeded,
   videoDuration,
 }) => (
-  <div className='w-full max-w-5xl mx-auto p-4 gap-y-4'>
-    <h1 className='text-2xl font-semibold'>LED Campaign inquiry:</h1>
-    <div className='grid grid-cols-2'>
-      <div>
-        <strong>City:</strong>
+  <div className='flex flex-col w-full max-w-5xl mx-auto p-4 gap-y-8'>
+    <header className='flex flex-col w-full bg-gradient-to-r from-primary-purple to-secondary-purple backdrop-blur'>
+      <div className='flex items-center h-full justify-between py-4'>
+        <LedLogo />
+        <h2 className='text-2xl text-white mr-10'>LED Campaign</h2>
       </div>
-      <div>{city[0].name}</div>
-      <div>
-        <strong>Campaign Start Date:</strong>
-      </div>
-      <div>{campaignStartDate}</div>
-      <div>
-        <strong>Campaign End Date:</strong>
-      </div>
-      <div>{campaignEndDate}</div>
-      <div>
-        <strong>Video Duration:</strong>
-      </div>
-      <div>{videoDuration}</div>
-      <div>
-        <strong>Support eeded for video creation:</strong>
-      </div>
-      <div>{supportNeeded ? 'Yes' : 'No'}</div>
-      <div>
-        <strong>Comments:</strong>
-      </div>
-      <div>{comments}</div>
-    </div>
-    <h2>LED Campaign Locations:</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Address</th>
-          <th>City</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Number of Screens</th>
-          <th>Width</th>
-          <th>Height</th>
-          <th>Photo</th>
-        </tr>
-      </thead>
-      <tbody>
-        {location.map(loc => (
-          <tr key={loc.id}>
-            <td>{loc.address}</td>
-            <td>{loc.city.name}</td>
-            <td>{loc.lat}</td>
-            <td>{loc.lng}</td>
-            <td>{loc.countScreens}</td>
-            <td>{loc.width}</td>
-            <td>{loc.height}</td>
-            <td>{loc.photo}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+      <LedStrip />
+    </header>
 
-    <h2>Contact Information:</h2>
-    <div>
-      <strong>Email:</strong>
-      <a href={`mailto:${email}`}>{email}</a>
-    </div>
-    <div>
-      <strong>Phone:</strong>
-      <a href={`tel:${phone}`}>{phone}</a>
-    </div>
+    <section className='flex flex-col gap-y-2'>
+      <h1 className='text-2xl font-semibold'>LED Campaign inquiry:</h1>
+      <div className='grid grid-cols-2'>
+        <div>
+          <strong>City:</strong>
+        </div>
+        <div>{city.map(city => city.name).join(', ')}</div>
+        <div>
+          <strong>Start Date:</strong>
+        </div>
+        <div>
+          {Intl.DateTimeFormat('bg-BG', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          }).format(new Date(campaignStartDate))}
+        </div>
+        <div>
+          <strong>End Date:</strong>
+        </div>
+        <div>
+          {' '}
+          {Intl.DateTimeFormat('bg-BG', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          }).format(new Date(campaignEndDate))}
+        </div>
+        <div>
+          <strong>Video Duration:</strong>
+        </div>
+        <div>{videoDuration} сек.</div>
+        <div>
+          <strong>Video creation help needed:</strong>
+        </div>
+        <div>{supportNeeded ? 'Да' : 'Не'}</div>
+        <div>
+          <strong>Comments:</strong>
+        </div>
+        <div>{comments}</div>
+      </div>
+    </section>
+
+    <section className='flex flex-col gap-y-2'>
+      <h2 className='text-2xl font-semibold'>LED Campaign Locations:</h2>
+      <div className='border border-border rounded-md overflow-clip'>
+        <Table>
+          <TableHeader className='bg-gradient-to-r from-primary-purple to-secondary-purple'>
+            <TableRow>
+              <TableHead className='text-white'>City</TableHead>
+              <TableHead className='text-white'>Address</TableHead>
+              <TableHead className='text-white'>Coordinates</TableHead>
+              <TableHead className='text-white'>Number of Screens</TableHead>
+              <TableHead className='text-white'>Width</TableHead>
+              <TableHead className='text-white'>Height</TableHead>
+              <TableHead className='text-white'>Photo</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {location.map(loc => (
+              <TableRow key={loc.id}>
+                <TableCell>{loc.city.name}</TableCell>
+                <TableCell>{loc.address}</TableCell>
+                <TableCell>
+                  {loc.lat}, {loc.lng}
+                </TableCell>
+                <TableCell>{loc.countScreens}</TableCell>
+                <TableCell>{loc.width}cm</TableCell>
+                <TableCell>{loc.height}cm</TableCell>
+                <TableCell>
+                  <a
+                    href={loc.photo}
+                    target='_blank'
+                  >
+                    <ImageIcon className='size-6 text-secondary-purple' />
+                  </a>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+    </section>
+
+    <section className='flex flex-col gap-y-2'>
+      <h2 className='text-2xl font-semibold'>Contact Information:</h2>
+      <div className='flex flex-col gap-y-2'>
+        <div className='flex gap-x-2'>
+          <strong className='flex items-center gap-x-2'>
+            <MailIcon className='size-4' /> Email:
+          </strong>
+          <a href={`mailto:${email}`}>{email}</a>
+        </div>
+        <div className='flex gap-x-2'>
+          <strong className='flex items-center gap-x-2'>
+            <PhoneIcon className='size-4' /> Phone:
+          </strong>
+          <a href={`tel:${phone}`}>{phone}</a>
+        </div>
+      </div>
+    </section>
   </div>
 )

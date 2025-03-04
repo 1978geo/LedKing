@@ -1,3 +1,167 @@
+import { LEDCampaignEmail } from '@/email/led-campaign.email'
+
+const emailData = {
+  campaignEndDate: '2025-03-15',
+  campaignStartDate: '2025-03-09',
+  city: [
+    {
+      id: 'cm7j6ga3f0004vpl74kw5tzo5',
+      name: 'Варна',
+      createdAt: '2025-02-24',
+      updatedAt: '2025-02-24',
+      billboards: [
+        {
+          id: 'cm7j7kp06000uvpl72j9cbp60',
+          address: 'бул. Христо Ботев 1910, посока Катедрала - страна А и Б',
+          lat: 43.204342,
+          lng: 27.908945,
+          type: 'LED Екран',
+          countScreens: 2,
+          width: 260,
+          height: 160,
+          photo:
+            'https://picture.advr.bg/wp-content/uploads/2023/10/Varna-Unashki.jpg',
+          createdAt: '2025-02-24',
+          updatedAt: '2025-02-24',
+          cityId: 'cm7j6ga3f0004vpl74kw5tzo5',
+        },
+        {
+          id: 'cm7j7sune000vvpl7xh9kb0k9',
+          address: 'бул.Цар Освободител и ул. Вяра, страна А и Б',
+          lat: 43.232735,
+          lng: 27.890179,
+          type: 'LED Екран',
+          countScreens: 2,
+          width: 390,
+          height: 240,
+          photo:
+            'https://res.cloudinary.com/dyltmujve/image/upload/v1643112172/led_vyara_o6dxmy.jpg',
+          createdAt: '2025-02-24',
+          updatedAt: '2025-02-24',
+          cityId: 'cm7j6ga3f0004vpl74kw5tzo5',
+        },
+        {
+          id: 'cm7j7z0em000wvpl76k001du5',
+          address: 'ул. Уста Кольо Фичето №17, склад Зърнени Храни',
+          lat: 43.2178389,
+          lng: 27.874206,
+          type: 'LED Екран',
+          countScreens: 2,
+          width: 290,
+          height: 180,
+          photo:
+            'https://res.cloudinary.com/dyltmujve/image/upload/v1649413503/%D0%B7%D1%8A%D1%80%D0%BD%D0%B5%D0%BD%D0%B8_%D1%85%D1%80%D0%B0%D0%BD%D0%B8.2_dbymzh.jpg',
+          createdAt: '2025-02-24',
+          updatedAt: '2025-02-24',
+          cityId: 'cm7j6ga3f0004vpl74kw5tzo5',
+        },
+        {
+          id: 'cm7j852y6000xvpl7agh46ck8',
+          address: 'бул. \\"Васил Левски\\" и ул. \\"Ян Палах\\" Страна А и Б',
+          lat: 43.2201956,
+          lng: 27.9141069,
+          type: 'LED Екран',
+          countScreens: 2,
+          width: 480,
+          height: 320,
+          photo:
+            'https://res.cloudinary.com/dyltmujve/image/upload/v1672826314/Varna-Palah_2022_p6oktf.jpg',
+          createdAt: '2025-02-24',
+          updatedAt: '2025-02-24',
+          cityId: 'cm7j6ga3f0004vpl74kw5tzo5',
+        },
+        {
+          id: 'cm7j875hk000yvpl7rrm27jbu',
+          address: 'ул. Андрей Сахаров и Бул. Сливница Страна А и Б',
+          lat: 43.220358,
+          lng: 27.8987,
+          type: 'LED Екран',
+          countScreens: 2,
+          width: 480,
+          height: 320,
+          photo:
+            'https://res.cloudinary.com/dyltmujve/image/upload/v1675443695/Varna-Tehnikumite_cktbpw.jpg',
+          createdAt: '2025-02-24',
+          updatedAt: '2025-02-24',
+          cityId: 'cm7j6ga3f0004vpl74kw5tzo5',
+        },
+      ],
+    },
+    {
+      id: 'cm7j6goe50005vpl7mvwmqcie',
+      name: 'Велико Търново',
+      createdAt: '2025-02-24',
+      updatedAt: '2025-02-24',
+      billboards: [
+        {
+          id: 'cm7j88jq5000zvpl7otpp3968',
+          address: 'Бул.Н.Габровски / Ул.Славянска',
+          lat: 43.075376,
+          lng: 25.621698,
+          type: 'LED Екран',
+          countScreens: 1,
+          width: 400,
+          height: 250,
+          photo:
+            'https://res.cloudinary.com/dyltmujve/image/upload/v1687857184/VT_led2_6_bxd0ym.jpg',
+          createdAt: '2025-02-24',
+          updatedAt: '2025-02-24',
+          cityId: 'cm7j6goe50005vpl7mvwmqcie',
+        },
+      ],
+    },
+  ],
+  comments: '',
+  email: 'iliev.zlatko@gmail.com',
+  phone: '+35988777666',
+  location: [
+    {
+      id: 'cm7j7sune000vvpl7xh9kb0k9',
+      address: 'бул.Цар Освободител и ул. Вяра, страна А и Б',
+      lat: 43.232735,
+      lng: 27.890179,
+      type: 'LED Екран',
+      countScreens: 2,
+      width: 390,
+      height: 240,
+      photo:
+        'https://res.cloudinary.com/dyltmujve/image/upload/v1643112172/led_vyara_o6dxmy.jpg',
+      createdAt: '2025-02-24',
+      updatedAt: '2025-02-24',
+      cityId: 'cm7j6ga3f0004vpl74kw5tzo5',
+      city: {
+        id: 'cm7j6ga3f0004vpl74kw5tzo5',
+        name: 'Варна',
+        createdAt: '2025-02-24',
+        updatedAt: '2025-02-24',
+      },
+    },
+    {
+      id: 'cm7j88jq5000zvpl7otpp3968',
+      address: 'Бул.Н.Габровски / Ул.Славянска',
+      lat: 43.075376,
+      lng: 25.621698,
+      type: 'LED Екран',
+      countScreens: 1,
+      width: 400,
+      height: 250,
+      photo:
+        'https://res.cloudinary.com/dyltmujve/image/upload/v1687857184/VT_led2_6_bxd0ym.jpg',
+      createdAt: '2025-02-24',
+      updatedAt: '2025-02-24',
+      cityId: 'cm7j6goe50005vpl7mvwmqcie',
+      city: {
+        id: 'cm7j6goe50005vpl7mvwmqcie',
+        name: 'Велико Търново',
+        createdAt: '2025-02-24',
+        updatedAt: '2025-02-24',
+      },
+    },
+  ],
+  supportNeeded: true,
+  videoDuration: 10,
+}
+
 export default async function PurchasePage() {
-  return <div>Purchase</div>
+  return <LEDCampaignEmail {...emailData} />
 }

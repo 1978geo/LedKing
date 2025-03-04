@@ -10,7 +10,7 @@ import { Resend } from 'resend'
 export async function sendLEDCampaignEmail(payload: LEDCampaignEmailProps) {
   const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
   return await resend.emails.send({
-    to: 'iliev.zlatko@gmail.com',
+    to: 'office@ledking.bg',
     from: payload.email,
     subject: `LED Campaign Inquiry - ${payload.email}`,
     react: LEDCampaignEmail({

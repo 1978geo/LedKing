@@ -94,6 +94,8 @@ function LedCampaingForm({
       videoDuration: values.videoDuration,
     }
 
+    console.log(JSON.stringify(emailData, null, 2))
+
     const { error, data } = await sendLEDCampaignEmail(emailData)
 
     if (data) {
