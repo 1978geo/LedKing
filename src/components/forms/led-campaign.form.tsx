@@ -1,7 +1,7 @@
 'use client'
 
 import { z } from 'zod'
-import { format } from 'date-fns'
+import { format, formatDate } from 'date-fns'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
-import { Billboard, City } from '@prisma/client'
 import { cn } from '@/lib/utils'
 import LEDMap from '../led-map'
 import { CalendarIcon, CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
@@ -31,9 +30,13 @@ import { Textarea } from '../ui/textarea'
 import { Checkbox } from '../ui/checkbox'
 import Link from 'next/link'
 import { Label } from '../ui/label'
+import { sendLEDCampaignEmail } from '@/actions/sendEmail'
+import { CityWithBillboards } from '@/types/City'
+import { BillboardWithCity } from '@/types/Billboard'
+import { cloneDeep } from 'lodash'
+import { toast } from 'sonner'
 
-type BillboardWithCity = Billboard & { city: City }
-type CityWithBillboards = City & { billboards: Billboard[] }
+// Removed as these types are now imported from '@/types'
 
 interface LedCampaingFormProps {
   cities: CityWithBillboards[]
@@ -72,8 +75,34 @@ function LedCampaingForm({
     cityId => billboardsByCity[cityId] || [],
   )
 
-  const onSubmit = (values: SubmitFormValues) => {
-    console.log(values, selectedCitiesBillboards)
+  const onSubmit = async (values: SubmitFormValues) => {
+    const filteredCities: CityWithBillboards[] = cloneDeep(cities).filter(
+      city => values.city.includes(city.id),
+    )
+    const filteredLocations: BillboardWithCity[] = cloneDeep(billboards).filter(
+      billboard => values.location.includes(billboard.id),
+    )
+    const emailData = {
+      campaignEndDate: formatDate(values.campaignEndDate, 'yyyy-MM-dd'),
+      campaignStartDate: formatDate(values.campaignStartDate, 'yyyy-MM-dd'),
+      city: filteredCities,
+      comments: values.comments,
+      email: values.email,
+      phone: values.phone,
+      location: filteredLocations,
+      supportNeeded: Boolean(values.supportNeeded),
+      videoDuration: values.videoDuration,
+    }
+
+    const { error, data } = await sendLEDCampaignEmail(emailData)
+
+    if (data) {
+      toast.success('Вашата заявка беше изпратена успешно!')
+    }
+
+    if (error) {
+      toast.error('Възникна грешка при изпращането на вашата заявка!')
+    }
   }
 
   const onError = (error: unknown) => {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Play } from 'next/font/google'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 const playSans = Play({
@@ -245,7 +246,13 @@ export default function RootLayout({
           media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
         />
       </head>
-      <body className={`${playSans.variable} antialiased`}>{children}</body>
+      <body className={`${playSans.variable} antialiased`}>
+        {children}
+        <Toaster
+          position='top-center'
+          richColors
+        />
+      </body>
     </html>
   )
 }
