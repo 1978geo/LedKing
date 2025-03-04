@@ -57,7 +57,7 @@ export default function Home() {
         </div>
 
         <section className='flex flex-col xl:flex-row xl:gap-4 w-full xl:max-w-[640px] mx-auto'>
-          <div className='px-6 py-14 flex flex-col items-center justify-center xl:items-start bg-[rgba(171,168,187,0.2)] xl:rounded-md w-full overflow-hidden backdrop-blur-xl'>
+          <div className='px-6 py-14 flex flex-col items-center justify-center xl:items-start bg-[rgba(171,168,187,0.2)] xl:rounded-2xl w-full overflow-hidden backdrop-blur-xl'>
             <div className='flex flex-col xl:flex-row max-w-[388px] xl:max-w-[640px]'>
               <h1
                 className='
