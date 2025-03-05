@@ -127,8 +127,8 @@ function LedCampaingForm({
         className='space-y-5 relative'
       >
         <div className='max-w-screen mx-auto'>
-          <div className='absolute z-50 top-0 left-0 h-17 w-10 bg-gradient-to-r from-white from-50% to-transparent pointer-events-none'></div>
-          <div className='absolute z-50 top-0 right-0 h-17 w-10 bg-gradient-to-r from-transparent to-white to-50% pointer-events-none'></div>
+          <div className='absolute z-50 top-0 left-0 h-17 w-10 bg-gradient-to-r from-white to-transparent pointer-events-none'></div>
+          <div className='absolute z-50 top-0 right-0 h-17 w-10 bg-gradient-to-r from-transparent to-white pointer-events-none'></div>
           <FormField
             control={form.control}
             name='city'
