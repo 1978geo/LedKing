@@ -16,7 +16,7 @@ import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { cn } from '@/lib/utils'
 import LEDMap from '../led-map'
 import { CalendarIcon, CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   Popover,
   PopoverContent,
@@ -64,6 +64,7 @@ function LedCampaingForm({
   billboards,
   billboardsByCity,
 }: LedCampaingFormProps) {
+  const locationsSectionRef = useRef<HTMLDivElement>(null)
   const form = useForm<SubmitFormValues>({
     resolver: zodResolver(LedCampaingSchema),
     defaultValues: initialValues,
@@ -126,13 +127,13 @@ function LedCampaingForm({
         className='space-y-5 relative'
       >
         <div className='max-w-screen mx-auto'>
-          <div className='absolute top-0 left-0 h-11 w-10 bg-gradient-to-r from-white to-transparent pointer-events-none'></div>
-          <div className='absolute top-0 right-0 h-11 w-10 bg-gradient-to-l from-white to-transparent pointer-events-none'></div>
+          <div className='absolute z-50 top-0 left-0 h-17 w-10 bg-gradient-to-r from-white from-50% to-transparent pointer-events-none'></div>
+          <div className='absolute z-50 top-0 right-0 h-17 w-10 bg-gradient-to-r from-transparent to-white to-50% pointer-events-none'></div>
           <FormField
             control={form.control}
             name='city'
             render={() => (
-              <FormItem className='flex flex-row items-center gap-x-4 overflow-x-auto px-8 w-full pt-4'>
+              <FormItem className='flex flex-row items-center gap-x-3 overflow-x-auto px-8 w-full pt-4'>
                 {cities.map(city => (
                   <FormField
                     key={city.id}
@@ -155,15 +156,18 @@ function LedCampaingForm({
                                 type='checkbox'
                                 aria-checked={field.value?.includes(city.id)}
                                 checked={field.value?.includes(city.id)}
-                                onChange={e =>
-                                  e.target.checked
-                                    ? field.onChange([...field.value, city.id])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          value => value !== city.id,
-                                        ),
-                                      )
-                                }
+                                onChange={e => {
+                                  if (e.target.checked) {
+                                    field.onChange([...field.value, city.id])
+                                    locationsSectionRef.current?.scrollIntoView()
+                                  } else {
+                                    field.onChange(
+                                      field.value?.filter(
+                                        value => value !== city.id,
+                                      ),
+                                    )
+                                  }
+                                }}
                                 className='absolute top-0 left-0 peer size-4 shrink-0 rounded-full opacity-0 z-20'
                               />
                               <div
@@ -203,7 +207,10 @@ function LedCampaingForm({
 
         <LEDMap billboards={billboards} />
 
-        <div className='flex flex-col mb-8'>
+        <div
+          className='flex flex-col mb-8'
+          ref={locationsSectionRef}
+        >
           {selectedCityIds.length > 0 && (
             <>
               <h3 className='text-2xl font-bold text-center mt-10 mb-2'>

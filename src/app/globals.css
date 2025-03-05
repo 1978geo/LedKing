@@ -118,7 +118,7 @@
 
 html,
 body {
-  @apply block h-screen w-screen font-play text-base leading-6 text-foreground;
+  @apply block h-screen w-screen font-play text-base leading-6 text-foreground scroll-smooth;
 }
 
 * {
