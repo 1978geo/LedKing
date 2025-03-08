@@ -10,7 +10,7 @@ import { Footer } from '@/components/footer'
 
 export default function Home() {
   return (
-    <div className='flex flex-col w-full min-h-screen relative bg-site-bg'>
+    <div className='flex flex-col w-full min-h-screen relative bg-site-bg xl:overflow-hidden xl:h-screen xl:w-screen'>
       <Image
         src={leftBar}
         alt='background'
@@ -45,7 +45,7 @@ export default function Home() {
               title='YouTube video player'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerPolicy='strict-origin-when-cross-origin'
-              className='border border-transparent rounded-lg overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
+              className='border border-transparent rounded-lg overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] xl:translate-y-[15px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
               style={{
                 background:
                   'linear-gradient(to right, rgba(184, 39, 252, 1), rgba(44, 144, 252, 1), rgba(184, 253, 51, 1), rgba(254, 200, 55, 1), rgba(253, 24, 146, 1))',
