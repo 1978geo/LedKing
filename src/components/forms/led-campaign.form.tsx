@@ -273,7 +273,6 @@ function LedCampaingForm({
                                               billboard.id,
                                             )}
                                             onChange={e => {
-                                              console.log(e)
                                               if (e.target.checked) {
                                                 field.onChange([
                                                   ...field.value,
