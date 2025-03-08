@@ -1,12 +1,7 @@
 'use client'
 
 import { z } from 'zod'
-import {
-  Controller,
-  DefaultValues,
-  FieldErrors,
-  useForm,
-} from 'react-hook-form'
+import { Controller, DefaultValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
@@ -165,7 +160,7 @@ function BuyLedForm() {
             render={() => (
               <FormItem className='flex flex-col flex-1'>
                 <FormLabel className='text-2xl font-bold'>
-                  Profile Picture
+                  Снимка на обекта
                 </FormLabel>
                 <FormControl>
                   <Controller
@@ -176,7 +171,7 @@ function BuyLedForm() {
                         {...fieldProps}
                         value={value as File | null}
                         onChange={onChange}
-                        placeholder='Click to upload a profile picture'
+                        placeholder='Качете снимка на обекта (jpg,png,gif,svg)'
                         className='w-full h-12 text-lg rounded-lg shadow-none border-form-border text-form-border'
                       />
                     )}

@@ -11,9 +11,7 @@ export const LedBuySchema = z.object({
       z.instanceof(File, { message: 'Задължително поле' }),
       z.string().optional(), // Allow the existing image URL for editing mode
     ])
-    .refine(value => value instanceof File || typeof value === 'string', {
-      message: 'Моля качете снимка',
-    }),
+    .optional(),
   email: z.string().email({ message: 'Невалиден имейл' }),
   phone: z.string().nonempty({ message: 'Невалиден телефон' }),
   comments: z.string().optional(),
