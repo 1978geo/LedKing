@@ -51,7 +51,7 @@ export function MenuDialog({ trigger }: MenuDialogProps) {
           LED Кампания
         </Link>
         <Link
-          href='/'
+          href='/purchase'
           className='flex items-center gap-x-4 font-semibold py-2 px-4 hover:bg-white/50 hover:text-background/60 rounded-[8px]'
           onClick={() => setOpen(false)}
         >
@@ -59,7 +59,7 @@ export function MenuDialog({ trigger }: MenuDialogProps) {
           Покупка на LED
         </Link>
         <Link
-          href='/'
+          href='/rent'
           className='flex items-center gap-x-4 font-semibold py-2 px-4 hover:bg-white/50 hover:text-background/60 rounded-[8px]'
           onClick={() => setOpen(false)}
         >
@@ -67,7 +67,7 @@ export function MenuDialog({ trigger }: MenuDialogProps) {
           Наем на LED
         </Link>
         <Link
-          href='/'
+          href='/maintenance'
           className='flex items-center gap-x-4 font-semibold py-2 px-4 hover:bg-white/50 hover:text-background/60 rounded-[8px]'
           onClick={() => setOpen(false)}
         >

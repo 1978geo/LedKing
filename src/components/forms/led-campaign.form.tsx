@@ -35,6 +35,7 @@ import { CityWithBillboards } from '@/types/City'
 import { BillboardWithCity } from '@/types/Billboard'
 import { cloneDeep } from 'lodash'
 import { toast } from 'sonner'
+import { SubmitButton } from './submit-button'
 
 // Removed as these types are now imported from '@/types'
 
@@ -77,32 +78,49 @@ function LedCampaingForm({
   )
 
   const onSubmit = async (values: SubmitFormValues) => {
-    const filteredCities: CityWithBillboards[] = cloneDeep(cities).filter(
-      city => values.city.includes(city.id),
-    )
-    const filteredLocations: BillboardWithCity[] = cloneDeep(billboards).filter(
-      billboard => values.location.includes(billboard.id),
-    )
-    const emailData = {
-      campaignEndDate: formatDate(values.campaignEndDate, 'yyyy-MM-dd'),
-      campaignStartDate: formatDate(values.campaignStartDate, 'yyyy-MM-dd'),
-      city: filteredCities,
-      comments: values.comments,
-      email: values.email,
-      phone: values.phone,
-      location: filteredLocations,
-      supportNeeded: Boolean(values.supportNeeded),
-      videoDuration: values.videoDuration,
+    const parsedValues = LedCampaingSchema.safeParse(values)
+
+    if (parsedValues.success) {
+      const { data: ledCampaignData } = parsedValues
+      const filteredCities: CityWithBillboards[] = cloneDeep(cities).filter(
+        city => ledCampaignData.city.includes(city.id),
+      )
+      const filteredLocations: BillboardWithCity[] = cloneDeep(
+        billboards,
+      ).filter(billboard => ledCampaignData.location.includes(billboard.id))
+      const emailData = {
+        campaignEndDate: formatDate(
+          ledCampaignData.campaignEndDate,
+          'yyyy-MM-dd',
+        ),
+        campaignStartDate: formatDate(
+          ledCampaignData.campaignStartDate,
+          'yyyy-MM-dd',
+        ),
+        city: filteredCities,
+        comments: ledCampaignData.comments,
+        email: ledCampaignData.email,
+        phone: ledCampaignData.phone,
+        location: filteredLocations,
+        supportNeeded: Boolean(ledCampaignData.supportNeeded),
+        videoDuration: ledCampaignData.videoDuration,
+      }
+
+      const { error, data } = await sendLEDCampaignEmail(emailData)
+
+      if (data) {
+        toast.success('Вашата заявка беше изпратена успешно!')
+      }
+
+      if (error) {
+        toast.error('Възникна грешка при изпращането на вашата заявка!')
+      }
     }
 
-    const { error, data } = await sendLEDCampaignEmail(emailData)
-
-    if (data) {
-      toast.success('Вашата заявка беше изпратена успешно!')
-    }
-
-    if (error) {
-      toast.error('Възникна грешка при изпращането на вашата заявка!')
+    if (parsedValues.error) {
+      parsedValues.error?.errors.forEach(error => {
+        toast.error(error.message)
+      })
     }
   }
 
@@ -246,14 +264,6 @@ function LedCampaingForm({
                                       >
                                         <div className='flex items-center gap-x-4'>
                                           <input
-                                            id={billboard.id}
-                                            type='checkbox'
-                                            aria-checked={field.value?.includes(
-                                              billboard.id,
-                                            )}
-                                            checked={field.value?.includes(
-                                              billboard.id,
-                                            )}
                                             onChange={e =>
                                               e.target.checked
                                                 ? field.onChange([
@@ -410,14 +420,6 @@ function LedCampaingForm({
                                         className='relative flex items-center justify-between w-full font-normal h-full pr-3'
                                       >
                                         <input
-                                          id={billboard.id}
-                                          type='checkbox'
-                                          aria-checked={field.value?.includes(
-                                            billboard.id,
-                                          )}
-                                          checked={field.value?.includes(
-                                            billboard.id,
-                                          )}
                                           onChange={e =>
                                             e.target.checked
                                               ? field.onChange([
@@ -673,13 +675,13 @@ function LedCampaingForm({
                 name='email'
                 render={({ field }) => (
                   <FormItem className='flex flex-col flex-1'>
-                    <FormLabel className='text-2xl font-bold'>Имеил*</FormLabel>
+                    <FormLabel className='text-2xl font-bold'>Имейл*</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         type='email'
                         className='w-full h-12 text-lg rounded-lg shadow-none border-form-border text-form-border'
-                        placeholder='Вашият емеил'
+                        placeholder='Вашият имейл'
                       />
                     </FormControl>
                     <FormMessage />
@@ -750,7 +752,7 @@ function LedCampaingForm({
                         съгласно{' '}
                         <Link
                           href='#'
-                          className='underline'
+                          className='underline font-semibold'
                         >
                           Общите условия
                         </Link>
@@ -763,9 +765,7 @@ function LedCampaingForm({
               )}
             />
           </section>
-          <Button className='h-14 bg-gradient-to-r from-50% from-primary-purple to-secondary-purple text-md font-semibold mx-auto mb-5 px-10 cursor-pointer hover:opacity-90 uppercase'>
-            Изпратете заявката
-          </Button>
+          <SubmitButton>Изпратете заявката</SubmitButton>
         </div>
       </form>
     </Form>

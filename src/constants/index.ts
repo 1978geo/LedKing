@@ -29,8 +29,8 @@ export const navlinks = [
     label: 'Наем на LED',
   },
   {
-    id: 'support',
-    href: '/support',
+    id: 'maintenance',
+    href: '/maintenance',
     label: 'Поддръжка на LED',
   },
 ]
