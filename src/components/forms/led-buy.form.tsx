@@ -67,7 +67,7 @@ function BuyLedForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='flex flex-col gap-y-6 px-6 w-full'
+        className='flex flex-col gap-y-6 px-4 w-full'
       >
         <section className='flex flex-col md:flex-row gap-6'>
           <FormField
