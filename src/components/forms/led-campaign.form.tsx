@@ -264,19 +264,30 @@ function LedCampaingForm({
                                       >
                                         <div className='flex items-center gap-x-4'>
                                           <input
-                                            onChange={e =>
-                                              e.target.checked
-                                                ? field.onChange([
-                                                    ...field.value,
-                                                    billboard.id,
-                                                  ])
-                                                : field.onChange(
-                                                    field.value?.filter(
-                                                      value =>
-                                                        value !== billboard.id,
-                                                    ),
-                                                  )
-                                            }
+                                            id={billboard.id}
+                                            type='checkbox'
+                                            aria-checked={field.value?.includes(
+                                              billboard.id,
+                                            )}
+                                            checked={field.value?.includes(
+                                              billboard.id,
+                                            )}
+                                            onChange={e => {
+                                              console.log(e)
+                                              if (e.target.checked) {
+                                                field.onChange([
+                                                  ...field.value,
+                                                  billboard.id,
+                                                ])
+                                              } else {
+                                                field.onChange(
+                                                  field.value?.filter(
+                                                    value =>
+                                                      value !== billboard.id,
+                                                  ),
+                                                )
+                                              }
+                                            }}
                                             className='absolute top-0 left-0 peer size-4 shrink-0 rounded-full opacity-0 z-20'
                                           />
                                           <div
@@ -420,6 +431,14 @@ function LedCampaingForm({
                                         className='relative flex items-center justify-between w-full font-normal h-full pr-3'
                                       >
                                         <input
+                                          id={billboard.id}
+                                          type='checkbox'
+                                          aria-checked={field.value?.includes(
+                                            billboard.id,
+                                          )}
+                                          checked={field.value?.includes(
+                                            billboard.id,
+                                          )}
                                           onChange={e =>
                                             e.target.checked
                                               ? field.onChange([
