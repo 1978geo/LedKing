@@ -1,7 +1,12 @@
 'use client'
 
 import { z } from 'zod'
-import { Controller, DefaultValues, useForm } from 'react-hook-form'
+import {
+  Controller,
+  DefaultValues,
+  FieldErrors,
+  useForm,
+} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
@@ -63,15 +68,10 @@ function BuyLedForm() {
     }
   }
 
-  const onError = (error: any) => {
-    console.log(error)
-    toast.error(error?.message ?? 'An error occurred')
-  }
-
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit, onError)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className='flex flex-col gap-y-6 px-6 w-full'
       >
         <section className='flex flex-col md:flex-row gap-6'>
@@ -162,7 +162,7 @@ function BuyLedForm() {
           <FormField
             control={form.control}
             name='photo'
-            render={({ field }) => (
+            render={() => (
               <FormItem className='flex flex-col flex-1'>
                 <FormLabel className='text-2xl font-bold'>
                   Profile Picture

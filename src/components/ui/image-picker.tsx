@@ -16,6 +16,7 @@ interface ImagePickerProps {
 
 export default function ImagePicker({
   onChange,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   value,
   className = '',
   placeholder = 'Click to upload an image',
@@ -54,17 +55,11 @@ export default function ImagePicker({
   return (
     <div
       role='button'
-      tabIndex={0}
       className={cn(
         'relative border rounded-md cursor-pointer hover:bg-muted/50 transition-colors',
         className,
       )}
       onClick={handleClick}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleClick()
-        }
-      }}
     >
       <input
         type='file'
