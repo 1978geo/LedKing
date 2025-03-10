@@ -53,7 +53,7 @@ const initialValues: DefaultValues<SubmitFormValues> = {
   campaignStartDate: new Date(),
   campaignEndDate: new Date(),
   videoDuration: 0,
-  supportNeeded: false,
+  supportNeeded: undefined,
   email: '',
   phone: '',
   comments: '',
@@ -659,7 +659,7 @@ function LedCampaingForm({
                         type='button'
                         className={cn(
                           'shadow-none bg-transparent text-white text-lg rounded-full w-40 h-16',
-                          field.value && 'bg-white text-black',
+                          field.value === true && 'bg-white text-black',
                         )}
                         size='lg'
                         onClick={() => field.onChange(true)}
@@ -671,7 +671,7 @@ function LedCampaingForm({
                         type='button'
                         className={cn(
                           'shadow-none bg-transparent text-white text-lg rounded-full w-40 h-16',
-                          !field.value && 'bg-white text-black',
+                          field.value === false && 'bg-white text-black',
                         )}
                         size='lg'
                         onClick={() => field.onChange(false)}
