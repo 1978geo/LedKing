@@ -36,7 +36,7 @@ export default function Home() {
         <div className='container relative xl:max-w-auto mx-auto xl:mx-0 flex-1 shrink-0 pb-4 xl:pb-0'>
           <AspectRatio
             ratio={16 / 9}
-            className='xl:perspective-[800px] 2xl:perspective-[1000px] perspective-origin-center mx-5 mb-8 xl:ml-6 xl:-mt-10 2xl:-mt-18 z-1'
+            className='xl:perspective-[800px] 2xl:perspective-[1000px] perspective-origin-center mx-5 mb-8 xl:ml-6 xl:-mt-10 2xl:-mt-18'
           >
             <iframe
               width='560'
@@ -45,7 +45,7 @@ export default function Home() {
               title='YouTube video player'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerPolicy='strict-origin-when-cross-origin'
-              className='border border-transparent rounded-lg overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] xl:translate-y-[15px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg] z-10'
+              className='border border-transparent rounded-lg overflow-hidden object-cover w-full h-full xl:-rotate-y-[30deg] xl:-skew-y-[3deg] xl:-translate-x-[80px] xl:translate-y-[15px] 2xl:-skew-y-[3deg] 2xl:-rotate-y-[25deg]'
               style={{
                 background:
                   'linear-gradient(to right, rgba(184, 39, 252, 1), rgba(44, 144, 252, 1), rgba(184, 253, 51, 1), rgba(254, 200, 55, 1), rgba(253, 24, 146, 1))',
