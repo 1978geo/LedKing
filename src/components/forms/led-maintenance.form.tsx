@@ -26,42 +26,47 @@ import { Checkbox } from '../ui/checkbox'
 import { Label } from '../ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import { LedRentSchema } from '@/schemas/led-rent.schema'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { CalendarIcon } from 'lucide-react'
 import { Calendar } from '../ui/calendar'
+import { LedMaintenanceSchema } from '@/schemas/led-maintenance.schema'
 
-type SubmitFormValues = z.output<typeof LedRentSchema>
+type SubmitFormValues = z.output<typeof LedMaintenanceSchema>
 
 const initialValues: DefaultValues<SubmitFormValues> = {
   city: '',
   typeLed: 'inside',
-  pixelDistance: '1.2',
-  rentStartDate: new Date(),
-  rentEndDate: new Date(),
+  maintenanceStartDate: new Date(),
+  maintenanceEndDate: new Date(),
   email: '',
   phone: '',
   comments: '',
   acceptTerms: false,
 }
 
-function RentLedForm() {
+function MaintenanceLedForm() {
   const form = useForm<SubmitFormValues>({
-    resolver: zodResolver(LedRentSchema),
+    resolver: zodResolver(LedMaintenanceSchema),
     defaultValues: initialValues,
   })
 
   const onSubmit = async (values: SubmitFormValues) => {
-    const parsedValues = LedRentSchema.safeParse(values)
+    const parsedValues = LedMaintenanceSchema.safeParse(values)
 
     if (parsedValues.success) {
       const { data: rentValues } = parsedValues
       const submitData = {
         ...rentValues,
-        rentEndDate: formatDate(rentValues.rentEndDate, 'yyyy-MM-dd'),
-        rentStartDate: formatDate(rentValues.rentStartDate, 'yyyy-MM-dd'),
+        maintenanceEndDate: formatDate(
+          rentValues.maintenanceEndDate,
+          'yyyy-MM-dd',
+        ),
+        maintenanceStartDate: formatDate(
+          rentValues.maintenanceStartDate,
+          'yyyy-MM-dd',
+        ),
       }
 
       console.log(submitData)
@@ -130,48 +135,14 @@ function RentLedForm() {
           />
         </section>
 
-        <section className='flex flex-col md:flex-row gap-6'>
-          <FormField
-            control={form.control}
-            name='pixelDistance'
-            render={({ field }) => (
-              <FormItem className='flex flex-col flex-1'>
-                <FormLabel className='text-2xl font-bold'>
-                  Разстояние между пикселите*
-                </FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger className='w-full h-12 text-lg rounded-lg shadow-none border-form-border text-form-border'>
-                      <SelectValue placeholder='Изберете разстояние между пикселите' />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value='1.2'>1,2</SelectItem>
-                    <SelectItem value='1.5'>1,5</SelectItem>
-                    <SelectItem value='1.8'>1,8</SelectItem>
-                    <SelectItem value='2'>2</SelectItem>
-                    <SelectItem value='2.5'>2,5</SelectItem>
-                    <SelectItem value='3'>3</SelectItem>
-                    <SelectItem value='4'>4</SelectItem>
-                    <SelectItem value='5'>5</SelectItem>
-                    <SelectItem value='6'>6</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </section>
-
         <section>
-          <h3 className='text-2xl font-bold mb-2'>Продължителност на наема*</h3>
+          <h3 className='text-2xl font-bold mb-2'>
+            Продължителност на поддръжката*
+          </h3>
           <div className='flex flex-col gap-y-4 md:flex-row md:gap-x-4 lg:gap-y-0 w-full'>
             <FormField
               control={form.control}
-              name='rentStartDate'
+              name='maintenanceStartDate'
               render={({ field }) => (
                 <FormItem className='flex flex-col flex-1'>
                   <Popover>
@@ -213,7 +184,7 @@ function RentLedForm() {
 
             <FormField
               control={form.control}
-              name='rentEndDate'
+              name='maintenanceEndDate'
               render={({ field }) => (
                 <FormItem className='flex flex-col flex-1'>
                   <Popover>
@@ -361,4 +332,4 @@ function RentLedForm() {
   )
 }
 
-export default RentLedForm
+export default MaintenanceLedForm
