@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import { format, formatDate } from 'date-fns'
-import { Controller, DefaultValues, useForm } from 'react-hook-form'
+import { DefaultValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Form,
@@ -21,7 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select'
-import ImagePicker from '../ui/image-picker'
 import { Textarea } from '../ui/textarea'
 import { Checkbox } from '../ui/checkbox'
 import { Label } from '../ui/label'
