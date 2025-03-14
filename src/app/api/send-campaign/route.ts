@@ -2,13 +2,13 @@ import {
   LEDCampaignEmail,
   LEDCampaignEmailProps,
 } from '@/email/led-campaign.email'
-import { NextApiRequest } from 'next'
+import { NextRequest } from 'next/server'
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
 
-export async function POST(req: NextApiRequest) {
-  const body: LEDCampaignEmailProps = await req.body
+export async function POST(req: NextRequest) {
+  const body: LEDCampaignEmailProps = await req.json()
 
   console.log(body)
 
@@ -31,11 +31,11 @@ export async function POST(req: NextApiRequest) {
     })
 
     if (error) {
-      return Response.json({ error }, { status: 500 })
+      return new Response(JSON.stringify(error), { status: 500 })
     }
 
-    return Response.json(data)
+    return new Response(JSON.stringify(data), { status: 200 })
   } catch (error) {
-    return Response.json({ error }, { status: 500 })
+    return new Response(JSON.stringify(error), { status: 500 })
   }
 }
