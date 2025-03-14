@@ -1,5 +1,3 @@
-import { LedLogo } from '@/components/led-logo'
-import { LedStrip } from '@/components/led-strip'
 import {
   Table,
   TableBody,
@@ -37,10 +35,9 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
   <div className='flex flex-col w-full max-w-5xl mx-auto p-4 gap-y-8'>
     <header className='flex flex-col w-full bg-gradient-to-r from-primary-purple to-secondary-purple backdrop-blur'>
       <div className='flex items-center h-full justify-between py-4'>
-        <LedLogo />
         <h2 className='text-2xl text-white mr-10'>LED Campaign</h2>
       </div>
-      <LedStrip />
+      <div className='flex shrink-0 w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
     </header>
 
     <section className='flex flex-col gap-y-2'>
@@ -133,3 +130,5 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
     </section>
   </div>
 )
+
+export default LEDCampaignEmail

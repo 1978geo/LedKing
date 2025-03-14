@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   try {
     const { data, error } = await resend.emails.send({
       from: body.email,
-      to: ['office@led-reklama.com'],
+      to: ['office@ledking.bg'],
       subject: `LED Campaign Inquiry - ${body.email}`,
       react: LEDCampaignEmail({
         campaignStartDate: body.campaignStartDate,
@@ -27,15 +27,17 @@ export async function POST(req: NextRequest) {
         location: body.location,
         supportNeeded: body.supportNeeded,
         videoDuration: body.videoDuration,
-      }) as React.ReactNode,
+      }) as React.ReactElement,
     })
 
     if (error) {
+      console.dir(error)
       return new Response(JSON.stringify(error), { status: 500 })
     }
 
     return new Response(JSON.stringify(data), { status: 200 })
   } catch (error) {
+    console.dir(error)
     return new Response(JSON.stringify(error), { status: 500 })
   }
 }
