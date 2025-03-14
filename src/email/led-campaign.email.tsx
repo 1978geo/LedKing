@@ -9,7 +9,6 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { BillboardWithCity } from '@/types/Billboard'
-import { CityWithBillboards } from '@/types/City'
 import { ImageIcon, MailIcon, PhoneIcon } from 'lucide-react'
 
 export interface LEDCampaignEmailProps {
