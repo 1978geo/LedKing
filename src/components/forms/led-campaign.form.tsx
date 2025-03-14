@@ -97,7 +97,7 @@ function LedCampaingForm({
           ledCampaignData.campaignStartDate,
           'yyyy-MM-dd',
         ),
-        city: filteredCities,
+        city: filteredCities.map(city => city.name).join(', '),
         comments: ledCampaignData.comments,
         email: ledCampaignData.email,
         phone: ledCampaignData.phone,

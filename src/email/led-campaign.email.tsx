@@ -15,7 +15,7 @@ import { ImageIcon, MailIcon, PhoneIcon } from 'lucide-react'
 export interface LEDCampaignEmailProps {
   campaignStartDate: string
   campaignEndDate: string
-  city: CityWithBillboards[]
+  city: string
   comments?: string
   email: string
   phone: string
@@ -50,28 +50,15 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
         <div>
           <strong>City:</strong>
         </div>
-        <div>{city.map(city => city.name).join(', ')}</div>
+        <div>{city}</div>
         <div>
           <strong>Start Date:</strong>
         </div>
-        <div>
-          {Intl.DateTimeFormat('bg-BG', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          }).format(new Date(campaignStartDate))}
-        </div>
+        <div>{campaignStartDate}</div>
         <div>
           <strong>End Date:</strong>
         </div>
-        <div>
-          {' '}
-          {Intl.DateTimeFormat('bg-BG', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          }).format(new Date(campaignEndDate))}
-        </div>
+        <div>{campaignEndDate}</div>
         <div>
           <strong>Video Duration:</strong>
         </div>
