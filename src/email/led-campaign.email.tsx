@@ -1,3 +1,4 @@
+import { LedLogo } from '@/components/led-logo'
 import {
   Table,
   TableBody,
@@ -36,6 +37,7 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
     <header className='flex flex-col w-full bg-gradient-to-r from-primary-purple to-secondary-purple backdrop-blur'>
       <div className='flex items-center h-full justify-between py-4'>
         <h2 className='text-2xl text-white mr-10'>LED Campaign</h2>
+        <LedLogo />
       </div>
       <div className='flex shrink-0 w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
     </header>
