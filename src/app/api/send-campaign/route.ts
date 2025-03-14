@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   try {
     const { data, error } = await resend.emails.send({
       from: body.email,
-      to: ['office@ledking.bg'],
+      to: ['office@led-reklama.com'],
       subject: `LED Campaign Inquiry - ${body.email}`,
       react: LEDCampaignEmail({
         campaignStartDate: body.campaignStartDate,
