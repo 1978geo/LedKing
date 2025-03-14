@@ -106,15 +106,12 @@ function LedCampaingForm({
         videoDuration: ledCampaignData.videoDuration,
       }
 
-      const { error, data } = await sendLEDCampaignEmail(emailData)
-
-      if (data) {
-        toast.success('Вашата заявка беше изпратена успешно!')
-      }
-
-      if (error) {
-        toast.error('Възникна грешка при изпращането на вашата заявка!')
-      }
+      const response = await fetch('/api/send-campaign', {
+        method: 'POST',
+        body: JSON.stringify(emailData),
+      })
+      const parsedRes = await response.json()
+      console.log(parsedRes)
     }
 
     if (parsedValues.error) {
