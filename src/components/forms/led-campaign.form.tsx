@@ -16,7 +16,7 @@ import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
 import { cn } from '@/lib/utils'
 import LEDMap from '../led-map'
 import { CalendarIcon, CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Popover,
   PopoverContent,
@@ -35,8 +35,6 @@ import { BillboardWithCity } from '@/types/Billboard'
 import { cloneDeep } from 'lodash'
 import { toast } from 'sonner'
 import { SubmitButton } from './submit-button'
-
-// Removed as these types are now imported from '@/types'
 
 interface LedCampaingFormProps {
   cities: CityWithBillboards[]
@@ -64,6 +62,7 @@ function LedCampaingForm({
   billboards,
   billboardsByCity,
 }: LedCampaingFormProps) {
+  const [loading, setLoading] = useState(false)
   const locationsSectionRef = useRef<HTMLDivElement>(null)
   const form = useForm<SubmitFormValues>({
     resolver: zodResolver(LedCampaingSchema),
@@ -105,12 +104,26 @@ function LedCampaingForm({
         videoDuration: ledCampaignData.videoDuration,
       }
 
-      const response = await fetch('/api/send-campaign', {
-        method: 'POST',
-        body: JSON.stringify(emailData),
-      })
-      const parsedRes = await response.json()
-      console.log(parsedRes)
+      try {
+        setLoading(true)
+        const response = await fetch('/api/send-campaign', {
+          method: 'POST',
+          body: JSON.stringify(emailData),
+        })
+
+        if (!response.ok) {
+          const err = await response.json()
+          throw new Error(err?.message ?? 'Something went wrong')
+        }
+
+        form.reset()
+        toast.success('Email sent successfully')
+      } catch (error) {
+        console.error(error)
+        toast.error('Failed to send email')
+      } finally {
+        setLoading(false)
+      }
     }
 
     if (parsedValues.error) {
@@ -779,7 +792,7 @@ function LedCampaingForm({
               )}
             />
           </section>
-          <SubmitButton>Изпратете заявката</SubmitButton>
+          <SubmitButton loading={loading}>Изпратете заявката</SubmitButton>
         </div>
       </form>
     </Form>
