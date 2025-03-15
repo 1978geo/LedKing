@@ -33,13 +33,13 @@ export default function LedLayout({ children }: { children: React.ReactNode }) {
         </p>
         <div className='text-[#a4a4a7] text-xs flex items-center gap-x-4'>
           <Link
-            href='/'
+            href='/terms'
             className='underline'
           >
             Общи условия
           </Link>
           <Link
-            href='/'
+            href='/contacts'
             className='underline'
           >
             Контакти

@@ -105,6 +105,7 @@
   --color-secondary-purple: #58295c;
   --color-form-border: #2c1c61;
   --color-primary-blue: #0621c9;
+  --color-primary-text: #2d1d62;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 4px);

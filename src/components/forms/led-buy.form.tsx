@@ -268,7 +268,7 @@ function BuyLedForm() {
                       данни да бъдат обработвани от &quot;LED King&quot;
                       съгласно{' '}
                       <Link
-                        href='#'
+                        href='/terms'
                         className='underline font-semibold'
                       >
                         Общите условия
