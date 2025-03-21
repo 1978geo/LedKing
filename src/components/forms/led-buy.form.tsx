@@ -55,9 +55,6 @@ function BuyLedForm() {
 
     if (parsedValues.success) {
       const { data: purchaseValues } = parsedValues
-
-      console.log(purchaseValues)
-
       const emailData = {
         city: purchaseValues.city,
         typeLed: purchaseValues.typeLed,
