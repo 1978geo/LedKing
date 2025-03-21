@@ -70,7 +70,7 @@ function BuyLedForm() {
 
       try {
         setLoading(true)
-        const response = await fetch('/api/пурцхасе', {
+        const response = await fetch('/api/purchase', {
           method: 'POST',
           body: JSON.stringify(emailData),
         })
