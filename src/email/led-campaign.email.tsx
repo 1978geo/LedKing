@@ -1,3 +1,5 @@
+'use server'
+
 import { LedLogo } from '@/components/led-logo'
 import {
   Table,
@@ -22,7 +24,9 @@ export interface LEDCampaignEmailProps {
   videoDuration: number
 }
 
-export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
+export const LEDCampaignEmail: React.FC<
+  Readonly<LEDCampaignEmailProps>
+> = async ({
   campaignStartDate,
   campaignEndDate,
   city,
