@@ -1,7 +1,7 @@
 import {
   LEDCampaignEmail,
   LEDCampaignEmailProps,
-} from '@/email/led-campaign.email'
+} from '@/emails/led-campaign.email'
 import { NextRequest } from 'next/server'
 import { Resend } from 'resend'
 

@@ -6,7 +6,7 @@ export interface City {
   popularChoice: boolean
   createdAt: Date
   updatedAt: Date
-  billboards: Billboard[]
+  billboards?: Billboard[]
 }
 
 export type CityWithBillboards = City & { billboards: Billboard[] }
