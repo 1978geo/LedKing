@@ -27,6 +27,7 @@ import { Checkbox } from '../ui/checkbox'
 import { Label } from '../ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
+import { useState } from 'react'
 
 type SubmitFormValues = z.output<typeof LedBuySchema>
 
@@ -34,7 +35,7 @@ const initialValues: DefaultValues<SubmitFormValues> = {
   city: '',
   typeLed: 'inside',
   pixelDistance: '1.2',
-  photo: undefined,
+  attachments: undefined,
   email: '',
   phone: '',
   comments: '',
@@ -42,6 +43,8 @@ const initialValues: DefaultValues<SubmitFormValues> = {
 }
 
 function BuyLedForm() {
+  const [loading, setLoading] = useState(false)
+
   const form = useForm<SubmitFormValues>({
     resolver: zodResolver(LedBuySchema),
     defaultValues: initialValues,
@@ -54,6 +57,37 @@ function BuyLedForm() {
       const { data: purchaseValues } = parsedValues
 
       console.log(purchaseValues)
+
+      const emailData = {
+        city: purchaseValues.city,
+        typeLed: purchaseValues.typeLed,
+        pixelDistance: purchaseValues.pixelDistance,
+        attachments: purchaseValues.attachments,
+        email: purchaseValues.email,
+        phone: purchaseValues.phone,
+        comments: purchaseValues.comments,
+      }
+
+      try {
+        setLoading(true)
+        const response = await fetch('/api/пурцхасе', {
+          method: 'POST',
+          body: JSON.stringify(emailData),
+        })
+
+        if (!response.ok) {
+          const err = await response.json()
+          throw new Error(err?.message ?? 'Something went wrong')
+        }
+
+        form.reset()
+        toast.success('Email sent successfully')
+      } catch (error) {
+        console.error(error)
+        toast.error('Failed to send email')
+      } finally {
+        setLoading(false)
+      }
     }
 
     if (parsedValues.error) {
@@ -156,7 +190,7 @@ function BuyLedForm() {
 
           <FormField
             control={form.control}
-            name='photo'
+            name='attachments'
             render={() => (
               <FormItem className='flex flex-col flex-1'>
                 <FormLabel className='text-2xl font-bold'>
@@ -164,13 +198,26 @@ function BuyLedForm() {
                 </FormLabel>
                 <FormControl>
                   <Controller
-                    name='photo'
+                    name='attachments'
                     control={form.control}
                     render={({ field: { value, onChange, ...fieldProps } }) => (
                       <ImagePicker
                         {...fieldProps}
-                        value={value as File | null}
-                        onChange={onChange}
+                        value={value as File | undefined}
+                        onChange={file => {
+                          if (file) {
+                            Promise.all(
+                              Array.from([file]).map(async file => ({
+                                filename: file.name,
+                                content: Buffer.from(
+                                  await file.arrayBuffer(),
+                                ).toString('base64'),
+                              })),
+                            ).then(filesArray => {
+                              onChange(filesArray)
+                            })
+                          }
+                        }}
                         placeholder='Качете снимка на обекта (jpg,png,gif,svg)'
                         className='w-full h-12 text-lg rounded-lg shadow-none border-form-border text-form-border'
                       />
@@ -283,7 +330,12 @@ function BuyLedForm() {
           />
         </section>
 
-        <SubmitButton className='mt-10 mb-16'>Изпратете заявката</SubmitButton>
+        <SubmitButton
+          loading={loading}
+          className='mt-10 mb-16'
+        >
+          Изпратете заявката
+        </SubmitButton>
       </form>
     </Form>
   )

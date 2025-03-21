@@ -52,7 +52,7 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
             <Row>
               <Column>
                 <Img
-                  src={`${baseUrl}/static/Logo.png`}
+                  src={`${baseUrl}/Logo.png`}
                   width='42'
                   height='42'
                   alt='LedKing Logo'
@@ -88,21 +88,10 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
                   <Row>
                     <Column className='pl-5 border border-white h-12'>
                       <Text className='text-[#666] text-[10px] py-0 my-0'>
-                        START DATE:
+                        CAMPAIGN PERIOD:
                       </Text>
                       <Text className='text-[#333] text-xs py-0 my-0'>
-                        {campaignStartDate}
-                      </Text>
-                    </Column>
-                  </Row>
-
-                  <Row>
-                    <Column className='pl-5 border border-white h-12'>
-                      <Text className='text-[#666] text-[10px] py-0 my-0'>
-                        END DATE:
-                      </Text>
-                      <Text className='text-[#333] text-xs py-0 my-0'>
-                        {campaignEndDate}
+                        Start: {campaignStartDate} - End: {campaignEndDate}
                       </Text>
                     </Column>
                   </Row>
