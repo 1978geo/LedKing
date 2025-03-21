@@ -1,16 +1,6 @@
 'use server'
 
-import { LedLogo } from '@/components/led-logo'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
 import { BillboardWithCity } from '@/types/Billboard'
-import { ImageIcon, MailIcon, PhoneIcon } from 'lucide-react'
 
 export interface LEDCampaignEmailProps {
   campaignStartDate: string
@@ -41,7 +31,6 @@ export const LEDCampaignEmail: React.FC<
     <header className='flex flex-col w-full bg-gradient-to-r from-primary-purple to-secondary-purple backdrop-blur'>
       <div className='flex items-center h-full justify-between py-4'>
         <h2 className='text-2xl text-white mr-10'>LED Campaign</h2>
-        <LedLogo />
       </div>
       <div className='flex shrink-0 w-full h-1.5 bg-gradient-to-r from-white via-[#fcd448] to-[#0230d6]' />
     </header>
@@ -79,41 +68,41 @@ export const LEDCampaignEmail: React.FC<
     <section className='flex flex-col gap-y-2'>
       <h2 className='text-2xl font-semibold'>LED Campaign Locations:</h2>
       <div className='border border-border rounded-md overflow-clip'>
-        <Table>
-          <TableHeader className='bg-gradient-to-r from-primary-purple to-secondary-purple'>
-            <TableRow>
-              <TableHead className='text-white'>City</TableHead>
-              <TableHead className='text-white'>Address</TableHead>
-              <TableHead className='text-white'>Coordinates</TableHead>
-              <TableHead className='text-white'>Number of Screens</TableHead>
-              <TableHead className='text-white'>Width</TableHead>
-              <TableHead className='text-white'>Height</TableHead>
-              <TableHead className='text-white'>Photo</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+        <table>
+          <thead className='bg-gradient-to-r from-primary-purple to-secondary-purple'>
+            <tr>
+              <th className='text-white'>City</th>
+              <th className='text-white'>Address</th>
+              <th className='text-white'>Coordinates</th>
+              <th className='text-white'>Number of Screens</th>
+              <th className='text-white'>Width</th>
+              <th className='text-white'>Height</th>
+              <th className='text-white'>Photo</th>
+            </tr>
+          </thead>
+          <tbody>
             {location.map(loc => (
-              <TableRow key={loc.id}>
-                <TableCell>{loc.city.name}</TableCell>
-                <TableCell>{loc.address}</TableCell>
-                <TableCell>
+              <tr key={loc.id}>
+                <td>{loc.city.name}</td>
+                <td>{loc.address}</td>
+                <td>
                   {loc.lat}, {loc.lng}
-                </TableCell>
-                <TableCell>{loc.countScreens}</TableCell>
-                <TableCell>{loc.width}cm</TableCell>
-                <TableCell>{loc.height}cm</TableCell>
-                <TableCell>
+                </td>
+                <td>{loc.countScreens}</td>
+                <td>{loc.width}cm</td>
+                <td>{loc.height}cm</td>
+                <td>
                   <a
                     href={loc.photo}
                     target='_blank'
                   >
-                    <ImageIcon className='size-6 text-secondary-purple' />
+                    image
                   </a>
-                </TableCell>
-              </TableRow>
+                </td>
+              </tr>
             ))}
-          </TableBody>
-        </Table>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -121,15 +110,11 @@ export const LEDCampaignEmail: React.FC<
       <h2 className='text-2xl font-semibold'>Contact Information:</h2>
       <div className='flex flex-col gap-y-2'>
         <div className='flex gap-x-2'>
-          <strong className='flex items-center gap-x-2'>
-            <MailIcon className='size-4' /> Email:
-          </strong>
+          <strong className='flex items-center gap-x-2'>Email:</strong>
           <a href={`mailto:${email}`}>{email}</a>
         </div>
         <div className='flex gap-x-2'>
-          <strong className='flex items-center gap-x-2'>
-            <PhoneIcon className='size-4' /> Phone:
-          </strong>
+          <strong className='flex items-center gap-x-2'>Phone:</strong>
           <a href={`tel:${phone}`}>{phone}</a>
         </div>
       </div>
