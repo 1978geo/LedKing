@@ -32,6 +32,7 @@ import { cn } from '@/lib/utils'
 import { CalendarIcon } from 'lucide-react'
 import { Calendar } from '../ui/calendar'
 import { LedMaintenanceSchema } from '@/schemas/led-maintenance.schema'
+import { useState } from 'react'
 
 type SubmitFormValues = z.output<typeof LedMaintenanceSchema>
 
@@ -47,6 +48,8 @@ const initialValues: DefaultValues<SubmitFormValues> = {
 }
 
 function MaintenanceLedForm() {
+  const [loading, setLoading] = useState(false)
+
   const form = useForm<SubmitFormValues>({
     resolver: zodResolver(LedMaintenanceSchema),
     defaultValues: initialValues,
@@ -57,7 +60,7 @@ function MaintenanceLedForm() {
 
     if (parsedValues.success) {
       const { data: rentValues } = parsedValues
-      const submitData = {
+      const emailData = {
         ...rentValues,
         maintenanceEndDate: formatDate(
           rentValues.maintenanceEndDate,
@@ -69,7 +72,26 @@ function MaintenanceLedForm() {
         ),
       }
 
-      console.log(submitData)
+      try {
+        setLoading(true)
+        const response = await fetch('/api/maintenance', {
+          method: 'POST',
+          body: JSON.stringify(emailData),
+        })
+
+        if (!response.ok) {
+          const err = await response.json()
+          throw new Error(err?.message ?? 'Something went wrong')
+        }
+
+        form.reset()
+        toast.success('Email sent successfully')
+      } catch (error) {
+        console.error(error)
+        toast.error('Failed to send email')
+      } finally {
+        setLoading(false)
+      }
     }
 
     if (parsedValues.error) {
@@ -326,7 +348,12 @@ function MaintenanceLedForm() {
           />
         </section>
 
-        <SubmitButton className='mt-10 mb-16'>Изпратете заявката</SubmitButton>
+        <SubmitButton
+          className='mt-10 mb-16'
+          loading={loading}
+        >
+          Изпратете заявката
+        </SubmitButton>
       </form>
     </Form>
   )
