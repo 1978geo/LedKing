@@ -12,19 +12,23 @@ import {
   Text,
 } from '@react-email/components'
 
-export interface LEDPurchaseEmailProps {
+export interface LEDRentEmailProps {
   city: string
   typeLed: string
   pixelDistance: string
+  rentStartDate: string
+  rentEndDate: string
   email: string
   phone: string
   comments: string
 }
 
-export const LEDPurchaseEmail: React.FC<Readonly<LEDPurchaseEmailProps>> = ({
+export const LEDRentEmail: React.FC<Readonly<LEDRentEmailProps>> = ({
   city,
   typeLed,
   pixelDistance,
+  rentStartDate,
+  rentEndDate,
   email,
   phone,
   comments,
@@ -33,7 +37,7 @@ export const LEDPurchaseEmail: React.FC<Readonly<LEDPurchaseEmailProps>> = ({
     <Head />
     <Tailwind>
       <Body className='bg-white my-auto mx-auto font-sans px-2'>
-        <Preview>LED Purchase Inquiry</Preview>
+        <Preview>LED Rent Inquiry</Preview>
         <Container className='mx-auto px-5 pb-12 w-2xl max-w-full'>
           <Section className='mb-5'>
             <Row>
@@ -51,7 +55,7 @@ export const LEDPurchaseEmail: React.FC<Readonly<LEDPurchaseEmailProps>> = ({
                 className='table-cell'
               >
                 <Text className='text-2xl font-normal text-gray-500'>
-                  LED Purchase Inquiry
+                  LED Rent Inquiry
                 </Text>
               </Column>
             </Row>
@@ -75,10 +79,10 @@ export const LEDPurchaseEmail: React.FC<Readonly<LEDPurchaseEmailProps>> = ({
                   <Row>
                     <Column className='pl-5 border border-white h-12'>
                       <Text className='text-[#666] text-[10px] py-0 my-0'>
-                        TYPE LED:
+                        RENT PERIOD:
                       </Text>
                       <Text className='text-[#333] text-xs py-0 my-0'>
-                        {typeLed}
+                        Start: {rentStartDate} - End: {rentEndDate}
                       </Text>
                     </Column>
                   </Row>
@@ -87,6 +91,17 @@ export const LEDPurchaseEmail: React.FC<Readonly<LEDPurchaseEmailProps>> = ({
 
               <Column colSpan={2}>
                 <Section>
+                  <Row>
+                    <Column className='pl-5 border border-white h-12'>
+                      <Text className='text-[#666] text-[10px] py-0 my-0'>
+                        TYPE LED:
+                      </Text>
+                      <Text className='text-[#333] text-xs py-0 my-0'>
+                        {typeLed}
+                      </Text>
+                    </Column>
+                  </Row>
+
                   <Row>
                     <Column className='pl-5 border border-white h-12'>
                       <Text className='text-[#666] text-[10px] my-0 py-0 uppercase'>
@@ -145,4 +160,4 @@ export const LEDPurchaseEmail: React.FC<Readonly<LEDPurchaseEmailProps>> = ({
   </Html>
 )
 
-export default LEDPurchaseEmail
+export default LEDRentEmail

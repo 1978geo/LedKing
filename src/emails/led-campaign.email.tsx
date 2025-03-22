@@ -27,10 +27,6 @@ export interface LEDCampaignEmailProps {
   videoDuration: number
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : ''
-
 export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
   campaignStartDate,
   campaignEndDate,
@@ -52,7 +48,7 @@ export const LEDCampaignEmail: React.FC<Readonly<LEDCampaignEmailProps>> = ({
             <Row>
               <Column>
                 <Img
-                  src={`${baseUrl}/Logo.png`}
+                  src='/Logo.png'
                   width='42'
                   height='42'
                   alt='LedKing Logo'

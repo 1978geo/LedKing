@@ -32,6 +32,7 @@ import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { CalendarIcon } from 'lucide-react'
 import { Calendar } from '../ui/calendar'
+import { useState } from 'react'
 
 type SubmitFormValues = z.output<typeof LedRentSchema>
 
@@ -48,6 +49,8 @@ const initialValues: DefaultValues<SubmitFormValues> = {
 }
 
 function RentLedForm() {
+  const [loading, setLoading] = useState(false)
+
   const form = useForm<SubmitFormValues>({
     resolver: zodResolver(LedRentSchema),
     defaultValues: initialValues,
@@ -58,13 +61,32 @@ function RentLedForm() {
 
     if (parsedValues.success) {
       const { data: rentValues } = parsedValues
-      const submitData = {
+      const emailData = {
         ...rentValues,
         rentEndDate: formatDate(rentValues.rentEndDate, 'yyyy-MM-dd'),
         rentStartDate: formatDate(rentValues.rentStartDate, 'yyyy-MM-dd'),
       }
 
-      console.log(submitData)
+      try {
+        setLoading(true)
+        const response = await fetch('/api/rent', {
+          method: 'POST',
+          body: JSON.stringify(emailData),
+        })
+
+        if (!response.ok) {
+          const err = await response.json()
+          throw new Error(err?.message ?? 'Something went wrong')
+        }
+
+        form.reset()
+        toast.success('Email sent successfully')
+      } catch (error) {
+        console.error(error)
+        toast.error('Failed to send email')
+      } finally {
+        setLoading(false)
+      }
     }
 
     if (parsedValues.error) {
@@ -355,7 +377,12 @@ function RentLedForm() {
           />
         </section>
 
-        <SubmitButton className='mt-10 mb-16'>Изпратете заявката</SubmitButton>
+        <SubmitButton
+          className='mt-10 mb-16'
+          loading={loading}
+        >
+          Изпратете заявката
+        </SubmitButton>
       </form>
     </Form>
   )
