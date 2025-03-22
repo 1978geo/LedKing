@@ -1,9 +1,18 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { z } from 'zod'
+import { cloneDeep } from 'lodash'
+import { toast } from 'sonner'
 import { format, formatDate } from 'date-fns'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { CalendarIcon, CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
+import Link from 'next/link'
+import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
+import { cn } from '@/lib/utils'
+import LEDMap from '../led-map'
+import { SubmitButton } from './submit-button'
 import {
   Form,
   FormControl,
@@ -12,29 +21,29 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { LedCampaingSchema } from '@/schemas/led-campaing.schema'
-import { cn } from '@/lib/utils'
-import LEDMap from '../led-map'
-import { CalendarIcon, CheckIcon, ImageIcon, MapPinIcon } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { Button } from '../ui/button'
-import { Calendar } from '../ui/calendar'
-import { Slider } from '../ui/slider'
-import { Input } from '../ui/input'
-import { Textarea } from '../ui/textarea'
-import { Checkbox } from '../ui/checkbox'
-import Link from 'next/link'
-import { Label } from '../ui/label'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import { Slider } from '@/components/ui/slider'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 import { CityWithBillboards } from '@/types/City'
 import { BillboardWithCity } from '@/types/Billboard'
-import { cloneDeep } from 'lodash'
-import { toast } from 'sonner'
-import { SubmitButton } from './submit-button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../ui/dialog'
+import Image from 'next/image'
 
 interface LedCampaingFormProps {
   cities: CityWithBillboards[]
@@ -317,8 +326,34 @@ function LedCampaingForm({
                                           {billboard.city.name}
                                         </div>
                                         <div className='flex items-center justify-end gap-x-4'>
-                                          <MapPinIcon size={24} />
-                                          <ImageIcon size={24} />
+                                          <a
+                                            href={`https://www.google.com/maps/place/${billboard.lat},${billboard.lng}`}
+                                            target='_blank'
+                                          >
+                                            <MapPinIcon size={24} />
+                                          </a>
+                                          <Dialog>
+                                            <DialogTrigger>
+                                              <ImageIcon size={24} />
+                                            </DialogTrigger>
+                                            <DialogContent className='w-full max-w-4xl max-h-[80vh] overflow-y-auto'>
+                                              <DialogHeader>
+                                                <DialogTitle>
+                                                  {billboard.city.name}
+                                                </DialogTitle>
+                                              </DialogHeader>
+                                              <DialogDescription>
+                                                {billboard.address}
+                                              </DialogDescription>
+                                              <Image
+                                                width={800}
+                                                height={600}
+                                                src={billboard.photo}
+                                                alt={billboard.city.name}
+                                                className='w-full aspect-16/9 object-contain bg-black rounded-md'
+                                              />
+                                            </DialogContent>
+                                          </Dialog>
                                         </div>
                                       </label>
                                     </div>
@@ -502,11 +537,37 @@ function LedCampaingForm({
                                     </div>
 
                                     <div className='flex justify-center items-center px-4 border-r border-gray-300'>
-                                      <MapPinIcon size={24} />
+                                      <a
+                                        href={`https://www.google.com/maps/place/${billboard.lat},${billboard.lng}`}
+                                        target='_blank'
+                                      >
+                                        <MapPinIcon size={24} />
+                                      </a>
                                     </div>
 
                                     <div className='flex justify-center items-center'>
-                                      <ImageIcon size={24} />
+                                      <Dialog>
+                                        <DialogTrigger>
+                                          <ImageIcon size={24} />
+                                        </DialogTrigger>
+                                        <DialogContent className='w-full max-w-4xl max-h-[80vh]'>
+                                          <DialogHeader>
+                                            <DialogTitle>
+                                              {billboard.city.name}
+                                            </DialogTitle>
+                                          </DialogHeader>
+                                          <DialogDescription>
+                                            {billboard.address}
+                                          </DialogDescription>
+                                          <Image
+                                            width={800}
+                                            height={600}
+                                            src={billboard.photo}
+                                            alt={billboard.city.name}
+                                            className='w-full aspect-16/9 object-contain bg-black rounded-md'
+                                          />
+                                        </DialogContent>
+                                      </Dialog>
                                     </div>
                                   </div>
                                 </FormControl>

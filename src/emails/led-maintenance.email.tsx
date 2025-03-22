@@ -43,7 +43,7 @@ export const LEDMaintenanceEmail: React.FC<
             <Row>
               <Column>
                 <Img
-                  src='/Logo.png'
+                  src='https://www.ledking.bg/Logo.png'
                   width='42'
                   height='42'
                   alt='LedKing Logo'

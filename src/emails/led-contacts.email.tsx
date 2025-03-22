@@ -33,7 +33,7 @@ export const LEDContactsEmail: React.FC<Readonly<LEDContactsEmailProps>> = ({
             <Row>
               <Column>
                 <Img
-                  src='/Logo.png'
+                  src='https://www.ledking.bg/Logo.png'
                   width='42'
                   height='42'
                   alt='LedKing Logo'
