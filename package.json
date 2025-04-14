@@ -11,6 +11,7 @@
     "postinstall": "prisma generate && prisma migrate deploy"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.8.0",
     "@hookform/resolvers": "^4.1.0",
     "@prisma/client": "^6.4.1",
     "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -29,6 +30,7 @@
     "@react-email/components": "0.0.34",
     "@tailwindcss/postcss": "^4.0.5",
     "@types/mapbox-gl": "^3.4.1",
+    "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",

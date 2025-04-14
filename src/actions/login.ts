@@ -1,8 +1,9 @@
 'use server'
 
-import { z } from 'zod'
+import { signIn } from '@/lib/auth'
 import { LoginSchema, LoginSchemaType } from '@/schemas/login.schema'
-import { prisma } from '@/lib/prisma'
+import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
+import { AuthError } from 'next-auth'
 
 export async function login(values: LoginSchemaType) {
   const validatedFields = LoginSchema.safeParse(values)
@@ -11,7 +12,24 @@ export async function login(values: LoginSchemaType) {
     return { error: 'Invalid fields!' }
   }
 
-  return {
-    success: 'Login successful!',
+  const { email, password } = validatedFields.data
+
+  try {
+    await signIn('credentials', {
+      email,
+      password,
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
+    })
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return { error: 'Invalid credentials' }
+        default:
+          return { error: 'Something went wrong!' }
+      }
+    }
+
+    throw error
   }
 }
