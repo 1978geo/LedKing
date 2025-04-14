@@ -19,6 +19,18 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        admin:
+          'bg-slate-900 text-white shadow-sm hover:bg-slate-900/80 rounded-md',
+        adminOutline:
+          'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground rounded-md',
+        adminGhost: 'hover:bg-accent hover:text-accent-foreground rounded-md',
+        adminLink: 'text-primary underline-offset-4 hover:underline rounded-md',
+        adminDestructive:
+          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 rounded-md',
+        adminDefault:
+          'bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-md',
+        adminSecondary:
+          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-md',
       },
       size: {
         default: 'h-9 px-4 py-2',
