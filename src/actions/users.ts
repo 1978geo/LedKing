@@ -10,6 +10,7 @@ export async function getUserByEmail(email: string) {
 
     return user
   } catch (error) {
+    console.error('Error fetching user by email:', error)
     return null
   }
 }
@@ -24,6 +25,7 @@ export async function getUserById(id: string) {
 
     return user
   } catch (error) {
+    console.error('Error fetching user by ID:', error)
     return null
   }
 }

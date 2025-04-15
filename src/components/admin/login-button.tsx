@@ -6,14 +6,14 @@ import { useRouter } from 'next/navigation'
 interface LoginButtonProps {
   children: React.ReactNode
   mode?: 'modal' | 'redirect'
-  asChild?: boolean
+  // asChild?: boolean
   className?: string
 }
 
 export function LoginButton({
   children,
   mode = 'redirect',
-  asChild,
+  // asChild,
   className,
 }: LoginButtonProps) {
   const router = useRouter()

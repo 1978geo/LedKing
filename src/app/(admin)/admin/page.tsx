@@ -1,6 +1,3 @@
-import { auth } from '@/lib/auth'
-
-export default async function DashboardPage() {
-  const session = await auth()
+export default function DashboardPage() {
   return <div>Dashboard</div>
 }

@@ -30,6 +30,7 @@
     "@react-email/components": "0.0.34",
     "@tailwindcss/postcss": "^4.0.5",
     "@types/mapbox-gl": "^3.4.1",
+    "@vercel/analytics": "^1.5.0",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
