@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import centerFloor from '@/assets/center-floor.png'
 import leftBar from '@/assets/left-bar.png'
@@ -149,9 +150,17 @@ export default function Home() {
             </div>
 
             <p className='w-full my-4 xl:px-2 xl:py-1 text-wrap text-white/40 text-center text-sm xl:text-left max-w-[388px] xl:max-w-[778px]'>
-              Външна видео LED-реклама. ТОП локации в София, Варна, Слънчев бряг
-              и Несебър. Изработваме и видео клипове. Ние сме част от
-              основателите и член на Асоциацията за дигитална външна реклама.
+              Външна видео LED-реклама на повече от{' '}
+              <Link
+                href='/campaign'
+                className='underline text-white/40 hover:text-white/70 font-semibold underline-offset-2'
+              >
+                70 ТОП ЛОКАЦИИ
+              </Link>{' '}
+              в София, Варна, Пловдив, Слънчев бряг, Банско, Пампорово и други
+              български градове. Изработка на качествени видео клипове. Ние сме
+              част от основателите и член на Асоциацията за дигитална външна
+              реклама в България.
             </p>
             <div className='w-full max-w-[388px] xl:max-w-[778px] mx-auto xl:mx-0'>
               <MenuDialog />
