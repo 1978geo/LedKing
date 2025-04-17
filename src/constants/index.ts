@@ -1,7 +1,7 @@
 import {
   CalendarDaysIcon,
-  HouseIcon,
   InboxIcon,
+  LayoutGridIcon,
   MapPinnedIcon,
   MonitorPlayIcon,
   Settings,
@@ -39,7 +39,7 @@ export const admingMenuItems = [
   {
     title: 'Dashboard',
     href: '/admin',
-    icon: HouseIcon,
+    icon: LayoutGridIcon,
   },
   {
     title: 'Cities',

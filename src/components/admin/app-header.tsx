@@ -1,11 +1,11 @@
 'use client'
 
+import React from 'react'
+import { ChevronLeftIcon } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { admingMenuItems } from '@/constants'
 import { cn } from '@/lib/utils'
-import React from 'react'
-import { CreateCityDrawer } from './create-city-drawer'
-import { ChevronLeftIcon } from 'lucide-react'
+import { UserButton } from './user-button'
 
 interface AppHeaderProps {
   className?: string
@@ -20,7 +20,7 @@ export function AppHeader({ className }: AppHeaderProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 w-full lg:hidden flex flex-col text-white bg-form-border z-50',
+        'flex h-16 w-full bg-white border-b border-border',
         className,
       )}
     >
@@ -30,7 +30,7 @@ export function AppHeader({ className }: AppHeaderProps) {
           title ? 'px-8' : 'px-4',
         )}
       >
-        <h1 className='text-2xl flex items-center gap-x-5'>
+        <h1 className='text-xl flex items-center gap-x-5'>
           {title ?? (
             <>
               <ChevronLeftIcon
@@ -41,7 +41,7 @@ export function AppHeader({ className }: AppHeaderProps) {
             </>
           )}
         </h1>
-        {pathname === '/admin/cities' && <CreateCityDrawer />}
+        <UserButton />
       </div>
     </header>
   )

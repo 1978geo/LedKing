@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export default function LedLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='flex flex-col flex-1 w-full min-h-screen bg-site-bg overflow-y-auto'>
+    <div className='flex flex-col flex-1 w-full bg-site-bg'>
       <header className='fixed z-60 top-0 left-0 right-0 flex flex-col bg-gradient-to-r from-[rgba(4,21,128,0.85)] to-[rgba(132,56,140,0.85)] backdrop-blur'>
         <LedStrip />
         <div className='flex items-center justify-between px-5 py-3 lg:container lg:mx-auto'>
