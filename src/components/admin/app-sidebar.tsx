@@ -15,7 +15,7 @@ export function AppSidebar() {
   if (!title) return null
 
   return (
-    <nav className='fixed bottom-5 left-5 right-5 flex lg:relative lg:left-0 lg:right-auto lg:bottom-0 lg:flex-col lg:w-60 lg:border-r lg:border-border lg:h-screen lg:p-4 lg:bg-white lg:border-l'>
+    <nav className='flex relative left-0 right-auto bottom-0 flex-col w-60 border-r border-border h-screen p-4 bg-white'>
       <div className='hidden lg:flex items-center gap-x-3 mb-6 mt-4'>
         <Image
           src={logo}
@@ -26,7 +26,7 @@ export function AppSidebar() {
         />
         <h3 className='font-semibold text-2xl'>LedKing</h3>
       </div>
-      <ul className='hidden space-y-2 w-full lg:flex flex-1 flex-col h-full'>
+      <ul className='space-y-2 w-full lg:flex flex-1 flex-col h-full'>
         {admingMenuItems.map(item => (
           <li
             key={item.title}
@@ -35,39 +35,15 @@ export function AppSidebar() {
             <Link
               href={item.href}
               className={cn(
-                'flex w-full text-md font-medium rounded-xl border-l-2 border-l-transparent items-center text-slate-500 gap-x-3 hover:bg-blue-100/80 hover:cursor-pointer py-3 px-4',
-                pathname === item.href
-                  ? 'border-l-primary bg-blue-100/80 text-primary'
-                  : '',
+                'flex w-full text-sm font-medium rounded-md items-center text-slate-600 gap-x-3 hover:text-indigo-900 hover:bg-indigo-50  hover:cursor-pointer py-2 px-6',
+                pathname === item.href ? 'text-indigo-900 font-semibold' : '',
               )}
             >
-              <item.icon className='size-5' />
+              <item.icon className='size-4' />
               {item.title}
             </Link>
           </li>
         ))}
-      </ul>
-
-      <ul className='lg:hidden max-w-screen w-auto mx-auto h-full p-2 rounded-full overflow-hidden bg-slate-900/60 backdrop-blur flex items-center justify-between gap-x-1'>
-        {admingMenuItems
-          .filter(item => item.href !== '/admin/settings')
-          .map(item => (
-            <li
-              key={item.title}
-              className='flex items-center justify-center rounded-full'
-            >
-              <Link
-                href={item.href}
-                className={cn(
-                  'text-white/70 flex items-center justify-center size-11 rounded-full ',
-                  pathname === item.href ? 'bg-white text-slate-600' : '',
-                )}
-              >
-                <item.icon className='size-5' />
-                <span className='hidden lg:inline'>{item.title}</span>
-              </Link>
-            </li>
-          ))}
       </ul>
     </nav>
   )

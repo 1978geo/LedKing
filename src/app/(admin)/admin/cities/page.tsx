@@ -1,29 +1,19 @@
 import { getCities } from '@/actions/cities'
-import { CityRow } from '@/components/admin/city-row-mobile'
-import { SearchIcon } from 'lucide-react'
+import { DataTable } from '@/components/data-table'
+import { requireAuth } from '@/lib/require-auth.server'
+import { columns } from './columns'
 
 export default async function CitiesPage() {
+  await requireAuth()
   const cities = await getCities()
 
   return (
-    <>
-      <div className='lg:hidden flex flex-col p-4 bg-slate-200/90 mb-20'>
-        <div className='flex items-center px-2.5 py-2 bg-slate-300 rounded-xl w-full my-5'>
-          <SearchIcon className='size-5 text-slate-500' />
-          <input
-            type='text'
-            placeholder='Search cities...'
-            className='w-full bg-transparent text-slate-800 placeholder-slate-400 ml-2 outline-none'
-          />
-        </div>
-        {cities.map(city => (
-          <CityRow
-            key={city.id}
-            city={city}
-          />
-        ))}
-      </div>
-      <div className='hidden lg:flex flex-col w-full px-8'>Desktop</div>
-    </>
+    <div className='p-4 bg-white rounded-xl border border-border shadow-sm'>
+      <DataTable
+        data={cities}
+        columns={columns}
+        searchKey='name'
+      />
+    </div>
   )
 }

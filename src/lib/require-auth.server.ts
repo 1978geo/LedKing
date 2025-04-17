@@ -1,14 +1,10 @@
-import { clsx, type ClassValue } from 'clsx'
+'use server'
+
 import { redirect } from 'next/navigation'
-import { twMerge } from 'tailwind-merge'
-import { useSession } from 'next-auth/react'
+import { auth } from './auth'
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
-export function requireAuthClient() {
-  const { data: session } = useSession()
+export async function requireAuth() {
+  const session = await auth()
 
   if (!session?.user) {
     redirect('/auth/login')
