@@ -1,7 +1,6 @@
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
-
 import { Badge } from '@/components/ui/badge'
 import { Checkbox } from '@/components/ui/checkbox'
 import { CityWithBillboards } from '@/types/City'
@@ -74,6 +73,16 @@ export const columns: ColumnDef<CityWithBillboards>[] = [
       />
     ),
     cell: ({ row }) => <div>{row.getValue('name')}</div>,
+  },
+  {
+    accessorKey: 'billboards',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='# of Billboards'
+      />
+    ),
+    cell: ({ row }) => <div>{row.original.billboards?.length}</div>,
   },
   {
     accessorKey: 'popularChoice',
