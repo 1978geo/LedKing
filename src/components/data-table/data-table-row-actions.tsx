@@ -54,7 +54,7 @@ export function DataTableRowActions<TData>({
           Copy
         </DropdownMenuItem>
         <Separator className='my-1' />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => console.log(row.original)}>
           <TrashIcon className='mr-1 size-3.5' />
           Delete
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>

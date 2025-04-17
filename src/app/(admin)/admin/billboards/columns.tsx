@@ -75,7 +75,7 @@ export const columns: ColumnDef<BillboardWithCity>[] = [
       />
     ),
     cell: ({ row }) => {
-      return <div>{row.getValue('countScreens')}</div>
+      return <div className='text-center'>{row.getValue('countScreens')}</div>
     },
   },
   {
@@ -149,7 +149,7 @@ export const columns: ColumnDef<BillboardWithCity>[] = [
       return (
         <Dialog>
           <DialogTrigger>
-            <ImageIcon className='size-6 cursor-pointer' />
+            <ImageIcon className='size-5 cursor-pointer' />
           </DialogTrigger>
           <DialogContent className='w-auto h-auto max-w-[800px]'>
             <DialogHeader>
