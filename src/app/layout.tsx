@@ -247,7 +247,9 @@ export default function RootLayout({
           media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)'
         />
       </head>
-      <body className={`${playSans.variable} antialiased`}>
+      <body
+        className={`${playSans.variable} antialiased [&:has(>.admin)]:overflow-y-hidden`}
+      >
         {children}
         <Analytics />
         <Toaster

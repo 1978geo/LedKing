@@ -4,7 +4,6 @@ import {
   LayoutGridIcon,
   MapPinnedIcon,
   MonitorPlayIcon,
-  Settings,
 } from 'lucide-react'
 
 export const navlinks = [
@@ -61,9 +60,15 @@ export const admingMenuItems = [
     href: '/admin/calendar',
     icon: CalendarDaysIcon,
   },
+]
+
+export const settingsMenuItems = [
   {
-    title: 'Settings',
+    title: 'My profile',
     href: '/admin/settings',
-    icon: Settings,
+  },
+  {
+    title: 'Users',
+    href: '/admin/settings/users',
   },
 ]

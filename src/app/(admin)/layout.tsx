@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { SessionProvider } from 'next-auth/react'
 import { AppHeader } from '@/components/admin/app-header'
-import { Toaster } from '@/components/ui/sonner'
 import { AppSidebar } from '@/components/admin/app-sidebar'
 import '../globals.css'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'LedKing',
@@ -18,7 +18,12 @@ export default function AdminRootLayout({
 }>) {
   return (
     <SessionProvider>
-      <div className='flex flex-row max-h-screen w-full overflow-hidden'>
+      <div
+        className={cn(
+          'flex flex-row max-h-screen w-full overflow-hidden',
+          'admin',
+        )}
+      >
         <AppSidebar />
         <div className='flex flex-col w-full flex-1 overflow-hidden'>
           <AppHeader />
@@ -27,7 +32,6 @@ export default function AdminRootLayout({
           </main>
         </div>
       </div>
-      <Toaster />
     </SessionProvider>
   )
 }

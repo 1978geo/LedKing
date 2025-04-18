@@ -28,7 +28,9 @@ const buttonVariants = cva(
         adminDestructive:
           'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 rounded-md',
         adminDefault:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-md',
+          'bg-indigo-500 text-white shadow hover:bg-indigo-500/90 rounded-md',
+        adminInverse:
+          'bg-indigo-100 text-blue-600 shadow-sm hover:bg-indigo-200/80',
         adminSecondary:
           'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-md',
       },

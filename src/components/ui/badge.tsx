@@ -9,6 +9,11 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
+        superadmin:
+          'border-transparent bg-violet-100 text-violet-800 [a&]:hover:bg-violet-100/90',
+        admin:
+          'border-transparent bg-amber-100 text-amber-800 [a&]:hover:bg-amber-100/90',
+        user: 'border-transparent bg-teal-100 text-teal-800 [a&]:hover:bg-teal-100/90',
         success:
           'border-transparent bg-emerald-100 text-emerald-800 [a&]:hover:bg-emerald-100/90',
         default:

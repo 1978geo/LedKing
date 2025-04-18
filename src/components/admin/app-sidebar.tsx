@@ -6,13 +6,16 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { admingMenuItems } from '@/constants'
 import logo from '@/assets/Logo.png'
+import { LogOutIcon } from 'lucide-react'
+import { Separator } from '@/components/ui/separator'
 
 export function AppSidebar() {
   const pathname = usePathname()
 
-  const title = admingMenuItems.find(item => item.href === pathname)?.title
-
-  if (!title) return null
+  function isActivePath(href: string): boolean {
+    const middlePath = href.split('/')[2]
+    return pathname.includes(middlePath) || pathname === href
+  }
 
   return (
     <nav className='flex relative left-0 right-auto bottom-0 flex-col w-60 border-r border-border h-screen p-4 bg-white'>
@@ -35,8 +38,8 @@ export function AppSidebar() {
             <Link
               href={item.href}
               className={cn(
-                'flex w-full text-sm font-medium rounded-md items-center text-slate-600 gap-x-3 hover:text-indigo-900 hover:bg-indigo-50  hover:cursor-pointer py-2 px-6',
-                pathname === item.href ? 'text-indigo-900 font-semibold' : '',
+                'flex w-full text-sm font-medium rounded-md items-center text-slate-600 gap-x-3 hover:text-blue-700 hover:bg-indigo-50  hover:cursor-pointer py-2 px-6',
+                isActivePath(item.href) ? 'text-blue-700 bg-indigo-50' : '',
               )}
             >
               <item.icon className='size-4' />
@@ -44,6 +47,19 @@ export function AppSidebar() {
             </Link>
           </li>
         ))}
+
+        <Separator className='mb-4 mt-auto' />
+
+        <li>
+          <span
+            className={cn(
+              'flex w-full text-sm font-medium rounded-md items-center text-slate-600 gap-x-3 hover:text-blue-700 hover:bg-indigo-50  hover:cursor-pointer py-2 px-6',
+            )}
+          >
+            <LogOutIcon className='size-4' />
+            Log out
+          </span>
+        </li>
       </ul>
     </nav>
   )

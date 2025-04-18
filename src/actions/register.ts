@@ -1,9 +1,10 @@
-import { RegisterSchema, RegisterSchemaType } from '@/schemas/register.schema'
+'use server'
+
+import { revalidatePath } from 'next/cache'
 import bcrypt from 'bcryptjs'
-import { getUserByEmail } from './users'
+import { RegisterSchema, RegisterSchemaType } from '@/schemas/register.schema'
 import { prisma } from '@/lib/prisma'
-// import { generateVerificationToken } from '@/lib/tokens'
-// import { sendVerificationEmail } from './sendVerificationEmail'
+import { getUserByEmail } from './users'
 
 export async function register(values: RegisterSchemaType) {
   const validateFields = RegisterSchema.safeParse(values)
@@ -36,6 +37,7 @@ export async function register(values: RegisterSchemaType) {
     },
   })
 
+  revalidatePath('/admin/settings/users')
   // const verificationToken = await generateVerificationToken(email)
   // await sendVerificationEmail(verificationToken.email, verificationToken.token)
 
