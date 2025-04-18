@@ -5,8 +5,6 @@ import bcrypt from 'bcryptjs'
 import { RegisterSchema, RegisterSchemaType } from '@/schemas/register.schema'
 import { prisma } from '@/lib/prisma'
 import { getUserByEmail } from './users'
-// import { generateVerificationToken } from '@/lib/tokens'
-// import { sendVerificationEmail } from './sendVerificationEmail'
 
 export async function register(values: RegisterSchemaType) {
   const validateFields = RegisterSchema.safeParse(values)

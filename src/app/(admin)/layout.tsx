@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { SessionProvider } from 'next-auth/react'
 import { AppHeader } from '@/components/admin/app-header'
-import { Toaster } from '@/components/ui/sonner'
 import { AppSidebar } from '@/components/admin/app-sidebar'
 import '../globals.css'
 import { cn } from '@/lib/utils'
@@ -33,7 +32,6 @@ export default function AdminRootLayout({
           </main>
         </div>
       </div>
-      <Toaster />
     </SessionProvider>
   )
 }

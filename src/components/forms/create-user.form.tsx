@@ -14,8 +14,6 @@ import {
 import { toast } from 'sonner'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { createCity } from '@/actions/cities'
-import { Switch } from '../ui/switch'
 import { RegisterSchema } from '@/schemas/register.schema'
 import { register } from '@/actions/register'
 import {
