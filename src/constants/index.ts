@@ -67,3 +67,14 @@ export const admingMenuItems = [
     icon: Settings,
   },
 ]
+
+export const settingsMenuItems = [
+  {
+    title: 'My profile',
+    href: '/admin/settings',
+  },
+  {
+    title: 'Users',
+    href: '/admin/settings/users',
+  },
+]

@@ -1,31 +1,37 @@
+'use server'
+
 import { prisma } from '@/lib/prisma'
 
-export async function getUserByEmail(email: string) {
-  try {
-    const user = await prisma.user.findUnique({
-      where: {
-        email,
-      },
-    })
+export async function getAllUsers() {
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      image: true,
+      role: true,
+    },
+  })
 
-    return user
-  } catch (error) {
-    console.error('Error fetching user by email:', error)
-    return null
-  }
+  return users
+}
+
+export async function getUserByEmail(email: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  })
+
+  return user
 }
 
 export async function getUserById(id: string) {
-  try {
-    const user = await prisma.user.findUnique({
-      where: {
-        id,
-      },
-    })
+  const user = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+  })
 
-    return user
-  } catch (error) {
-    console.error('Error fetching user by ID:', error)
-    return null
-  }
+  return user
 }

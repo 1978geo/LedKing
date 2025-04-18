@@ -12,9 +12,14 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { cn } from '@/lib/utils'
 import { signOut, useSession } from 'next-auth/react'
 
-export function UserButton() {
+interface UserButtonProps {
+  className?: string
+}
+
+export function UserButton({ className }: UserButtonProps) {
   const { data: session } = useSession()
 
   return (
@@ -22,9 +27,9 @@ export function UserButton() {
       <DropdownMenuTrigger asChild>
         <Button
           variant='ghost'
-          className='relative h-8 w-8 rounded-full'
+          className={cn('relative size-10 rounded-full', className)}
         >
-          <Avatar className='h-8 w-8'>
+          <Avatar className='size-10'>
             <AvatarImage
               src='/avatars/01.png'
               alt='@shadcn'
