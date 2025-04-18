@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 import { signOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 interface UserButtonProps {
   className?: string
@@ -21,6 +22,7 @@ interface UserButtonProps {
 
 export function UserButton({ className }: UserButtonProps) {
   const { data: session } = useSession()
+  const router = useRouter()
 
   return (
     <DropdownMenu>
@@ -63,7 +65,7 @@ export function UserButton({ className }: UserButtonProps) {
             Billing
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push('/admin/settings')}>
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>

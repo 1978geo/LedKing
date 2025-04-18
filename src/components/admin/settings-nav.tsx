@@ -18,10 +18,8 @@ export function SettingsNav() {
           <Link
             href={item.href}
             className={cn(
-              'text-sm font-medium text-slate-600 hover:text-indigo-900 hover:bg-indigo-50 hover:cursor-pointer py-2 px-6 rounded-md',
-              pathname === item.href
-                ? 'text-indigo-900 font-semibold bg-indigo-50'
-                : '',
+              'text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-indigo-50 hover:cursor-pointer py-2 px-6 rounded-md',
+              pathname === item.href ? 'text-blue-700 bg-indigo-50' : '',
             )}
           >
             {item.title}

@@ -1,11 +1,19 @@
 import { Separator } from '@/components/ui/separator'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { CirclePlusIcon, SearchIcon } from 'lucide-react'
+import { SearchIcon } from 'lucide-react'
 import { getAllUsers } from '@/actions/users'
 import { UserCard } from '@/components/admin/user-card'
+import { Input } from '@/components/ui/input'
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
+import { CreateUserDialog } from '@/components/admin/create-user-dialog'
 
 export default async function UsersPage() {
+  const session = await auth()
+
+  if (!session?.user) {
+    return redirect('/auth/login')
+  }
+
   const users = await getAllUsers()
 
   return (
@@ -25,23 +33,23 @@ export default async function UsersPage() {
           />
         </div>
         <div className='flex items-center'>
-          <Button className='rounded-md'>
-            <CirclePlusIcon className='size-5 cursor-pointer' /> Create user
-          </Button>
+          <CreateUserDialog />
         </div>
       </div>
 
       <div className='flex flex-col gap-y-4 mt-8'>
-        {users.map(user => (
-          <UserCard
-            key={user.id}
-            name={user.name}
-            email={user.email}
-            image={user.image}
-            role={user.role}
-            className='w-full border-b border-border pb-8'
-          />
-        ))}
+        {users
+          ?.filter(u => u.email !== session?.user?.email)
+          ?.map(user => (
+            <UserCard
+              key={user.id}
+              name={user.name}
+              email={user.email}
+              image={user.image}
+              role={user.role}
+              className='w-full border-b border-border pb-8'
+            />
+          ))}
       </div>
     </div>
   )
