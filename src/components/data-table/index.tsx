@@ -33,6 +33,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[]
   searchKey?: string
   facetedFilters?: FacetedFilter[]
+  onCreate?: () => void
 }
 
 export function DataTable<TData, TValue>({
@@ -40,6 +41,7 @@ export function DataTable<TData, TValue>({
   data,
   searchKey,
   facetedFilters,
+  onCreate,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
@@ -77,6 +79,7 @@ export function DataTable<TData, TValue>({
         table={table}
         facetedFilters={facetedFilters}
         searchKey={searchKey}
+        onCreate={onCreate}
       />
       <div className='rounded-md border border-border bg-white'>
         <Table>

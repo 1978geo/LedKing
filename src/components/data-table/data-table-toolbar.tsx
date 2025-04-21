@@ -1,7 +1,7 @@
 'use client'
 
 import { Table } from '@tanstack/react-table'
-import { X } from 'lucide-react'
+import { PlusCircleIcon, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -26,12 +26,14 @@ interface DataTableToolbarProps<TData> {
   table: Table<TData>
   facetedFilters?: FacetedFilter[]
   searchKey?: string
+  onCreate?: () => void
 }
 
 export function DataTableToolbar<TData>({
   table,
   facetedFilters,
   searchKey,
+  onCreate,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0
 
@@ -73,7 +75,19 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
+
       <DataTableViewOptions table={table} />
+
+      {onCreate && (
+        <Button
+          variant='adminDefault'
+          size='sm'
+          className='ml-3 cursor-pointer'
+          onClick={onCreate}
+        >
+          <PlusCircleIcon className='size-5' /> New
+        </Button>
+      )}
     </div>
   )
 }

@@ -47,14 +47,14 @@ export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className='w-full space-y-5 max-w-xl mx-auto'
+        className='w-full space-y-4 max-w-xl mx-auto'
       >
         <FormField
           control={form.control}
           name='name'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>City Name</FormLabel>
+              <FormLabel className='mb-1'>City Name</FormLabel>
               <FormControl>
                 <Input
                   placeholder='New York'
@@ -87,8 +87,8 @@ export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
         />
         <Button
           type='submit'
-          className='w-full rounded-full'
-          size='xl'
+          value='adminDefault'
+          className='w-full rounded-md'
         >
           Create
         </Button>

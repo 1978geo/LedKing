@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select'
+import { InfoIcon } from 'lucide-react'
 
 interface CreateCityFormProps {
   onSubmitAction: () => void
@@ -35,6 +36,7 @@ export function CreateUserForm({ onSubmitAction }: CreateCityFormProps) {
       name: '',
       email: '',
       password: '',
+      image: '',
       role: 'USER',
     },
   })
@@ -43,7 +45,11 @@ export function CreateUserForm({ onSubmitAction }: CreateCityFormProps) {
     const parsedPayload = RegisterSchema.safeParse(data)
 
     if (parsedPayload.success) {
-      await register(parsedPayload.data)
+      const response = await register(parsedPayload.data)
+      if (response?.error) {
+        toast.error(response.error as string)
+        return
+      }
       toast.success('User created successfully.')
       onSubmitAction()
     } else {
@@ -79,7 +85,7 @@ export function CreateUserForm({ onSubmitAction }: CreateCityFormProps) {
           name='email'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Email*</FormLabel>
               <FormControl>
                 <Input
                   type='email'
@@ -97,7 +103,7 @@ export function CreateUserForm({ onSubmitAction }: CreateCityFormProps) {
           name='password'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Password*</FormLabel>
               <FormControl>
                 <Input
                   type='password'
@@ -113,10 +119,29 @@ export function CreateUserForm({ onSubmitAction }: CreateCityFormProps) {
         />
         <FormField
           control={form.control}
+          name='image'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Photo URL</FormLabel>
+              <FormControl>
+                <Input
+                  type='text'
+                  placeholder='https://example.com/photo.jpg'
+                  autoComplete='off'
+                  className='shadow-none px-3 rounded-md'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name='role'
           render={({ field }) => (
             <FormItem className='flex flex-col flex-1'>
-              <FormLabel>Role</FormLabel>
+              <FormLabel>Role*</FormLabel>
               <Select
                 onValueChange={field.onChange}
                 defaultValue={field.value}
@@ -136,6 +161,10 @@ export function CreateUserForm({ onSubmitAction }: CreateCityFormProps) {
             </FormItem>
           )}
         />
+        <span className='text-sm text-muted-foreground inline-flex items-center gap-x-1'>
+          <InfoIcon className='size-4' /> All fields marked with &apos;*&apos;
+          are required
+        </span>
         <Button
           type='submit'
           className='w-full rounded-md cursor-pointer mt-2'

@@ -1,8 +1,7 @@
 import { getCities } from '@/actions/cities'
-import { DataTable } from '@/components/data-table'
 import { requireAuth } from '@/lib/require-auth.server'
-import { columns } from './columns'
 import { PageTitle } from '@/components/admin/page-title'
+import { CitiesTable } from './_components/cities-table'
 
 export default async function CitiesPage() {
   await requireAuth()
@@ -14,13 +13,7 @@ export default async function CitiesPage() {
         title='Cities'
         subtitle='Manage cities for your billboard locations'
       />
-      <div className='p-4 bg-white rounded-xl border border-border'>
-        <DataTable
-          data={cities}
-          columns={columns}
-          searchKey='name'
-        />
-      </div>
+      <CitiesTable data={cities} />
     </div>
   )
 }

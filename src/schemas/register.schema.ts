@@ -7,6 +7,7 @@ export const RegisterSchema = z.object({
     errorMap: () => ({ message: 'Role is required' }),
   }),
   password: z.string().min(1, { message: 'Password is required' }),
+  image: z.string().optional(),
 })
 
 export type RegisterSchemaType = z.infer<typeof RegisterSchema>

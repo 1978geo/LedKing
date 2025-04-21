@@ -1,12 +1,13 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { LogOutIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { signOut } from 'next-auth/react'
 import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 import { admingMenuItems } from '@/constants'
 import logo from '@/assets/Logo.png'
-import { LogOutIcon } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 
 export function AppSidebar() {
@@ -51,14 +52,15 @@ export function AppSidebar() {
         <Separator className='mb-4 mt-auto' />
 
         <li>
-          <span
+          <button
+            onClick={() => signOut()}
             className={cn(
               'flex w-full text-sm font-medium rounded-md items-center text-slate-600 gap-x-3 hover:text-blue-700 hover:bg-indigo-50  hover:cursor-pointer py-2 px-6',
             )}
           >
             <LogOutIcon className='size-4' />
             Log out
-          </span>
+          </button>
         </li>
       </ul>
     </nav>
