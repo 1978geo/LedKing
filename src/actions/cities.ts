@@ -5,6 +5,32 @@ import { CityWithBillboards } from '@/types/City'
 import { Prisma } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 
+export interface CityList {
+  id: string
+  name: string
+  popularChoice: boolean
+}
+
+export const getCitiesList = async () => {
+  const cities = await prisma.city.findMany({
+    select: {
+      id: true,
+      name: true,
+      popularChoice: true,
+    },
+    orderBy: [
+      {
+        popularChoice: 'desc',
+      },
+      {
+        name: 'asc',
+      },
+    ],
+  })
+
+  return cities as CityList[]
+}
+
 export const getCities = async () => {
   const cities = await prisma.city.findMany({
     include: {

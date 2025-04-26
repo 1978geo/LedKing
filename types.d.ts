@@ -5,6 +5,13 @@ export type UserRole = 'ADMIN' | 'USER' | 'SUPERADMIN'
 
 export type ExtendedUser = DefaultSession['user'] & {
   role: UserRole
+  surname?: string
+  username?: string
+  email: string
+  password: string
+  phone?: string
+  image?: string
+  password?: string
 }
 
 declare module 'next-auth' {
@@ -24,5 +31,11 @@ declare module 'next-auth/jwt' {
     /** OpenID ID Token */
     idToken?: string
     role: UserRole
+    surname?: string
+    username?: string
+    phone?: string
+    image?: string
+    password: string
+    email: string
   }
 }

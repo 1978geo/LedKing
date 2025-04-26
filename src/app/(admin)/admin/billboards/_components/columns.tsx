@@ -5,7 +5,6 @@ import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DataTableColumnHeader } from '@/components/data-table/data-table-column-header'
-import { DataTableRowActions } from '@/components/data-table/data-table-row-actions'
 import { BillboardWithCity } from '@/types/Billboard'
 import {
   Dialog,
@@ -17,6 +16,7 @@ import {
 } from '@/components/ui/dialog'
 import { ImageIcon } from 'lucide-react'
 import Image from 'next/image'
+import { BillboardsDataTableRowActions } from './billboards-data-table-row-actions'
 
 export const columns: ColumnDef<BillboardWithCity>[] = [
   {
@@ -63,7 +63,11 @@ export const columns: ColumnDef<BillboardWithCity>[] = [
       />
     ),
     cell: ({ row }) => {
-      return <div className='break-all'>{row.getValue('address')}</div>
+      return (
+        <div className='break-all'>
+          {row.getValue<string>('address').replace(/\\/g, '')}
+        </div>
+      )
     },
   },
   {
@@ -172,6 +176,6 @@ export const columns: ColumnDef<BillboardWithCity>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => <BillboardsDataTableRowActions row={row} />,
   },
 ]

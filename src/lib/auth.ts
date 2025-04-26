@@ -43,6 +43,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       if (token?.sub && session?.user) {
         session.user.id = token.sub
         session.user.role = token.role
+        session.user.surname = token.surname
+        session.user.username = token.username
+        session.user.phone = token.phone
+        session.user.image = token.image
+        session.user.email = token.email
       }
       return session
     },
@@ -51,6 +56,11 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         const user = await getUserById(token.sub)
         if (user) {
           token.role = user.role
+          token.surname = user.surname ?? undefined
+          token.username = user.username ?? undefined
+          token.phone = user.phone ?? undefined
+          token.image = user.image ?? undefined
+          token.email = user.email
         }
       }
       return token

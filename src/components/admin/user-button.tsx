@@ -33,8 +33,8 @@ export function UserButton({ className }: UserButtonProps) {
         >
           <Avatar className='size-10'>
             <AvatarImage
-              src='/avatars/01.png'
-              alt='@shadcn'
+              src={session?.user?.image}
+              alt='User profile picture'
             />
             <AvatarFallback>{session?.user?.name?.slice(0, 2)}</AvatarFallback>
           </Avatar>
@@ -57,7 +57,7 @@ export function UserButton({ className }: UserButtonProps) {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push('/admin/profile')}>
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -65,7 +65,9 @@ export function UserButton({ className }: UserButtonProps) {
             Billing
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push('/admin/settings')}>
+          <DropdownMenuItem
+            onClick={() => router.push('/admin/settings/users')}
+          >
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>

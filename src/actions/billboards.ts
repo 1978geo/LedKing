@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/prisma'
 import { BillboardWithCity } from '@/types/Billboard'
 import { Prisma } from '@prisma/client'
+import { getCityById } from './cities'
 
 export const getBillboards = async () => {
   const billboards = await prisma.billboard.findMany({
@@ -42,9 +43,27 @@ export const getBillboardById = async (id: string) => {
   return billboard
 }
 
-export const createBillboard = async (data: Prisma.BillboardCreateInput) => {
+export const createBillboard = async (
+  data: Omit<Prisma.BillboardCreateInput, 'city'> & { cityId: string },
+) => {
+  const city = await getCityById(data.cityId)
+
+  if (!city) {
+    throw new Error('City not found')
+  }
+
+  const { cityId, ...submitData } = data
+  const billboardData: Prisma.BillboardCreateInput = {
+    ...submitData,
+    city: {
+      connect: {
+        id: data.cityId,
+      },
+    },
+  }
+
   const billboard = await prisma.billboard.create({
-    data,
+    data: billboardData,
   })
 
   return billboard
