@@ -47,7 +47,7 @@ export default async function UsersPage() {
               email={user.email}
               image={user.image}
               role={user.role}
-              className='w-full border-b border-border pb-8'
+              className='w-full border-b border-border pb-8 last-of-type:border-none'
             />
           ))}
       </div>
