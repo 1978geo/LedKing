@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/prisma'
 import { BillboardWithCity } from '@/types/Billboard'
 import { Prisma } from '@prisma/client'
+import { omit } from 'lodash'
 import { getCityById } from './cities'
 
 export const getBillboards = async () => {
@@ -52,7 +53,7 @@ export const createBillboard = async (
     throw new Error('City not found')
   }
 
-  const { cityId, ...submitData } = data
+  const submitData = omit(data, ['cityId'])
   const billboardData: Prisma.BillboardCreateInput = {
     ...submitData,
     city: {

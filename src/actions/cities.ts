@@ -66,6 +66,7 @@ export const createCity = async (data: Prisma.CityCreateInput) => {
   })
 
   revalidatePath('/admin/cities')
+  revalidatePath('/campaign')
   return city
 }
 
@@ -78,6 +79,8 @@ export const updateCity = async (id: string, data: Prisma.CityUpdateInput) => {
     data,
   })
 
+  revalidatePath('/admin/cities')
+  revalidatePath('/campaign')
   return city as CityWithBillboards
 }
 
@@ -86,5 +89,7 @@ export const deleteCity = async (id: string) => {
     where: { id },
   })
 
+  revalidatePath('/admin/cities')
+  revalidatePath('/campaign')
   return city
 }

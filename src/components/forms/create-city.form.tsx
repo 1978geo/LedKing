@@ -15,28 +15,41 @@ import {
 import { toast } from 'sonner'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { createCity } from '@/actions/cities'
+import { createCity, updateCity } from '@/actions/cities'
 import { Switch } from '../ui/switch'
 
 interface CreateCityFormProps {
   onSubmit: () => void
+  editData?: z.infer<typeof CraeteCitySchema>
+  id?: string
 }
 
-export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
+export function CreateCityForm({
+  onSubmit,
+  editData,
+  id,
+}: CreateCityFormProps) {
   const form = useForm<z.infer<typeof CraeteCitySchema>>({
     resolver: zodResolver(CraeteCitySchema),
-    defaultValues: {
-      name: '',
-      popularChoice: false,
-    },
+    defaultValues: id
+      ? editData
+      : {
+          name: '',
+          popularChoice: false,
+        },
   })
 
   function handleSubmit(data: z.infer<typeof CraeteCitySchema>) {
     const parsedPayload = CraeteCitySchema.safeParse(data)
 
     if (parsedPayload.success) {
-      createCity(parsedPayload.data)
-      toast.success('City created successfully.')
+      if (id) {
+        updateCity(id, parsedPayload.data)
+        toast.success('City updated successfully.')
+      } else {
+        createCity(parsedPayload.data)
+        toast.success('City created successfully.')
+      }
       onSubmit()
     } else {
       toast.error('Please double check all fields.')
@@ -90,7 +103,7 @@ export function CreateCityForm({ onSubmit }: CreateCityFormProps) {
           value='adminDefault'
           className='w-full rounded-md'
         >
-          Create
+          {id ? 'Update' : 'Create'}
         </Button>
       </form>
     </Form>
