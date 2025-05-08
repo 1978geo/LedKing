@@ -71,7 +71,7 @@ export function CreateCityForm({
               <FormControl>
                 <Input
                   placeholder='New York'
-                  className='shadow-none h-10.5 px-3 rounded-lg'
+                  className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                   {...field}
                 />
               </FormControl>
@@ -88,7 +88,7 @@ export function CreateCityForm({
                 <FormLabel>Make it a popular choice?</FormLabel>
                 <FormControl>
                   <Switch
-                    className='shadow-none'
+                    className='shadow-none data-[state=checked]:bg-indigo-500'
                     checked={field.value}
                     onCheckedChange={field.onChange}
                   />
@@ -102,6 +102,7 @@ export function CreateCityForm({
           type='submit'
           value='adminDefault'
           className='w-full rounded-md'
+          variant='adminDefault'
         >
           {id ? 'Update' : 'Create'}
         </Button>
