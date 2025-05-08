@@ -82,7 +82,7 @@ export function CreateBillboardForm({
               <FormControl>
                 <Input
                   placeholder='123 Main St'
-                  className='shadow-none h-10.5 px-3 rounded-lg'
+                  className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                   {...field}
                 />
               </FormControl>
@@ -100,7 +100,7 @@ export function CreateBillboardForm({
               <FormControl>
                 <Input
                   placeholder='https://example.com/photo.jpg'
-                  className='shadow-none h-10.5 px-3 rounded-lg'
+                  className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                   {...field}
                 />
               </FormControl>
@@ -120,7 +120,7 @@ export function CreateBillboardForm({
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
-                  <SelectTrigger className='shadow-none h-10.5 px-3 rounded-lg'>
+                  <SelectTrigger className='shadow-none h-10.5 px-3 rounded-lg focus:ring-indigo-500'>
                     <SelectValue placeholder='Select a city' />
                   </SelectTrigger>
                   <SelectContent>
@@ -151,7 +151,7 @@ export function CreateBillboardForm({
                   <Input
                     type='number'
                     placeholder='42.123456'
-                    className='shadow-none h-10.5 px-3 rounded-lg'
+                    className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                     {...field}
                   />
                 </FormControl>
@@ -170,7 +170,7 @@ export function CreateBillboardForm({
                   <Input
                     type='number'
                     placeholder='-71.123456'
-                    className='shadow-none h-10.5 px-3 rounded-lg'
+                    className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                     {...field}
                   />
                 </FormControl>
@@ -190,7 +190,7 @@ export function CreateBillboardForm({
                 <FormControl>
                   <Input
                     placeholder='Billboard Type'
-                    className='shadow-none h-10.5 px-3 rounded-lg'
+                    className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                     {...field}
                   />
                 </FormControl>
@@ -209,7 +209,7 @@ export function CreateBillboardForm({
                   <Input
                     type='number'
                     placeholder='2'
-                    className='shadow-none h-10.5 px-3 rounded-lg'
+                    className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                     {...field}
                   />
                 </FormControl>
@@ -230,7 +230,7 @@ export function CreateBillboardForm({
                   <Input
                     type='number'
                     placeholder='10'
-                    className='shadow-none h-10.5 px-3 rounded-lg'
+                    className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                     {...field}
                   />
                 </FormControl>
@@ -249,7 +249,7 @@ export function CreateBillboardForm({
                   <Input
                     type='number'
                     placeholder='5'
-                    className='shadow-none h-10.5 px-3 rounded-lg'
+                    className='shadow-none h-10.5 px-3 rounded-lg focus-visible:ring-indigo-500'
                     {...field}
                   />
                 </FormControl>
@@ -261,7 +261,7 @@ export function CreateBillboardForm({
 
         <Button
           type='submit'
-          value='adminDefault'
+          variant='adminDefault'
           size='lg'
           className='w-full rounded-md mt-4 cursor-pointer'
         >
