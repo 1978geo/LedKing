@@ -36,7 +36,7 @@ export function ConfirmModal({
       <DialogContent className='max-w-sm'>
         <DialogHeader>
           <div className='flex items-center gap-x-2 mb-4'>
-            <CircleAlertIcon className='size-6 text-amber-500' />
+            <CircleAlertIcon className='size-6 text-rose-500' />
             <DialogTitle>{title}</DialogTitle>
           </div>
           <DialogDescription>{text}</DialogDescription>
@@ -45,12 +45,14 @@ export function ConfirmModal({
           <Button
             variant='adminOutline'
             onClick={onCancel}
+            className='rounded-md cursor-pointer'
           >
             Cancel
           </Button>
           <Button
-            variant='adminDefault'
+            variant='destructive'
             onClick={onConfirm}
+            className='rounded-md cursor-pointer'
           >
             Confirm
           </Button>

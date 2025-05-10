@@ -62,7 +62,7 @@ export function CitiesDataTableRowActions<TData>({
         <DialogContent className='sm:max-w-[425px]'>
           <DialogHeader>
             <DialogTitle>Edit city</DialogTitle>
-            <DialogDescription>Add new city to your list</DialogDescription>
+            <DialogDescription>Edit city in your list</DialogDescription>
           </DialogHeader>
           <CreateCityForm
             id={(row.original as Row<CityWithBillboards>).id}

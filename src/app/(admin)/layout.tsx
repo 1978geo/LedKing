@@ -5,6 +5,7 @@ import { AppHeader } from '@/components/admin/app-header'
 import { AppSidebar } from '@/components/admin/app-sidebar'
 import { ConfirmModalProvider } from '@/components/admin/confirm-modal/context'
 import '../globals.css'
+import QueryProvider from '@/providers/query-provider'
 
 export const metadata: Metadata = {
   title: 'LedKing',
@@ -20,20 +21,22 @@ export default function AdminRootLayout({
   return (
     <SessionProvider>
       <ConfirmModalProvider>
-        <div
-          className={cn(
-            'flex flex-row max-h-screen w-full overflow-hidden',
-            'admin',
-          )}
-        >
-          <AppSidebar />
-          <div className='flex flex-col w-full flex-1 overflow-hidden'>
-            <AppHeader />
-            <main className='flex flex-col flex-1 overflow-y-auto bg-gray-100 p-6'>
-              {children}
-            </main>
+        <QueryProvider>
+          <div
+            className={cn(
+              'flex flex-row max-h-screen w-full overflow-hidden',
+              'admin',
+            )}
+          >
+            <AppSidebar />
+            <div className='flex flex-col w-full flex-1 overflow-hidden'>
+              <AppHeader />
+              <main className='flex flex-col flex-1 overflow-y-auto bg-gray-100 p-6'>
+                {children}
+              </main>
+            </div>
           </div>
-        </div>
+        </QueryProvider>
       </ConfirmModalProvider>
     </SessionProvider>
   )

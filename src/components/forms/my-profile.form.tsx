@@ -166,7 +166,7 @@ export function MyProfileForm() {
           variant='adminDefault'
           size='lg'
         >
-          Create
+          Update
         </Button>
       </form>
     </Form>

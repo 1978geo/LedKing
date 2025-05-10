@@ -22,45 +22,62 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { CreateBillboardSchema } from '@/schemas/create-billboard.schema'
-import { createBillboard } from '@/actions/billboards'
-import { CityList } from '@/actions/cities'
+import { createBillboard, updateBillboard } from '@/actions/billboards'
+import useCities from '@/hooks/useCities'
 
 interface CreateBillboardFormProps {
-  cities: CityList[]
   onSuccess?: () => void
+  id?: string
+  editData?: z.infer<typeof CreateBillboardSchema>
 }
 
 export function CreateBillboardForm({
-  cities,
   onSuccess,
+  id,
+  editData,
 }: CreateBillboardFormProps) {
+  const { data: cities } = useCities()
+
   const form = useForm<z.infer<typeof CreateBillboardSchema>>({
     resolver: zodResolver(CreateBillboardSchema),
-    defaultValues: {
-      address: '',
-      lat: 0,
-      lng: 0,
-      type: '',
-      countScreens: 0,
-      width: 0,
-      height: 0,
-      photo: '',
-      cityId: '',
-    },
+    defaultValues: id
+      ? editData
+      : {
+          address: '',
+          lat: 0,
+          lng: 0,
+          type: '',
+          countScreens: 0,
+          width: 0,
+          height: 0,
+          photo: '',
+          cityId: '',
+        },
   })
 
   async function handleSubmit(data: z.infer<typeof CreateBillboardSchema>) {
     const parsedPayload = CreateBillboardSchema.safeParse(data)
 
     if (parsedPayload.success) {
-      try {
-        await createBillboard(parsedPayload.data)
-        toast.success('City created successfully.')
-        form.reset()
-        onSuccess?.()
-      } catch (error) {
-        console.error('Error creating billboard:', error)
-        toast.error('Error creating billboard. Please try again later.')
+      if (id) {
+        try {
+          await updateBillboard(id, parsedPayload.data)
+          toast.success('Billboard updated successfully.')
+          onSuccess?.()
+        } catch (error) {
+          console.error('Error updating billboard:', error)
+          toast.error('Error updating billboard. Please try again later.')
+        }
+      } else {
+        try {
+          await createBillboard(parsedPayload.data)
+          toast.success('City created successfully.')
+          form.reset()
+          onSuccess?.()
+        } catch (error) {
+          console.error('Error creating billboard:', error)
+          toast.error('Error creating billboard. Please try again later.')
+        }
       }
     } else {
       toast.error('Please double check all fields.')
@@ -124,7 +141,7 @@ export function CreateBillboardForm({
                     <SelectValue placeholder='Select a city' />
                   </SelectTrigger>
                   <SelectContent>
-                    {cities.map(city => (
+                    {cities?.map(city => (
                       <SelectItem
                         key={city.id}
                         value={city.id}
@@ -265,7 +282,7 @@ export function CreateBillboardForm({
           size='lg'
           className='w-full rounded-md mt-4 cursor-pointer'
         >
-          Create
+          {id ? 'Update' : 'Create'}
         </Button>
       </form>
     </Form>

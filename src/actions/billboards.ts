@@ -5,6 +5,7 @@ import { BillboardWithCity } from '@/types/Billboard'
 import { Prisma } from '@prisma/client'
 import { omit } from 'lodash'
 import { getCityById } from './cities'
+import { revalidatePath } from 'next/cache'
 
 export const getBillboards = async () => {
   const billboards = await prisma.billboard.findMany({
@@ -66,7 +67,7 @@ export const createBillboard = async (
   const billboard = await prisma.billboard.create({
     data: billboardData,
   })
-
+  revalidatePath('/admin/billboards')
   return billboard
 }
 
@@ -81,6 +82,7 @@ export const updateBillboard = async (
     data,
   })
 
+  revalidatePath('/admin/billboards')
   return billboard
 }
 
@@ -90,6 +92,6 @@ export const deleteBillboard = async (id: string) => {
       id,
     },
   })
-
+  revalidatePath('/admin/billboards')
   return billboard
 }

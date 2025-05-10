@@ -13,14 +13,12 @@ import { BillboardWithCity } from '@/types/Billboard'
 import { useState } from 'react'
 import { columns } from './columns'
 import { CreateBillboardForm } from '@/components/forms/create-billboard.form'
-import { CityList } from '@/actions/cities'
 
 interface BillboardsTableProps {
   data: BillboardWithCity[]
-  cities: CityList[]
 }
 
-export function BillboardsTable({ data, cities }: BillboardsTableProps) {
+export function BillboardsTable({ data }: BillboardsTableProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -37,10 +35,7 @@ export function BillboardsTable({ data, cities }: BillboardsTableProps) {
               Add new billboard to your list
             </DialogDescription>
           </DialogHeader>
-          <CreateBillboardForm
-            cities={cities}
-            onSuccess={() => setOpen(false)}
-          />
+          <CreateBillboardForm onSuccess={() => setOpen(false)} />
         </DialogContent>
       </Dialog>
       <div className='p-4 bg-white rounded-xl border border-border shadow-sm'>
