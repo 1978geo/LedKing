@@ -29,7 +29,10 @@ export function UserButton({ className }: UserButtonProps) {
       <DropdownMenuTrigger asChild>
         <Button
           variant='ghost'
-          className={cn('relative size-10 rounded-full', className)}
+          className={cn(
+            'relative size-10 rounded-full cursor-pointer',
+            className,
+          )}
         >
           <Avatar className='size-10'>
             <AvatarImage
