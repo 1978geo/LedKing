@@ -103,3 +103,17 @@ export async function deleteUser(id: string, currentUserId: string) {
 
   return user
 }
+
+export async function isPasswordMatch(email: string, oldPassword: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+    select: {
+      password: true,
+    },
+  })
+  if (!user?.password) return false
+  const isMatch = await bcrypt.compare(oldPassword, user.password)
+  return isMatch
+}

@@ -64,15 +64,9 @@ export function UserButton({ className }: UserButtonProps) {
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
+          <DropdownMenuItem onClick={() => router.push('/admin/password')}>
+            Change Password
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => router.push('/admin/settings/users')}
-          >
-            Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
