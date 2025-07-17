@@ -48,7 +48,7 @@ export function MenuDialog({ trigger }: MenuDialogProps) {
           onClick={() => setOpen(false)}
         >
           <MonitorPlayIcon className='size-6' />
-          LED Кампания
+          LED Рекламна Кампания
         </Link>
         <Link
           href='/purchase'
