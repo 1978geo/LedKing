@@ -14,7 +14,11 @@ export default async function middleware(req: NextRequest) {
     return Response.redirect(newUrl)
   }
 
-  const token = await getToken({ req, secret })
+  const cookieHeader = req.headers.get('cookie') ?? ''
+  const secureCookie =
+    cookieHeader.includes('__Secure-') || cookieHeader.includes('__Host-')
+
+  const token = await getToken({ req, secret, secureCookie })
 
   const isLoggedIn = !!token
   const exp = (token as { exp?: unknown } | null)?.exp
