@@ -68,6 +68,7 @@ export const createBillboard = async (
     data: billboardData,
   })
   revalidatePath('/admin/billboards')
+  revalidatePath('/campaign')
   return billboard
 }
 
@@ -83,6 +84,7 @@ export const updateBillboard = async (
   })
 
   revalidatePath('/admin/billboards')
+  revalidatePath('/campaign')
   return billboard
 }
 
@@ -93,5 +95,6 @@ export const deleteBillboard = async (id: string) => {
     },
   })
   revalidatePath('/admin/billboards')
+  revalidatePath('/campaign')
   return billboard
 }

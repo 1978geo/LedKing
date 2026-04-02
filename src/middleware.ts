@@ -1,20 +1,32 @@
-import NextAuth from 'next-auth'
-import authConfig from '@/lib/auth.config'
+import { getToken } from 'next-auth/jwt'
+import type { NextRequest } from 'next/server'
 import { DEFAULT_LOGOUT_REDIRECT } from '@/routes'
 
-const { auth } = NextAuth(authConfig)
-
-export default auth(req => {
-  const isLoggedIn = !!req.auth
-  const isExpired = req.auth?.expires && new Date(req.auth.expires) < new Date()
-
-  if (req.nextUrl.pathname.startsWith('/admin') && (!isLoggedIn || isExpired)) {
+// Keep middleware edge-safe: just decode the JWT instead of importing the full
+// NextAuth config (which pulls in Prisma/bcrypt and can exceed Vercel's 1MB limit).
+export default async function middleware(req: NextRequest) {
+  // `getToken()` requires `secret` when `NEXTAUTH_SECRET` is not set.
+  // In that case, fail closed by redirecting to the login page
+  // instead of crashing the middleware.
+  const secret = process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET
+  if (!secret) {
     const newUrl = new URL(DEFAULT_LOGOUT_REDIRECT, req.nextUrl)
     return Response.redirect(newUrl)
   }
-})
+
+  const token = await getToken({ req, secret })
+
+  const isLoggedIn = !!token
+  const exp = (token as { exp?: unknown } | null)?.exp
+  const isExpired = typeof exp === 'number' ? exp * 1000 < Date.now() : false
+
+  if (!isLoggedIn || isExpired) {
+    const newUrl = new URL(DEFAULT_LOGOUT_REDIRECT, req.nextUrl)
+    return Response.redirect(newUrl)
+  }
+}
 
 // Don't invoke Middleware on the routes below
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/admin/:path*', '/admin'],
 }
