@@ -3,6 +3,10 @@ import { getCities } from '@/actions/cities'
 import LedCampaingForm from '@/components/forms/led-campaign.form'
 import { BillboardWithCity } from '@/types/Billboard'
 
+// Always render fresh campaign data from the DB.
+// Otherwise Next may statically cache the page and show stale content.
+export const dynamic = 'force-dynamic'
+
 export default async function CampaignPage() {
   const cities = await getCities()
   const billboards = await getBillboards()
